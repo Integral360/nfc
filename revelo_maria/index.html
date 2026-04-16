@@ -1,373 +1,654 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mango 🥭 | @majo.revelogo</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mango 🥭 | @majo.revelogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#050505;color:#fff;overflow-x:hidden}
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-/* HERO PREMIUM */
-.hero{
-height:100vh;
-background:url('foto1.jpeg') center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:#050505;
+      color:#fff;
+      overflow-x:hidden;
+    }
 
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.85));
-}
+    .hero{
+      min-height:100vh;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,.82)),
+        url('foto1.jpeg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      padding:40px 20px 60px;
+    }
 
-.hero-content{position:relative;z-index:2}
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:900px;
+      margin:0 auto;
+    }
 
-.profile{
-width:160px;height:160px;border-radius:50%;
-object-fit:cover;border:4px solid #fff;
-box-shadow:0 0 40px rgba(255,62,165,.6);
-animation:float 4s infinite;
-}
+    .profile{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid rgba(255,255,255,.95);
+      box-shadow:
+        0 0 0 10px rgba(255, 62, 165, 0.12),
+        0 0 35px rgba(255,62,165,.55),
+        0 0 65px rgba(255,62,165,.30);
+      animation:float 4s ease-in-out infinite;
+    }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-}
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
 
-h1{font-size:3em;margin:15px 0}
+    h1{
+      font-size:4.2rem;
+      line-height:1;
+      margin:18px 0 10px;
+      font-weight:800;
+      text-shadow:0 8px 30px rgba(0,0,0,.35);
+    }
 
-.tag{opacity:.85;font-size:1.1em}
+    .tag{
+      opacity:.96;
+      font-size:1.35rem;
+      line-height:1.5;
+      margin-bottom:24px;
+      text-shadow:0 4px 18px rgba(0,0,0,.35);
+    }
 
-/* BOTONES */
-.buttons{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:14px;
-flex-wrap:wrap;
-}
+    .buttons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      width:100%;
+    }
 
-.buttons-top{
-margin-top:22px;
-}
+    .buttons-top{
+      margin-top:10px;
+      margin-bottom:14px;
+    }
 
-.buttons-bottom{
-margin-top:14px;
-}
+    .buttons-bottom{
+      margin-top:0;
+    }
 
-.buttons a{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-min-width:155px;
-padding:14px 24px;
-border-radius:30px;
-background:linear-gradient(135deg,#ff3ea5,#ff7a59);
-color:#fff;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
-box-shadow:0 10px 24px rgba(255,62,165,.22);
-}
+    .buttons a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:170px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ff3ea5,#ff7a59);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:1rem;
+      transition:.3s ease;
+      box-shadow:0 10px 24px rgba(255,62,165,.22);
+      white-space:nowrap;
+    }
 
-.buttons a:hover{transform:scale(1.05)}
+    .buttons a:hover{
+      transform:translateY(-3px) scale(1.03);
+    }
 
-.btn-whatsapp{
-min-width:210px;
-background:linear-gradient(135deg,#25d366,#18b458) !important;
-box-shadow:0 10px 24px rgba(37,211,102,.24) !important;
-}
+    .btn-whatsapp{
+      min-width:220px !important;
+      background:linear-gradient(135deg,#25d366,#18b458) !important;
+      box-shadow:0 10px 24px rgba(37,211,102,.24) !important;
+    }
 
-/* SOCIAL ICONS */
-.social{display:none;}
+    .bio{
+      padding:65px 20px 35px;
+      text-align:center;
+      max-width:850px;
+      margin:0 auto;
+      font-size:1.12rem;
+      line-height:1.9;
+      opacity:.96;
+    }
 
-/* BIO */
-.bio{padding:60px 20px;text-align:center;max-width:800px;margin:auto;font-size:1.1em;line-height:1.8}
+    .slider{
+      overflow:hidden;
+      padding:18px 0 8px;
+    }
 
-/* GALERIA PREMIUM */
-.slider{overflow:hidden;padding:20px 0}
-.row{overflow:hidden;white-space:nowrap;margin:15px 0}
-.track{
-  display:flex;
-  gap:15px;
-  width:max-content;
-}
+    .row{
+      overflow:hidden;
+      white-space:nowrap;
+      margin:16px 0;
+    }
 
-.track img{
-  width:240px;
-  height:340px;
-  object-fit:cover;
-  border-radius:20px;
-  animation:zoom 6s infinite alternate;
-  transition:.4s;
-}
+    .track{
+      display:flex;
+      gap:16px;
+      width:max-content;
+    }
 
-.track img:hover{transform:scale(1.12)}
+    .row-left .track{
+      animation:scrollLeft 26s linear infinite;
+    }
 
-.row-left .track{animation:scrollLeft 26s linear infinite}
-.row-right .track{animation:scrollRight 26s linear infinite}
+    .row-right .track{
+      animation:scrollRight 26s linear infinite;
+    }
 
-@keyframes scrollLeft{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
+    .track img{
+      width:240px;
+      height:340px;
+      object-fit:cover;
+      border-radius:22px;
+      animation:zoom 6s ease-in-out infinite alternate;
+      transition:.35s ease;
+      box-shadow:0 10px 26px rgba(0,0,0,.28);
+    }
 
-@keyframes scrollRight{
-  0%{transform:translateX(-50%)}
-  100%{transform:translateX(0)}
-}
+    .track img:hover{
+      transform:scale(1.08);
+    }
 
-@keyframes zoom{
-  0%{transform:scale(1)}
-  100%{transform:scale(1.12)}
-}
+    @keyframes scrollLeft{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-50%)}
+    }
 
-/* CTA */ */
-.cta{
-  width:100%;
-  max-width:980px;
-  margin:0 auto;
-  padding:76px 20px 88px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
+    @keyframes scrollRight{
+      0%{transform:translateX(-50%)}
+      100%{transform:translateX(0)}
+    }
 
-.cta h2{
-  width:100%;
-  margin:0 0 22px;
-  text-align:center;
-  font-size:2.2rem;
-}
+    @keyframes zoom{
+      0%{transform:scale(1)}
+      100%{transform:scale(1.08)}
+    }
 
-.cta-actions{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-  flex-wrap:wrap;
-}
+    .brands{
+      padding:70px 20px 45px;
+    }
 
-.cta-main{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  min-width:190px;
-  padding:16px 28px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#25d366,#18b458);
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  box-shadow:0 12px 28px rgba(37,211,102,.24);
-  transition:.3s;
-}
+    .brands-box{
+      position:relative;
+      max-width:1100px;
+      margin:0 auto;
+      padding:38px 26px 34px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 16px 40px rgba(0,0,0,.20);
+      overflow:hidden;
+      text-align:center;
+    }
 
-.cta-main:hover{
-  transform:translateY(-3px) scale(1.04);
-}
+    .brands-kicker{
+      display:inline-block;
+      margin-bottom:12px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      opacity:.9;
+    }
 
-.contact-save{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  min-width:220px;
-  padding:16px 28px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#ffffff,#ffd7ea);
-  color:#111 !important;
-  text-decoration:none;
-  font-weight:700;
-  font-size:15px;
-  box-shadow:0 12px 30px rgba(255,255,255,.18), 0 10px 25px rgba(255,62,165,.22);
-  border:2px solid rgba(255,255,255,.65);
-  transition:.3s;
-}
+    .brands h2{
+      font-size:2rem;
+      margin:0 0 10px;
+    }
 
-.contact-save:hover{
-  transform:translateY(-3px) scale(1.05);
-}
+    .brands p{
+      margin:0 0 26px;
+      opacity:.78;
+      font-size:1rem;
+    }
 
-footer{
-  text-align:center;
-  padding:20px;
-  font-size:13px;
-  opacity:.7;
-}
+    .brands-track{
+      overflow:hidden;
+      position:relative;
+      width:100%;
+    }
 
-footer a{color:#fff;text-decoration:none;font-weight:600}{
-text-align:center;padding:20px;font-size:13px;opacity:.7}
+    .brands-row{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      width:max-content;
+      animation:scrollBrands 18s linear infinite;
+    }
 
-footer a{color:#fff;text-decoration:none;font-weight:600}
+    .brands-row img{
+      width:125px;
+      height:78px;
+      object-fit:contain;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:14px;
+      opacity:.95;
+      transition:.3s ease;
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+      backdrop-filter:blur(8px);
+    }
 
-@media (max-width: 768px){
-  .hero-content{
-    width:100%;
-    max-width:420px;
-    margin:0 auto;
-    padding:20px 16px;
-  }
+    .brands-row img:hover{
+      transform:translateY(-5px) scale(1.05);
+      box-shadow:0 12px 28px rgba(255,62,165,.18);
+    }
 
-  .profile{
-    width:132px;
-    height:132px;
-  }
+    .brands-fade{
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:80px;
+      z-index:2;
+      pointer-events:none;
+    }
 
-  h1{
-    font-size:2.9rem;
-    line-height:1;
-  }
+    .brands-fade.left{
+      left:0;
+      background:linear-gradient(to right, rgba(5,5,5,1), rgba(5,5,5,0));
+    }
 
-  .tag{
-    font-size:0.98rem;
-    line-height:1.4;
-    margin:8px auto 0;
-  }
+    .brands-fade.right{
+      right:0;
+      background:linear-gradient(to left, rgba(5,5,5,1), rgba(5,5,5,0));
+    }
 
-  .buttons{
-    flex-wrap:nowrap;
-    gap:8px;
-  }
+    @keyframes scrollBrands{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
 
-  .buttons-top,
-  .buttons-bottom{
-    width:100%;
-    justify-content:center;
-  }
+    .cta{
+      width:100%;
+      max-width:980px;
+      margin:0 auto;
+      padding:76px 20px 88px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
 
-  .buttons a{
-    min-width:auto;
-    padding:12px 14px;
-    font-size:0.95rem;
-    border-radius:22px;
-    flex:1 1 0;
-    white-space:nowrap;
-  }
+    .cta h2{
+      width:100%;
+      margin:0 0 22px;
+      text-align:center;
+      font-size:2.3rem;
+    }
 
-  .buttons-top a{
-    max-width:110px;
-  }
+    .cta-actions{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
 
-  .btn-whatsapp{
-    min-width:190px !important;
-    max-width:220px;
-    flex:0 0 auto !important;
-  }
+    .cta-main{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:210px;
+      padding:16px 30px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#25d366,#18b458);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 12px 28px rgba(37,211,102,.24);
+      transition:.3s ease;
+    }
 
-  .track img{
-    width:170px;
-    height:250px;
-  }
+    .cta-main:hover{
+      transform:translateY(-3px) scale(1.04);
+    }
 
-  .cta{
-    padding:60px 18px 78px;
-  }
+    .contact-save{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:240px;
+      padding:16px 30px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ffffff,#ffd7ea);
+      color:#111 !important;
+      text-decoration:none;
+      font-weight:700;
+      font-size:15px;
+      box-shadow:
+        0 12px 30px rgba(255,255,255,.18),
+        0 10px 25px rgba(255,62,165,.22);
+      border:2px solid rgba(255,255,255,.65);
+      transition:.3s ease;
+    }
 
-  .cta h2{
-    font-size:1.8rem;
-  }
+    .contact-save:hover{
+      transform:translateY(-3px) scale(1.04);
+    }
 
-  .cta-actions{
-    flex-direction:column;
-    gap:14px;
-  }
+    footer{
+      text-align:center;
+      padding:20px 20px 28px;
+      font-size:13px;
+      opacity:.78;
+    }
 
-  .cta-main,
-  .contact-save{
-    width:100%;
-    max-width:320px;
-  }
-}
+    footer a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
 
-</style>
+    @media (max-width: 768px){
+      .hero{
+        padding:34px 16px 52px;
+        min-height:100svh;
+      }
+
+      .hero-content{
+        width:100%;
+        max-width:420px;
+        margin:0 auto;
+        padding:10px 4px;
+      }
+
+      .profile{
+        width:140px;
+        height:140px;
+        border-width:5px;
+      }
+
+      h1{
+        font-size:3.2rem;
+        line-height:1;
+        margin:16px 0 10px;
+      }
+
+      .tag{
+        font-size:1rem;
+        line-height:1.45;
+        margin:0 auto 22px;
+      }
+
+      .buttons{
+        flex-wrap:nowrap;
+        gap:8px;
+      }
+
+      .buttons-top,
+      .buttons-bottom{
+        width:100%;
+        justify-content:center;
+      }
+
+      .buttons a{
+        min-width:auto;
+        padding:12px 12px;
+        font-size:.92rem;
+        border-radius:22px;
+        flex:1 1 0;
+        white-space:nowrap;
+      }
+
+      .buttons-top a{
+        max-width:112px;
+      }
+
+      .btn-whatsapp{
+        min-width:190px !important;
+        max-width:220px;
+        flex:0 0 auto !important;
+      }
+
+      .bio{
+        font-size:1rem;
+        line-height:1.8;
+        padding:54px 18px 28px;
+      }
+
+      .track img{
+        width:170px;
+        height:250px;
+      }
+
+      .brands{
+        padding:58px 16px 32px;
+      }
+
+      .brands-box{
+        padding:28px 16px 24px;
+        border-radius:22px;
+      }
+
+      .brands h2{
+        font-size:1.55rem;
+      }
+
+      .brands p{
+        font-size:.95rem;
+        margin-bottom:22px;
+      }
+
+      .brands-row{
+        gap:16px;
+      }
+
+      .brands-row img{
+        width:92px;
+        height:58px;
+        padding:10px;
+        border-radius:14px;
+      }
+
+      .brands-fade{
+        width:34px;
+      }
+
+      .cta{
+        padding:60px 18px 78px;
+      }
+
+      .cta h2{
+        font-size:1.9rem;
+      }
+
+      .cta-actions{
+        flex-direction:column;
+        gap:14px;
+      }
+
+      .cta-main,
+      .contact-save{
+        width:100%;
+        max-width:320px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="hero">
-<div class="hero-content">
-<img src="foto1.jpeg" class="profile">
-<h1>Mango 🥭</h1>
-<div class="tag">Belleza • Lifestyle • Cuidado personal</div>
+  <section class="hero">
+    <div class="hero-content">
+      <img src="foto1.jpeg" class="profile" alt="Mango">
+      <h1>Mango 🥭</h1>
+      <div class="tag">Belleza • Lifestyle • Cuidado personal</div>
 
-<div class="buttons buttons-top">
-<a href="https://www.instagram.com/majo.revelogo" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-<a href="https://www.tiktok.com/@majo.revelogo" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-<a href="mailto:mj.revelogo@gmail.com" target="_blank"><i class="fa fa-envelope"></i> Email</a>
-</div>
+      <div class="buttons buttons-top">
+        <a href="https://www.instagram.com/majo.revelogo?igsh=MTB0Yms4eGN1eW1ldg%3D%3D&utm_source=qr" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@majo.revelogo?_r=1&_t=ZS-95aou0lxZMG" target="_blank">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
+        <a href="mailto:mj.revelogo@gmail.com" target="_blank">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </div>
 
-<div class="buttons buttons-bottom">
-<a class="btn-whatsapp" href="https://wa.me/573122473777" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-</div>
-</div>
-</div>
+      <div class="buttons buttons-bottom">
+        <a class="btn-whatsapp" href="https://wa.me/573122473777" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
 
-<section class="bio">
-Hola, soy María José, me dicen Mango 🥭<br><br>
-Soy creadora de contenido en IG y TikTok enfocada en belleza, lifestyle y cuidado personal.<br><br>
-Disponible para colaboraciones y publicidad 💌
-</section>
+  <section class="bio">
+    Hola, soy María José, me dicen Mango 🥭
+    <br><br>
+    Soy creadora de contenido en IG y TikTok enfocada en belleza, lifestyle y cuidado personal.
+    <br><br>
+    Disponible para colaboraciones y publicidad 💌
+  </section>
 
-<section class="slider">
+  <section class="slider">
+    <div class="row row-left">
+      <div class="track">
+        <img src="foto2.jpeg" alt="">
+        <img src="foto3.jpeg" alt="">
+        <img src="foto4.jpeg" alt="">
+        <img src="foto5.jpeg" alt="">
+        <img src="foto6.jpeg" alt="">
+        <img src="foto7.jpeg" alt="">
+        <img src="foto8.jpeg" alt="">
+        <img src="foto9.jpeg" alt="">
+        <img src="foto10.jpeg" alt="">
+        <img src="foto11.jpeg" alt="">
 
-<div class="row row-left">
-<div class="track">
-<img src="foto2.jpeg"><img src="foto3.jpeg"><img src="foto4.jpeg"><img src="foto5.jpeg"><img src="foto6.jpeg"><img src="foto7.jpeg"><img src="foto8.jpeg"><img src="foto9.jpeg"><img src="foto10.jpeg"><img src="foto11.jpeg">
-<img src="foto2.jpeg"><img src="foto3.jpeg"><img src="foto4.jpeg"><img src="foto5.jpeg"><img src="foto6.jpeg"><img src="foto7.jpeg"><img src="foto8.jpeg"><img src="foto9.jpeg"><img src="foto10.jpeg"><img src="foto11.jpeg">
-</div>
-</div>
+        <img src="foto2.jpeg" alt="">
+        <img src="foto3.jpeg" alt="">
+        <img src="foto4.jpeg" alt="">
+        <img src="foto5.jpeg" alt="">
+        <img src="foto6.jpeg" alt="">
+        <img src="foto7.jpeg" alt="">
+        <img src="foto8.jpeg" alt="">
+        <img src="foto9.jpeg" alt="">
+        <img src="foto10.jpeg" alt="">
+        <img src="foto11.jpeg" alt="">
+      </div>
+    </div>
 
-<div class="row row-right">
-<div class="track">
-<img src="foto2.jpeg"><img src="foto3.jpeg"><img src="foto4.jpeg"><img src="foto5.jpeg"><img src="foto6.jpeg"><img src="foto7.jpeg"><img src="foto8.jpeg"><img src="foto9.jpeg"><img src="foto10.jpeg"><img src="foto11.jpeg">
-<img src="foto2.jpeg"><img src="foto3.jpeg"><img src="foto4.jpeg"><img src="foto5.jpeg"><img src="foto6.jpeg"><img src="foto7.jpeg"><img src="foto8.jpeg"><img src="foto9.jpeg"><img src="foto10.jpeg"><img src="foto11.jpeg">
-</div>
-</div>
+    <div class="row row-right">
+      <div class="track">
+        <img src="foto2.jpeg" alt="">
+        <img src="foto3.jpeg" alt="">
+        <img src="foto4.jpeg" alt="">
+        <img src="foto5.jpeg" alt="">
+        <img src="foto6.jpeg" alt="">
+        <img src="foto7.jpeg" alt="">
+        <img src="foto8.jpeg" alt="">
+        <img src="foto9.jpeg" alt="">
+        <img src="foto10.jpeg" alt="">
+        <img src="foto11.jpeg" alt="">
 
-</section>
+        <img src="foto2.jpeg" alt="">
+        <img src="foto3.jpeg" alt="">
+        <img src="foto4.jpeg" alt="">
+        <img src="foto5.jpeg" alt="">
+        <img src="foto6.jpeg" alt="">
+        <img src="foto7.jpeg" alt="">
+        <img src="foto8.jpeg" alt="">
+        <img src="foto9.jpeg" alt="">
+        <img src="foto10.jpeg" alt="">
+        <img src="foto11.jpeg" alt="">
+      </div>
+    </div>
+  </section>
 
-<section class="cta">
-<h2>Trabajemos juntos 💌</h2>
-<div class="cta-actions">
-  <a class="cta-main" href="https://wa.me/573122473777" target="_blank"><i class="fab fa-whatsapp"></i> Contáctame</a>
-  <a class="contact-save" href="#" onclick="vcard(); return false;"><i class="fa fa-address-card"></i> Guarda mi contacto</a>
-</div>
-</section>
+  <section class="brands">
+    <div class="brands-box">
+      <span class="brands-kicker">COLABORACIONES</span>
+      <h2>Marcas que confían en mí ✨</h2>
+      <p>Algunas marcas y aliados con los que he compartido colaboraciones.</p>
 
-<footer>
-Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a>
-</footer>
+      <div class="brands-fade left"></div>
+      <div class="brands-fade right"></div>
 
-<script>
-function vcard(){
-const v = `BEGIN:VCARD
+      <div class="brands-track">
+        <div class="brands-row">
+          <img src="marca1.jpeg" alt="Marca 1">
+          <img src="marca2.jpeg" alt="Marca 2">
+          <img src="marca3.jpeg" alt="Marca 3">
+          <img src="marca4.jpeg" alt="Marca 4">
+          <img src="marca5.jpeg" alt="Marca 5">
+          <img src="marca6.jpeg" alt="Marca 6">
+
+          <img src="marca1.jpeg" alt="Marca 1">
+          <img src="marca2.jpeg" alt="Marca 2">
+          <img src="marca3.jpeg" alt="Marca 3">
+          <img src="marca4.jpeg" alt="Marca 4">
+          <img src="marca5.jpeg" alt="Marca 5">
+          <img src="marca6.jpeg" alt="Marca 6">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Trabajemos juntos 💌</h2>
+    <div class="cta-actions">
+      <a class="cta-main" href="https://wa.me/573122473777" target="_blank">
+        <i class="fab fa-whatsapp"></i> Contáctame
+      </a>
+      <a class="contact-save" href="#" onclick="vcard(); return false;">
+        <i class="fa fa-address-card"></i> Guarda mi contacto
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a>
+  </footer>
+
+  <script>
+    function vcard(){
+      const v = `BEGIN:VCARD
 VERSION:3.0
 N:Revelo Goyes;María José;;;
 FN:María José Revelo Goyes
+NICKNAME:Mango
+ORG:Creadora de contenido
+TITLE:Influencer
 TEL;TYPE=CELL:3122473777
 EMAIL;TYPE=INTERNET:mj.revelogo@gmail.com
+URL:https://www.instagram.com/majo.revelogo?igsh=MTB0Yms4eGN1eW1ldg%3D%3D&utm_source=qr
 END:VCARD`;
-const blob = new Blob([v], {type:'text/vcard'});
-const link = document.createElement('a');
-link.href = URL.createObjectURL(blob);
-link.download = 'contacto.vcf';
-link.click();
-}
-</script>
+      const blob = new Blob([v], {type:'text/vcard'});
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'contacto.vcf';
+      link.click();
+    }
+  </script>
 
 </body>
 </html>
