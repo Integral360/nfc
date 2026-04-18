@@ -9,193 +9,295 @@
 
 <style>
 :root{
---gold:#d4af37;
---bg:#050505;
---text:#eaeaea;
---muted:#bcbcbc;
+  --gold:#d4af37;
+  --bg:#050505;
+  --text:#eaeaea;
+  --muted:#bcbcbc;
+  --card:rgba(255,255,255,0.05);
+  --border:rgba(255,255,255,0.10);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:white;
-overflow-x:hidden;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:white;
+  overflow-x:hidden;
 }
 
-/* 🔥 PARTICULAS */
+/* PARTICULAS */
 canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:0;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:0;
 }
 
 /* CONTENIDO */
 .container{
-width:min(1200px,95%);
-margin:auto;
-position:relative;
-z-index:2;
+  width:min(1200px,95%);
+  margin:auto;
+  position:relative;
+  z-index:2;
 }
 
 /* HERO */
 .hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-text-align:center;
-padding:80px 0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  padding:80px 0;
 }
 
 .hero h1{
-font-size:clamp(3rem,7vw,5.5rem);
-line-height:1;
-font-weight:900;
-margin-bottom:20px;
+  font-size:clamp(3rem,7vw,5.5rem);
+  line-height:1;
+  font-weight:900;
+  margin-bottom:20px;
 }
 
 .hero h1 span{
-color:var(--gold);
-text-shadow:0 0 30px rgba(212,175,55,.4);
+  color:var(--gold);
+  text-shadow:0 0 30px rgba(212,175,55,.4);
 }
 
 .hero p{
-color:var(--muted);
-font-size:1.2rem;
-margin-bottom:30px;
+  color:var(--muted);
+  font-size:1.2rem;
+  margin-bottom:30px;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* BOTONES */
 .btn{
-padding:16px 28px;
-border-radius:50px;
-font-weight:800;
-cursor:pointer;
-display:inline-block;
-transition:.3s;
+  padding:16px 28px;
+  border-radius:50px;
+  font-weight:800;
+  cursor:pointer;
+  display:inline-block;
+  transition:.3s;
+  text-decoration:none;
 }
 
 .btn-gold{
-background:linear-gradient(135deg,#f4d97a,var(--gold));
-color:black;
-box-shadow:0 10px 30px rgba(212,175,55,.3);
+  background:linear-gradient(135deg,#f4d97a,var(--gold));
+  color:black;
+  box-shadow:0 10px 30px rgba(212,175,55,.3);
 }
 
 .btn-gold:hover{
-transform:translateY(-4px);
+  transform:translateY(-4px);
 }
 
-/* SECTIONS */
-section{padding:80px 0;text-align:center}
+.btn-outline{
+  border:1px solid rgba(212,175,55,.5);
+  color:white;
+  background:rgba(255,255,255,.03);
+}
+
+.btn-outline:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  box-shadow:0 10px 30px rgba(212,175,55,.15);
+}
+
+/* SECCIONES */
+section{
+  padding:80px 0;
+  text-align:center;
+}
 
 h2{
-font-size:clamp(2rem,4vw,3rem);
-margin-bottom:15px;
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:15px;
 }
 
 p.section{
-max-width:700px;
-margin:auto;
-color:var(--muted);
-margin-bottom:40px;
+  max-width:760px;
+  margin:auto;
+  color:var(--muted);
+  margin-bottom:40px;
+  line-height:1.7;
 }
 
 /* BENEFICIOS */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:20px;
-padding:25px;
-transition:.4s;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:25px;
+  transition:.4s;
+  backdrop-filter:blur(8px);
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 50px rgba(0,0,0,.5);
-border-color:rgba(212,175,55,.3);
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  border-color:rgba(212,175,55,.3);
+}
+
+.card h3{
+  color:var(--gold);
+  margin-bottom:10px;
+  font-size:1.1rem;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:.98rem;
+}
+
+/* ANUNCIO / IMAGEN PROMOCIONAL */
+.poster-wrap{
+  max-width:900px;
+  margin:0 auto;
+}
+
+.poster-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(212,175,55,.22);
+  border-radius:28px;
+  padding:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+}
+
+.poster-card img{
+  width:100%;
+  display:block;
+  border-radius:20px;
 }
 
 /* MODELOS */
 .models{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
 }
 
 .model{
-background:#111;
-border-radius:20px;
-overflow:hidden;
-transition:.4s;
-border:1px solid rgba(255,255,255,0.1);
+  background:#111;
+  border-radius:20px;
+  overflow:hidden;
+  transition:.4s;
+  border:1px solid rgba(255,255,255,0.1);
 }
 
 .model:hover{
-transform:scale(1.03);
+  transform:scale(1.03);
 }
 
 .model iframe{
-width:100%;
-height:250px;
-border:none;
+  width:100%;
+  height:250px;
+  border:none;
 }
 
 .model .content{
-padding:20px;
+  padding:20px;
 }
 
-.model h3{margin-bottom:10px}
+.model h3{
+  margin-bottom:10px;
+}
 
 .model p{
-color:var(--muted);
-font-size:.95rem;
-margin-bottom:15px;
+  color:var(--muted);
+  font-size:.95rem;
+  margin-bottom:15px;
 }
 
 /* CTA */
 .cta{
-background:linear-gradient(135deg,rgba(212,175,55,.15),transparent);
-border-radius:25px;
-padding:50px 20px;
+  background:linear-gradient(135deg,rgba(212,175,55,.15),transparent);
+  border:1px solid rgba(212,175,55,.15);
+  border-radius:25px;
+  padding:50px 20px;
 }
 
 /* FLOAT WA */
 .wa{
-position:fixed;
-bottom:20px;
-right:20px;
-z-index:99;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:99;
 }
 
 .wa a{
-background:#25d366;
-color:white;
-width:65px;
-height:65px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-font-size:28px;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
+  background:#25d366;
+  color:white;
+  width:65px;
+  height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  text-decoration:none;
 }
 
 /* ANIMACIONES */
 .reveal{
-opacity:0;
-transform:translateY(40px);
-transition:.8s;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s;
 }
 
 .reveal.active{
-opacity:1;
-transform:translateY(0);
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .hero{
+    min-height:auto;
+    padding:110px 0 70px;
+  }
+
+  .hero p{
+    font-size:1.05rem;
+  }
+
+  .model iframe{
+    height:220px;
+  }
+
+  .poster-card{
+    padding:12px;
+    border-radius:20px;
+  }
+
+  .poster-card img{
+    border-radius:14px;
+  }
 }
 </style>
 </head>
@@ -206,144 +308,206 @@ transform:translateY(0);
 
 <!-- HERO -->
 <section class="hero">
-<div class="container">
-<h1><span>Tu información</span><br>a la mano</h1>
-<p>Landing digitales modernas para compartir tu información de forma profesional y al instante</p>
+  <div class="container">
+    <h1><span>Tu información</span><br>a la mano</h1>
+    <p>
+      Landing digitales modernas y tarjetas NFC para compartir tu información
+      de forma profesional, elegante y al instante.
+    </p>
 
-<a href="#modelos" class="btn btn-gold">Ver modelos</a>
-</div>
+    <div class="hero-buttons">
+      <a href="#promo" class="btn btn-gold">Ver anuncio</a>
+      <a href="#modelos" class="btn btn-outline">Ver modelos</a>
+    </div>
+  </div>
 </section>
 
 <!-- BENEFICIOS -->
 <section class="reveal">
-<div class="container">
-<h2>Una nueva forma de presentarte</h2>
-<p class="section">Olvídate de las tarjetas tradicionales. Lleva tu información a un nivel superior.</p>
+  <div class="container">
+    <h2>Una nueva forma de presentarte</h2>
+    <p class="section">
+      Olvídate de las tarjetas tradicionales. Lleva tu información a un nivel superior
+      con una solución digital moderna, visual y siempre actualizada.
+    </p>
 
-<div class="grid">
-<div class="card">⚡ Comparte al instante</div>
-<div class="card">⟳ Siempre actualizado</div>
-<div class="card">◆ Imagen profesional</div>
-<div class="card">♻ Ecológico</div>
-</div>
-</div>
+    <div class="grid">
+      <div class="card">
+        <h3>Comparte al instante</h3>
+        <p>Acerca tu tarjeta o comparte tu enlace para que tus clientes accedan de inmediato a tu información.</p>
+      </div>
+
+      <div class="card">
+        <h3>Siempre actualizado</h3>
+        <p>Tu información puede mantenerse al día sin necesidad de volver a imprimir tarjetas físicas cada vez.</p>
+      </div>
+
+      <div class="card">
+        <h3>Imagen profesional</h3>
+        <p>Proyecta una marca moderna, tecnológica y diferenciadora en reuniones, visitas y eventos.</p>
+      </div>
+
+      <div class="card">
+        <h3>Ecológico</h3>
+        <p>Reduce impresiones innecesarias y apuesta por una presentación más inteligente y sostenible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGEN PROMOCIONAL -->
+<section id="promo" class="reveal">
+  <div class="container">
+    <h2>Nuestra pieza promocional</h2>
+    <p class="section">
+      Así se ve una de nuestras propuestas visuales para promocionar las tarjetas NFC
+      empresariales y personales.
+    </p>
+
+    <div class="poster-wrap">
+      <div class="poster-card">
+        <!-- Cambia promo-nfc.png por el nombre real de tu archivo -->
+        <img src="promo-nfc.png" alt="Anuncio promocional de tarjetas NFC Integral360">
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- MODELOS -->
 <section id="modelos" class="reveal">
-<div class="container">
-<h2>Explora nuestros modelos</h2>
-<p class="section">Visualiza cómo se vería tu landing en tiempo real</p>
+  <div class="container">
+    <h2>Explora nuestros modelos</h2>
+    <p class="section">Visualiza cómo se vería tu landing en tiempo real.</p>
 
-<div class="models">
+    <div class="models">
 
-<div class="model">
-<iframe src="https://integral360.github.io/remodelando/"></iframe>
-<div class="content">
-<h3>Empresa</h3>
-<a href="https://integral360.github.io/remodelando/" target="_blank" class="btn btn-gold">Ver demo</a>
-</div>
-</div>
+      <div class="model">
+        <iframe src="https://integral360.github.io/remodelando/"></iframe>
+        <div class="content">
+          <h3>Empresa</h3>
+          <p>Presentación corporativa con servicios, contacto y botones de acción.</p>
+          <a href="https://integral360.github.io/remodelando/" target="_blank" class="btn btn-gold">Ver demo</a>
+        </div>
+      </div>
 
-<div class="model">
-<iframe src="https://integral360.github.io/bastidas_daniela/"></iframe>
-<div class="content">
-<h3>Persona</h3>
-<a href="https://integral360.github.io/bastidas_daniela/" target="_blank" class="btn btn-gold">Ver demo</a>
-</div>
-</div>
+      <div class="model">
+        <iframe src="https://integral360.github.io/bastidas_daniela/"></iframe>
+        <div class="content">
+          <h3>Persona</h3>
+          <p>Ideal para profesionales, asesores, emprendedores o marca personal.</p>
+          <a href="https://integral360.github.io/bastidas_daniela/" target="_blank" class="btn btn-gold">Ver demo</a>
+        </div>
+      </div>
 
-<div class="model">
-<iframe src="https://integral360.github.io/demo_musico/"></iframe>
-<div class="content">
-<h3>Grupo Musical</h3>
-<a href="https://integral360.github.io/demo_musico/" target="_blank" class="btn btn-gold">Ver demo</a>
-</div>
-</div>
+      <div class="model">
+        <iframe src="https://integral360.github.io/demo_musico/"></iframe>
+        <div class="content">
+          <h3>Grupo Musical</h3>
+          <p>Comparte redes, catálogo, videos, eventos y contacto directo.</p>
+          <a href="https://integral360.github.io/demo_musico/" target="_blank" class="btn btn-gold">Ver demo</a>
+        </div>
+      </div>
 
-<div class="model">
-<iframe src="https://integral360.github.io/demo_adulto_mayor/"></iframe>
-<div class="content">
-<h3>Adulto Mayor</h3>
-<a href="https://integral360.github.io/demo_adulto_mayor/" target="_blank" class="btn btn-gold">Ver demo</a>
-</div>
-</div>
+      <div class="model">
+        <iframe src="https://integral360.github.io/demo_adulto_mayor/"></iframe>
+        <div class="content">
+          <h3>Adulto Mayor</h3>
+          <p>Información útil, contactos de emergencia y datos importantes siempre accesibles.</p>
+          <a href="https://integral360.github.io/demo_adulto_mayor/" target="_blank" class="btn btn-gold">Ver demo</a>
+        </div>
+      </div>
 
-<div class="model">
-<iframe src="https://integral360.github.io/demo_mascota/"></iframe>
-<div class="content">
-<h3>Mascota</h3>
-<a href="https://integral360.github.io/demo_mascota/" target="_blank" class="btn btn-gold">Ver demo</a>
-</div>
-</div>
+      <div class="model">
+        <iframe src="https://integral360.github.io/demo_mascota/"></iframe>
+        <div class="content">
+          <h3>Mascota</h3>
+          <p>Identificación digital con datos de contacto, cuidados y recuperación rápida.</p>
+          <a href="https://integral360.github.io/demo_mascota/" target="_blank" class="btn btn-gold">Ver demo</a>
+        </div>
+      </div>
 
-<div class="model">
-<iframe src="https://integral360.github.io/demo_ni-o/"></iframe>
-<div class="content">
-<h3>Niño</h3>
-<a href="https://integral360.github.io/demo_ni-o/" target="_blank" class="btn btn-gold">Ver demo</a>
-</div>
-</div>
+      <div class="model">
+        <iframe src="https://integral360.github.io/demo_ni-o/"></iframe>
+        <div class="content">
+          <h3>Niño</h3>
+          <p>Acceso rápido a información de contacto y referencias útiles para emergencias.</p>
+          <a href="https://integral360.github.io/demo_ni-o/" target="_blank" class="btn btn-gold">Ver demo</a>
+        </div>
+      </div>
 
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
 <!-- CTA -->
 <section class="cta reveal">
-<div class="container">
-<h2>Solicita tu landing personalizada</h2>
-<p class="section">Transforma la forma en que compartes tu información</p>
+  <div class="container">
+    <h2>Solicita tu landing personalizada</h2>
+    <p class="section">Transforma la forma en que compartes tu información con una presentación digital moderna.</p>
 
-<a href="https://wa.me/573163119312" class="btn btn-gold">
-Hablar por WhatsApp
-</a>
-</div>
+    <a href="https://wa.me/573163119312" class="btn btn-gold">
+      Hablar por WhatsApp
+    </a>
+  </div>
 </section>
 
-<!-- WA -->
+<!-- WHATSAPP -->
 <div class="wa">
-<a href="https://wa.me/573163119312">✆</a>
+  <a href="https://wa.me/573163119312" target="_blank" aria-label="WhatsApp">✆</a>
 </div>
 
 <script>
 // SCROLL ANIMATION
 const reveal = document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-reveal.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-100){
-el.classList.add('active');
+
+function showOnScroll(){
+  reveal.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight - 100){
+      el.classList.add('active');
+    }
+  });
 }
-});
-});
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll);
 
 // PARTICLES
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 let particles = [];
 for(let i=0;i<80;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-d:Math.random()*1
-});
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2.2,
+    d:0.2 + Math.random()*1
+  });
 }
 
 function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="rgba(212,175,55,.5)";
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-p.y += p.d;
-if(p.y>canvas.height) p.y=0;
-});
-requestAnimationFrame(draw);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(212,175,55,.5)";
+
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+
+    p.y += p.d;
+    if(p.y > canvas.height){
+      p.y = 0;
+      p.x = Math.random()*canvas.width;
+    }
+  });
+
+  requestAnimationFrame(draw);
 }
 draw();
 </script>
