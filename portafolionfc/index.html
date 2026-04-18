@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu información a la mano | Integral360</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--gold:#d4af37;
+--bg:#050505;
+--text:#eaeaea;
+--muted:#bcbcbc;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:white;
+overflow-x:hidden;
+}
+
+/* 🔥 PARTICULAS */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:0;
+}
+
+/* CONTENIDO */
+.container{
+width:min(1200px,95%);
+margin:auto;
+position:relative;
+z-index:2;
+}
+
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+text-align:center;
+padding:80px 0;
+}
+
+.hero h1{
+font-size:clamp(3rem,7vw,5.5rem);
+line-height:1;
+font-weight:900;
+margin-bottom:20px;
+}
+
+.hero h1 span{
+color:var(--gold);
+text-shadow:0 0 30px rgba(212,175,55,.4);
+}
+
+.hero p{
+color:var(--muted);
+font-size:1.2rem;
+margin-bottom:30px;
+}
+
+.btn{
+padding:16px 28px;
+border-radius:50px;
+font-weight:800;
+cursor:pointer;
+display:inline-block;
+transition:.3s;
+}
+
+.btn-gold{
+background:linear-gradient(135deg,#f4d97a,var(--gold));
+color:black;
+box-shadow:0 10px 30px rgba(212,175,55,.3);
+}
+
+.btn-gold:hover{
+transform:translateY(-4px);
+}
+
+/* SECTIONS */
+section{padding:80px 0;text-align:center}
+
+h2{
+font-size:clamp(2rem,4vw,3rem);
+margin-bottom:15px;
+}
+
+p.section{
+max-width:700px;
+margin:auto;
+color:var(--muted);
+margin-bottom:40px;
+}
+
+/* BENEFICIOS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:20px;
+padding:25px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+border-color:rgba(212,175,55,.3);
+}
+
+/* MODELOS */
+.models{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.model{
+background:#111;
+border-radius:20px;
+overflow:hidden;
+transition:.4s;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.model:hover{
+transform:scale(1.03);
+}
+
+.model iframe{
+width:100%;
+height:250px;
+border:none;
+}
+
+.model .content{
+padding:20px;
+}
+
+.model h3{margin-bottom:10px}
+
+.model p{
+color:var(--muted);
+font-size:.95rem;
+margin-bottom:15px;
+}
+
+/* CTA */
+.cta{
+background:linear-gradient(135deg,rgba(212,175,55,.15),transparent);
+border-radius:25px;
+padding:50px 20px;
+}
+
+/* FLOAT WA */
+.wa{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:99;
+}
+
+.wa a{
+background:#25d366;
+color:white;
+width:65px;
+height:65px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:28px;
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* ANIMACIONES */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:.8s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<h1><span>Tu información</span><br>a la mano</h1>
+<p>Landing digitales modernas para compartir tu información de forma profesional y al instante</p>
+
+<a href="#modelos" class="btn btn-gold">Ver modelos</a>
+</div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="reveal">
+<div class="container">
+<h2>Una nueva forma de presentarte</h2>
+<p class="section">Olvídate de las tarjetas tradicionales. Lleva tu información a un nivel superior.</p>
+
+<div class="grid">
+<div class="card">⚡ Comparte al instante</div>
+<div class="card">⟳ Siempre actualizado</div>
+<div class="card">◆ Imagen profesional</div>
+<div class="card">♻ Ecológico</div>
+</div>
+</div>
+</section>
+
+<!-- MODELOS -->
+<section id="modelos" class="reveal">
+<div class="container">
+<h2>Explora nuestros modelos</h2>
+<p class="section">Visualiza cómo se vería tu landing en tiempo real</p>
+
+<div class="models">
+
+<div class="model">
+<iframe src="https://integral360.github.io/remodelando/"></iframe>
+<div class="content">
+<h3>Empresa</h3>
+<a href="https://integral360.github.io/remodelando/" target="_blank" class="btn btn-gold">Ver demo</a>
+</div>
+</div>
+
+<div class="model">
+<iframe src="https://integral360.github.io/bastidas_daniela/"></iframe>
+<div class="content">
+<h3>Persona</h3>
+<a href="https://integral360.github.io/bastidas_daniela/" target="_blank" class="btn btn-gold">Ver demo</a>
+</div>
+</div>
+
+<div class="model">
+<iframe src="https://integral360.github.io/demo_musico/"></iframe>
+<div class="content">
+<h3>Grupo Musical</h3>
+<a href="https://integral360.github.io/demo_musico/" target="_blank" class="btn btn-gold">Ver demo</a>
+</div>
+</div>
+
+<div class="model">
+<iframe src="https://integral360.github.io/demo_adulto_mayor/"></iframe>
+<div class="content">
+<h3>Adulto Mayor</h3>
+<a href="https://integral360.github.io/demo_adulto_mayor/" target="_blank" class="btn btn-gold">Ver demo</a>
+</div>
+</div>
+
+<div class="model">
+<iframe src="https://integral360.github.io/demo_mascota/"></iframe>
+<div class="content">
+<h3>Mascota</h3>
+<a href="https://integral360.github.io/demo_mascota/" target="_blank" class="btn btn-gold">Ver demo</a>
+</div>
+</div>
+
+<div class="model">
+<iframe src="https://integral360.github.io/demo_ni-o/"></iframe>
+<div class="content">
+<h3>Niño</h3>
+<a href="https://integral360.github.io/demo_ni-o/" target="_blank" class="btn btn-gold">Ver demo</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta reveal">
+<div class="container">
+<h2>Solicita tu landing personalizada</h2>
+<p class="section">Transforma la forma en que compartes tu información</p>
+
+<a href="https://wa.me/573163119312" class="btn btn-gold">
+Hablar por WhatsApp
+</a>
+</div>
+</section>
+
+<!-- WA -->
+<div class="wa">
+<a href="https://wa.me/573163119312">✆</a>
+</div>
+
+<script>
+// SCROLL ANIMATION
+const reveal = document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+reveal.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add('active');
+}
+});
+});
+
+// PARTICLES
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*1
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(212,175,55,.5)";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y += p.d;
+if(p.y>canvas.height) p.y=0;
+});
+requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
