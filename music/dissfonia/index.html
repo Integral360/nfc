@@ -92,8 +92,8 @@
     .hero img {
       width: 100%;
       display: block;
-      min-height: 320px;
-      object-fit: cover;
+      object-fit: contain;
+      background:#000;
     }
 
     .overlay {
@@ -103,10 +103,9 @@
     }
 
     .hero-content {
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
+      position:static;
+      padding:16px;
+      background: rgba(0,0,0,0.85);
     }
 
     h1 {
@@ -126,6 +125,15 @@
       display: grid;
       gap: 12px;
       margin-top: 18px;
+    }
+
+    .release-line {
+      margin-top: 10px;
+      color: #d7d0d0;
+      font-size: 12px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      opacity: 0.9;
     }
 
     .btn {
@@ -167,7 +175,14 @@
       backdrop-filter: blur(7px);
       border: 1px solid var(--line);
       box-shadow: var(--shadow), 0 18px 34px rgba(0,0,0,0.28);
+      transform: translateY(18px);
+      opacity: 0;
+      animation: riseIn .8s ease forwards;
     }
+
+    .section:nth-of-type(2) { animation-delay: .08s; }
+    .section:nth-of-type(3) { animation-delay: .16s; }
+    .section:nth-of-type(4) { animation-delay: .24s; }
 
     .section h2 {
       color: var(--red-2);
@@ -216,6 +231,21 @@
       display: block;
     }
 
+    .hero {
+      animation: heroFade 1s ease;
+    }
+
+    .hero-content h1,
+    .hero-content .tag,
+    .hero-content .cta-grid,
+    .hero-content .release-line {
+      animation: softUp .85s ease both;
+    }
+
+    .hero-content .tag { animation-delay: .08s; }
+    .hero-content .cta-grid { animation-delay: .16s; }
+    .hero-content .release-line { animation-delay: .24s; }
+
     .footer {
       text-align: center;
       margin-top: 20px;
@@ -237,6 +267,23 @@
       0% { opacity: 0.45; }
       100% { opacity: 0.8; }
     }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes softUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+      100% { opacity: 0.8; }
+    }
   </style>
 </head>
 <body>
@@ -248,16 +295,28 @@
       <div class="overlay"></div>
       <div class="hero-content">
         <h1>DISSFONIA</h1>
-        <div class="tag">Rituales del Páramo</div>
+        <div class="tag">Rituales del Páramo · Álbum instrumental homenaje al metal de Ipiales</div>
 
         <div class="cta-grid">
           <a href="https://wa.me/573194271290" class="btn btn-contact" target="_blank">
-            <i class="fab fa-whatsapp"></i> Contacto
+            <i class="fab fa-whatsapp"></i> Contacto 3194271290
           </a>
           <a href="https://open.spotify.com/intl-es/album/0PcdaxUm5bCMMEmZDjUMQ5?si=TQP_FNKoT2ycvIrOn5qQLA" class="btn btn-spotify" target="_blank">
             <i class="fab fa-spotify"></i> Escúchalo en Spotify
           </a>
         </div>
+        <h1>DISSFONIA</h1>
+        <div class="tag">Rituales del Páramo · Álbum instrumental homenaje al metal de Ipiales</div>
+
+        <div class="cta-grid">
+          <a href="https://wa.me/573194271290" class="btn btn-contact" target="_blank">
+            <i class="fab fa-whatsapp"></i> Contacto 3194271290
+          </a>
+          <a href="https://open.spotify.com/intl-es/album/0PcdaxUm5bCMMEmZDjUMQ5?si=TQP_FNKoT2ycvIrOn5qQLA" class="btn btn-spotify" target="_blank">
+            <i class="fab fa-spotify"></i> Escúchalo en Spotify
+          </a>
+        </div>
+        <div class="release-line">Disponible en Spotify y YouTube</div>
       </div>
     </section>
 
@@ -283,7 +342,7 @@
     </section>
 
     <section class="section">
-      <h2>Siguenos en Youtube</h2>
+      <h2>Video</h2>
       <div class="video-wrap">
         <iframe src="https://www.youtube.com/embed/HVdBPqOE6Cg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
