@@ -9,19 +9,42 @@
 
 <style>
 :root{
-  --bg:#010101;
-  --red:#a00000;
-  --red2:#ff1a1a;
-  --text:#f5f5f5;
-  --muted:#aaa;
+  --red:#ff1a1a;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:Arial, Helvetica, sans-serif;
+  color:#fff;
   background:#000;
-  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* FONDO PARAMO */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('fondo.jpg') center/cover no-repeat;
+  filter:brightness(0.25) contrast(1.2);
+  z-index:-2;
+}
+
+/* NIEBLA ANIMADA */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 20% 30%,rgba(255,0,0,0.1),transparent 60%),
+             radial-gradient(circle at 80% 70%,rgba(255,0,0,0.08),transparent 60%);
+  animation:fog 12s infinite alternate;
+  z-index:-1;
+}
+
+@keyframes fog{
+  0%{opacity:0.4;}
+  100%{opacity:0.7;}
 }
 
 .container{
@@ -34,37 +57,34 @@ body{
   position:relative;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 0 40px rgba(255,0,0,0.25);
+  box-shadow:0 0 60px rgba(255,0,0,0.4);
 }
 
 .hero img{
   width:100%;
-  display:block;
 }
 
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.95));
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,0.95));
 }
 
 .hero-content{
   position:absolute;
   bottom:20px;
   left:20px;
-  right:20px;
 }
 
 h1{
-  font-size:30px;
-  letter-spacing:2px;
-  text-shadow:0 0 10px rgba(255,0,0,0.4);
+  font-size:32px;
+  letter-spacing:3px;
+  text-shadow:0 0 15px red;
 }
 
 .tag{
+  color:#bbb;
   font-size:13px;
-  color:var(--muted);
-  margin-top:5px;
 }
 
 .btn{
@@ -72,43 +92,39 @@ h1{
   justify-content:center;
   align-items:center;
   gap:10px;
-  background:linear-gradient(135deg,#a00000,#600000);
+  background:linear-gradient(135deg,#ff1a1a,#5a0000);
   padding:14px;
   border-radius:14px;
   margin-top:15px;
   text-decoration:none;
   color:white;
   font-weight:bold;
-  box-shadow:0 0 20px rgba(255,0,0,0.25);
+  box-shadow:0 0 30px rgba(255,0,0,0.5);
 }
 
 .section{
   margin-top:20px;
   padding:16px;
   border-radius:18px;
-  background:#0a0a0a;
-  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,0,0,0.2);
+  box-shadow:0 0 20px rgba(255,0,0,0.1);
 }
 
 .section h2{
-  color:var(--red2);
-  margin-bottom:12px;
+  color:#ff1a1a;
+  margin-bottom:10px;
 }
 
-.player{
+.player iframe{
   border-radius:12px;
-  overflow:hidden;
-}
-
-iframe{
-  width:100%;
-  border:none;
 }
 
 .text{
   font-size:14px;
-  line-height:1.7;
-  color:#ccc;
+  line-height:1.6;
+  color:#ddd;
 }
 
 .grid{
@@ -124,13 +140,13 @@ iframe{
   height:55px;
   border-radius:12px;
   background:#111;
-  font-size:20px;
+  font-size:22px;
   transition:0.2s;
 }
 
 .icon-btn:hover{
-  transform:scale(1.05);
-  color:var(--red2);
+  transform:scale(1.1);
+  color:#ff1a1a;
 }
 
 .footer{
@@ -150,60 +166,43 @@ iframe{
 <div class="hero">
 <img src="album.jpg">
 <div class="overlay"></div>
-
 <div class="hero-content">
 <h1>DISSFONIA</h1>
-<div class="tag">Rituales del Páramo · Metal instrumental</div>
-
-<a href="https://wa.me/573194271290" class="btn">
-<i class="fab fa-whatsapp"></i> Booking / Contacto
+<div class="tag">Rituales del Páramo</div>
+<a href="https://wa.me/573000000000" class="btn">
+<i class="fab fa-whatsapp"></i> Booking
 </a>
 </div>
 </div>
 
 <div class="section">
-<h2>Escuchar en Spotify</h2>
+<h2>Spotify</h2>
 <div class="player">
-<iframe src="https://open.spotify.com/embed/album/0PcdaxUm5bCMMEmZDjUMQ5" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe src="https://open.spotify.com/embed/album/0PcdaxUm5bCMMEmZDjUMQ5" height="152"></iframe>
 </div>
 </div>
 
 <div class="section">
-<h2>Ver en YouTube</h2>
+<h2>YouTube</h2>
 <div class="player">
-<iframe height="200" src="https://www.youtube.com/embed/HVdBPqOE6Cg" allowfullscreen></iframe>
+<iframe height="200" src="https://www.youtube.com/embed/HVdBPqOE6Cg"></iframe>
 </div>
 </div>
 
 <div class="section">
 <h2>Sobre el álbum</h2>
 <p class="text">
-"Rituales del Páramo" es un homenaje instrumental a las bandas de metal de Ipiales.
-<br><br>
-Un trabajo nacido desde el respeto por la historia de la escena.
-<br><br>
-Cada tema mantiene vivo el espíritu original desde una nueva fuerza.
-<br><br>
-No es solo música: es resistencia, memoria e identidad.
-</p>
-</div>
-
-<div class="section">
-<h2>Mensaje</h2>
-<p class="text">
-El metal del sur tiene historia. Ipiales tiene metal.
-<br>
-DISSFONIA lo honra.
+Un homenaje al metal de Ipiales. Sonido, historia y resistencia del sur.
 </p>
 </div>
 
 <div class="section">
 <h2>Integrantes</h2>
 <p class="text">
-Luis Eduardo Posso – Bajo<br>
-Nicolás Posso – Guitarra líder<br>
-Cristian Trejo – Guitarra / Voz<br>
-Giovanny Rojas – Batería
+Luis Eduardo Posso<br>
+Nicolás Posso<br>
+Cristian Trejo<br>
+Giovanny Rojas
 </p>
 </div>
 
@@ -216,10 +215,13 @@ Giovanny Rojas – Batería
 </div>
 
 <div class="footer">
-Integral360 · Landing Pro para bandas
+Integral360 · Metal Landing
 </div>
 
 </div>
+
+</body>
+</html>
 
 </body>
 </html>
