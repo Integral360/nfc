@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dissfonia | Rituales del Páramo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+:root{
+  --bg:#010101;
+  --red:#a00000;
+  --red2:#ff1a1a;
+  --text:#f5f5f5;
+  --muted:#aaa;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#000;
+  color:var(--text);
+}
+
+.container{
+  max-width:460px;
+  margin:auto;
+  padding:16px;
+}
+
+.hero{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 0 40px rgba(255,0,0,0.25);
+}
+
+.hero img{
+  width:100%;
+  display:block;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.95));
+}
+
+.hero-content{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  right:20px;
+}
+
+h1{
+  font-size:30px;
+  letter-spacing:2px;
+  text-shadow:0 0 10px rgba(255,0,0,0.4);
+}
+
+.tag{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.btn{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg,#a00000,#600000);
+  padding:14px;
+  border-radius:14px;
+  margin-top:15px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  box-shadow:0 0 20px rgba(255,0,0,0.25);
+}
+
+.section{
+  margin-top:20px;
+  padding:16px;
+  border-radius:18px;
+  background:#0a0a0a;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.section h2{
+  color:var(--red2);
+  margin-bottom:12px;
+}
+
+.player{
+  border-radius:12px;
+  overflow:hidden;
+}
+
+iframe{
+  width:100%;
+  border:none;
+}
+
+.text{
+  font-size:14px;
+  line-height:1.7;
+  color:#ccc;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.icon-btn{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:55px;
+  border-radius:12px;
+  background:#111;
+  font-size:20px;
+  transition:0.2s;
+}
+
+.icon-btn:hover{
+  transform:scale(1.05);
+  color:var(--red2);
+}
+
+.footer{
+  text-align:center;
+  margin-top:20px;
+  font-size:12px;
+  color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+<img src="album.jpg">
+<div class="overlay"></div>
+
+<div class="hero-content">
+<h1>DISSFONIA</h1>
+<div class="tag">Rituales del Páramo · Metal instrumental</div>
+
+<a href="https://wa.me/573194271290" class="btn">
+<i class="fab fa-whatsapp"></i> Booking / Contacto
+</a>
+</div>
+</div>
+
+<div class="section">
+<h2>Escuchar en Spotify</h2>
+<div class="player">
+<iframe src="https://open.spotify.com/embed/album/0PcdaxUm5bCMMEmZDjUMQ5" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</div>
+</div>
+
+<div class="section">
+<h2>Ver en YouTube</h2>
+<div class="player">
+<iframe height="200" src="https://www.youtube.com/embed/HVdBPqOE6Cg" allowfullscreen></iframe>
+</div>
+</div>
+
+<div class="section">
+<h2>Sobre el álbum</h2>
+<p class="text">
+"Rituales del Páramo" es un homenaje instrumental a las bandas de metal de Ipiales.
+<br><br>
+Un trabajo nacido desde el respeto por la historia de la escena.
+<br><br>
+Cada tema mantiene vivo el espíritu original desde una nueva fuerza.
+<br><br>
+No es solo música: es resistencia, memoria e identidad.
+</p>
+</div>
+
+<div class="section">
+<h2>Mensaje</h2>
+<p class="text">
+El metal del sur tiene historia. Ipiales tiene metal.
+<br>
+DISSFONIA lo honra.
+</p>
+</div>
+
+<div class="section">
+<h2>Integrantes</h2>
+<p class="text">
+Luis Eduardo Posso – Bajo<br>
+Nicolás Posso – Guitarra líder<br>
+Cristian Trejo – Guitarra / Voz<br>
+Giovanny Rojas – Batería
+</p>
+</div>
+
+<div class="section">
+<h2>Redes</h2>
+<div class="grid">
+<a href="#" class="icon-btn"><i class="fab fa-instagram"></i></a>
+<a href="#" class="icon-btn"><i class="fab fa-facebook"></i></a>
+</div>
+</div>
+
+<div class="footer">
+Integral360 · Landing Pro para bandas
+</div>
+
+</div>
+
+</body>
+</html>
