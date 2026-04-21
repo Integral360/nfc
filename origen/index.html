@@ -1,301 +1,874 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Origen Diseño</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Origen Diseño</title>
+  <meta name="description" content="Origen Diseño - Soluciones gráficas que impactan y venden." />
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+  <style>
+    :root{
+      --bg:#000000;
+      --card:rgba(10,10,12,.72);
+      --card-2:rgba(14,14,16,.82);
+      --line:rgba(255,255,255,.08);
+      --text:#ffffff;
+      --muted:#cfcfd4;
+      --accent:#f2df15;
+      --accent-soft:rgba(242,223,21,.14);
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius-xl:38px;
+      --radius-lg:26px;
+      --radius-md:20px;
+      --app-width:470px;
+    }
 
-body{
-background:#000;
-color:#fff;
-overflow-x:hidden;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-/* VIDEO */
-.video-bg{
-position:fixed;
-width:100%;
-height:100%;
-z-index:0;
-}
+    html{
+      scroll-behavior:smooth;
+    }
 
-.video-bg video{
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:.35;
-}
+    body{
+      font-family:'Montserrat',sans-serif;
+      color:var(--text);
+      background:#000;
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+    }
 
-/* CONTENEDOR APP */
-.app{
-position:relative;
-z-index:2;
-max-width:420px;
-margin:auto;
-padding:20px 15px 120px;
-}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-.app-box{
-background:rgba(0,0,0,0.45);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:35px;
-padding:20px;
-box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
+    img{
+      display:block;
+      max-width:100%;
+    }
 
-/* HERO */
-.hero{text-align:center;}
+    button{
+      font-family:inherit;
+    }
 
-.logo{
-width:200px;
-margin:auto;
-margin-bottom:15px;
-}
+    /* Loader */
+    .loader-screen{
+      position:fixed;
+      inset:0;
+      z-index:10000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at center, rgba(242,223,21,.10), transparent 24%),
+        linear-gradient(180deg, rgba(0,0,0,.86), rgba(0,0,0,.96));
+      transition:opacity .7s ease, visibility .7s ease;
+    }
 
-h1{
-font-size:32px;
-font-weight:800;
-}
+    .loader-screen.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
 
-h1 span{color:#f2df15;}
+    .loader-box{
+      width:min(82vw, 280px);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+      text-align:center;
+      animation:loaderPop .9s ease;
+    }
 
-.subtitle{
-color:#ccc;
-margin:10px 0 20px;
-}
+    .loader-logo-wrap{
+      width:100%;
+      padding:14px;
+      border-radius:30px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 14px 40px rgba(0,0,0,.28);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
 
-/* BOTONES */
-.social{
-display:flex;
-flex-direction:column;
-gap:12px;
-}
+    .loader-logo{
+      width:100%;
+      animation:loaderFloat 2.2s ease-in-out infinite;
+    }
 
-.card{
-display:flex;
-align-items:center;
-gap:12px;
-background:#111;
-border-radius:20px;
-padding:12px;
-border:1px solid #222;
-transition:.3s;
-}
+    .loader-title{
+      font-size:1.25rem;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
 
-.card:hover{
-border-color:#f2df15;
-transform:translateY(-3px);
-}
+    .loader-title span{
+      color:var(--accent);
+    }
 
-.icon{
-width:60px;
-height:60px;
-border-radius:15px;
-background:#f2df15;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#000;
-font-size:20px;
-}
+    .loader-subtitle{
+      font-size:.92rem;
+      color:var(--muted);
+      line-height:1.5;
+    }
 
-.card-text strong{
-color:#f2df15;
-font-size:18px;
-}
+    .loader-bar{
+      width:100%;
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+      position:relative;
+    }
 
-/* SECCIONES */
-section{padding:30px 0;text-align:center;}
+    .loader-bar::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-40%;
+      width:40%;
+      height:100%;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation:loaderRun 1.3s linear infinite;
+    }
 
-h2{margin-bottom:15px;}
+    @keyframes loaderRun{
+      0%{ left:-40%; }
+      100%{ left:100%; }
+    }
 
-/* SERVICIOS */
-.services{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
+    @keyframes loaderFloat{
+      0%,100%{ transform:translateY(0) scale(1); }
+      50%{ transform:translateY(-6px) scale(1.01); }
+    }
 
-.service{
-background:#111;
-padding:15px;
-border-radius:15px;
-border:1px solid #222;
-}
+    @keyframes loaderPop{
+      from{ opacity:0; transform:scale(.96) translateY(10px); }
+      to{ opacity:1; transform:scale(1) translateY(0); }
+    }
 
-/* GALERIA */
-.gallery{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
+    /* Fondo de video */
+    .video-bg{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(242,223,21,.10), transparent 18%),
+        radial-gradient(circle at 80% 70%, rgba(242,223,21,.10), transparent 18%),
+        linear-gradient(180deg, rgba(0,0,0,.32), rgba(0,0,0,.82));
+    }
 
-.gallery img{
-width:100%;
-border-radius:10px;
-cursor:pointer;
-}
+    .video-bg video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.34;
+      filter:brightness(.90) contrast(1.05) saturate(1.05);
+      transform:scale(1.03);
+    }
 
-/* LIGHTBOX */
-.lightbox{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.9);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:999;
-}
+    .video-fallback{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at top center, rgba(242,223,21,.08), transparent 22%),
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.62));
+      pointer-events:none;
+    }
 
-.lightbox img{
-max-width:90%;
-max-height:90%;
-border-radius:10px;
-}
+    .page{
+      position:relative;
+      z-index:2;
+      width:min(100%, 580px);
+      margin:0 auto;
+      padding:18px 14px 120px;
+      opacity:0;
+      transform:translateY(10px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
 
-/* CTA */
-.btn{
-display:block;
-margin-top:15px;
-padding:12px;
-background:#f2df15;
-color:#000;
-border-radius:30px;
-font-weight:700;
-}
+    .page.ready{
+      opacity:1;
+      transform:translateY(0);
+    }
 
-/* FLOAT */
-.float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#f2df15;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#000;
-font-size:22px;
-}
+    /* Shell tipo app */
+    .app-shell{
+      width:100%;
+      max-width:var(--app-width);
+      margin:0 auto;
+      background:linear-gradient(180deg, rgba(6,6,8,.44), rgba(4,4,5,.58));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:42px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      overflow:hidden;
+    }
 
-/* RESPONSIVE */
-@media(max-width:400px){
-.logo{width:160px;}
-}
-</style>
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:28px 18px 26px;
+      text-align:center;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+    }
+
+    .logo-wrap{
+      width:min(60vw, 250px);
+      margin:0 auto 18px;
+      padding:10px;
+      border-radius:28px;
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.05);
+      box-shadow:0 10px 26px rgba(0,0,0,.20);
+    }
+
+    .logo-wrap img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+    }
+
+    .brand{
+      font-size:clamp(2.25rem, 7vw, 4rem);
+      line-height:.96;
+      font-weight:900;
+      letter-spacing:-1.8px;
+      margin-bottom:12px;
+    }
+
+    .brand .accent{
+      color:var(--accent);
+      text-shadow:0 0 20px rgba(242,223,21,.12);
+    }
+
+    .subtitle{
+      font-size:clamp(1rem, 3.1vw, 1.18rem);
+      color:var(--muted);
+      line-height:1.5;
+      margin-bottom:22px;
+      padding:0 8px;
+    }
+
+    /* Tarjetas sociales */
+    .social-apps{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      width:100%;
+      margin:0 auto;
+    }
+
+    .social-app{
+      width:100%;
+      display:grid;
+      grid-template-columns:76px 1fr;
+      align-items:center;
+      gap:14px;
+      padding:14px;
+      border-radius:26px;
+      background:linear-gradient(180deg, rgba(12,12,14,.92), rgba(9,9,11,.92));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+      min-height:96px;
+    }
+
+    .social-app:hover,
+    .social-app:active{
+      transform:translateY(-2px);
+      border-color:rgba(242,223,21,.28);
+      box-shadow:0 16px 30px rgba(0,0,0,.24);
+    }
+
+    .social-icon{
+      width:76px;
+      height:76px;
+      border-radius:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--accent);
+      color:#000;
+      font-size:2rem;
+      box-shadow:0 10px 22px rgba(242,223,21,.14);
+      flex-shrink:0;
+    }
+
+    .social-text{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      min-width:0;
+      text-align:left;
+    }
+
+    .social-text strong{
+      display:block;
+      font-size:1.65rem;
+      line-height:1.02;
+      font-weight:900;
+      color:var(--accent);
+      margin-bottom:5px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .social-text span{
+      display:block;
+      font-size:1rem;
+      line-height:1.35;
+      color:#ececec;
+      white-space:normal;
+      word-break:break-word;
+    }
+
+    /* Secciones */
+    .section{
+      position:relative;
+      padding:28px 18px;
+    }
+
+    .section + .section::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:18px;
+      right:18px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
+    }
+
+    .section-head{
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      font-size:2rem;
+      line-height:1.05;
+      font-weight:900;
+      margin-bottom:8px;
+      letter-spacing:-1px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.98rem;
+      max-width:340px;
+      margin:0 auto;
+    }
+
+    /* Servicios */
+    .services{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .service{
+      background:linear-gradient(180deg, rgba(14,14,16,.94), rgba(10,10,12,.94));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px 14px;
+      min-height:94px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      line-height:1.35;
+      box-shadow:0 8px 20px rgba(0,0,0,.14);
+    }
+
+    /* Galería */
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .gallery-item{
+      width:100%;
+      aspect-ratio:1/1;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0a0a0a;
+      position:relative;
+      box-shadow:0 8px 18px rgba(0,0,0,.14);
+    }
+
+    .gallery-item button{
+      width:100%;
+      height:100%;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:0;
+      display:block;
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .35s ease;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item button:active img{
+      transform:scale(1.04);
+    }
+
+    /* CTA */
+    .cta{
+      padding:26px 18px 30px;
+      text-align:center;
+    }
+
+    .cta-box{
+      border-radius:30px;
+      padding:24px 18px;
+      background:
+        radial-gradient(circle at top center, rgba(242,223,21,.12), transparent 40%),
+        linear-gradient(180deg, rgba(14,14,16,.92), rgba(8,8,9,.92));
+      border:1px solid rgba(242,223,21,.14);
+      box-shadow:0 14px 30px rgba(0,0,0,.18);
+    }
+
+    .cta-box h3{
+      font-size:1.9rem;
+      line-height:1.05;
+      margin-bottom:10px;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    .cta-box p{
+      color:var(--muted);
+      line-height:1.6;
+      margin-bottom:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:56px;
+      padding:0 18px;
+      border-radius:999px;
+      background:var(--accent);
+      color:#000;
+      font-weight:900;
+      font-size:1rem;
+      box-shadow:0 10px 22px rgba(242,223,21,.15);
+      transition:transform .22s ease;
+    }
+
+    .btn:hover,
+    .btn:active{
+      transform:translateY(-1px);
+    }
+
+    .footer{
+      text-align:center;
+      padding:20px 18px 24px;
+      font-size:.86rem;
+      color:#c4c4c8;
+    }
+
+    .footer a{
+      color:var(--accent);
+      font-weight:800;
+    }
+
+    /* WhatsApp flotante */
+    .float-wa{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:20;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--accent);
+      color:#000;
+      font-size:1.9rem;
+      box-shadow:0 0 0 8px rgba(242,223,21,.06), 0 12px 26px rgba(242,223,21,.18);
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(0,0,0,.92);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
+    }
+
+    .lightbox.active{
+      display:flex;
+    }
+
+    .lightbox-content{
+      position:relative;
+      width:min(100%, 860px);
+      max-height:90vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .lightbox img{
+      max-width:100%;
+      max-height:90vh;
+      border-radius:18px;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:-10px;
+      right:-4px;
+      width:44px;
+      height:44px;
+      border:none;
+      border-radius:50%;
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      font-size:1.2rem;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    @media (min-width: 681px){
+      .page{
+        padding-top:34px;
+      }
+
+      .hero{
+        padding:34px 24px 30px;
+      }
+
+      .section,
+      .cta,
+      .footer{
+        padding-left:24px;
+        padding-right:24px;
+      }
+
+      .section + .section::before{
+        left:24px;
+        right:24px;
+      }
+
+      .services{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .gallery{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+
+    @media (max-width: 420px){
+      .page{
+        padding-left:10px;
+        padding-right:10px;
+      }
+
+      .app-shell{
+        border-radius:32px;
+      }
+
+      .hero{
+        padding:24px 14px 22px;
+      }
+
+      .logo-wrap{
+        width:min(68vw, 230px);
+      }
+
+      .brand{
+        font-size:2.1rem;
+      }
+
+      .subtitle{
+        font-size:.98rem;
+      }
+
+      .social-app{
+        grid-template-columns:68px 1fr;
+        gap:12px;
+        padding:12px;
+        border-radius:22px;
+        min-height:86px;
+      }
+
+      .social-icon{
+        width:68px;
+        height:68px;
+        border-radius:18px;
+        font-size:1.7rem;
+      }
+
+      .social-text strong{
+        font-size:1.3rem;
+      }
+
+      .social-text span{
+        font-size:.95rem;
+      }
+
+      .services{
+        grid-template-columns:1fr;
+      }
+
+      .gallery{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .section-head h2{
+        font-size:1.85rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- VIDEO -->
-<div class="video-bg">
-<video autoplay muted loop playsinline>
-<source src="video.mp4">
-</video>
-</div>
+  <div class="loader-screen" id="loader">
+    <div class="loader-box">
+      <div class="loader-logo-wrap">
+        <img src="logo.png" alt="Origen Diseño" class="loader-logo">
+      </div>
+      <div class="loader-title">Origen <span>Diseño</span></div>
+      <div class="loader-subtitle">Cargando experiencia visual…</div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
 
-<div class="app">
-<div class="app-box">
+  <div class="video-bg">
+    <video autoplay muted loop playsinline preload="auto" poster="logo.png">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+    <div class="video-fallback"></div>
+  </div>
 
-<div class="hero">
-<img src="logo.jpeg" class="logo">
-<h1>Origen <span>Diseño</span></h1>
-<p class="subtitle">Soluciones gráficas que impactan y venden</p>
+  <main class="page" id="page">
+    <div class="app-shell">
 
-<div class="social">
+      <section class="hero">
+        <div class="logo-wrap">
+          <img src="logo.jpeg" alt="Logo Origen Diseño">
+        </div>
 
-<a class="card" href="https://wa.me/573153910632">
-<div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
-<div class="card-text">
-<strong>WhatsApp</strong><br>
-315 391 0632
-</div>
-</a>
+        <h1 class="brand">Origen <span class="accent">Diseño</span></h1>
+        <p class="subtitle">Soluciones gráficas que impactan y venden</p>
 
-<a class="card" href="https://www.instagram.com/origendiseno_ipk/">
-<div class="icon"><i class="fa-brands fa-instagram"></i></div>
-<div class="card-text">
-<strong>Instagram</strong><br>
-@origendiseno_ipk
-</div>
-</a>
+        <div class="social-apps">
+          <a class="social-app" href="https://wa.me/573153910632" target="_blank">
+            <div class="social-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div class="social-text">
+              <strong>WhatsApp</strong>
+              <span>315 391 0632</span>
+            </div>
+          </a>
 
-<a class="card" href="https://www.facebook.com/profile.php?id=100008930525252">
-<div class="icon"><i class="fa-brands fa-facebook-f"></i></div>
-<div class="card-text">
-<strong>Facebook</strong><br>
-Origen Diseño
-</div>
-</a>
+          <a class="social-app" href="https://www.instagram.com/origendiseno_ipk/" target="_blank">
+            <div class="social-icon">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="social-text">
+              <strong>Instagram</strong>
+              <span>@origendiseno_ipk</span>
+            </div>
+          </a>
 
-</div>
-</div>
+          <a class="social-app" href="https://www.facebook.com/profile.php?id=100008930525252" target="_blank">
+            <div class="social-icon">
+              <i class="fa-brands fa-facebook-f"></i>
+            </div>
+            <div class="social-text">
+              <strong>Facebook</strong>
+              <span>Origen Diseño</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-<section>
-<h2>Servicios</h2>
-<div class="services">
-<div class="service">Avisos 3D</div>
-<div class="service">Decoración interior y exterior</div>
-<div class="service">Vallas publicitarias</div>
-<div class="service">Pendones</div>
-<div class="service">Papelería comercial</div>
-<div class="service">Impresión gran formato</div>
-<div class="service">Sublimación</div>
-<div class="service">Señalización</div>
-</div>
-</section>
+      <section class="section" id="servicios">
+        <div class="section-head">
+          <h2>Servicios</h2>
+          <p>Soluciones visuales para marcas, negocios y espacios comerciales.</p>
+        </div>
 
-<section>
-<h2>Trabajos realizados</h2>
-<div class="gallery">
-<img src="obra1.jpeg" onclick="openImg(this.src)">
-<img src="obra2.jpeg" onclick="openImg(this.src)">
-<img src="obra3.jpeg" onclick="openImg(this.src)">
-<img src="obra4.jpeg" onclick="openImg(this.src)">
-<img src="obra5.jpeg" onclick="openImg(this.src)">
-<img src="obra6.jpeg" onclick="openImg(this.src)">
-</div>
-</section>
+        <div class="services">
+          <div class="service">Avisos 3D</div>
+          <div class="service">Decoración interior y exterior</div>
+          <div class="service">Vallas publicitarias</div>
+          <div class="service">Pendones</div>
+          <div class="service">Papelería comercial</div>
+          <div class="service">Impresión gran formato</div>
+          <div class="service">Sublimación</div>
+          <div class="service">Señalización</div>
+        </div>
+      </section>
 
-<section>
-<h2>¿Tienes una idea?</h2>
-<a href="https://wa.me/573153910632" class="btn">Cotizar ahora</a>
-</section>
+      <section class="section" id="trabajos">
+        <div class="section-head">
+          <h2>Trabajos realizados</h2>
+          <p>Toca cualquier imagen para verla en grande.</p>
+        </div>
 
-</div>
-</div>
+        <div class="gallery">
+          <div class="gallery-item">
+            <button type="button" onclick="openImg('obra1.jpg')">
+              <img src="obra1.jpeg" alt="Trabajo 1">
+            </button>
+          </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeImg()">
-<img id="lightbox-img">
-</div>
+          <div class="gallery-item">
+            <button type="button" onclick="openImg('obra2.jpg')">
+              <img src="obra2.jpeg" alt="Trabajo 2">
+            </button>
+          </div>
 
-<!-- FLOAT -->
-<a class="float" href="https://wa.me/573153910632">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
+          <div class="gallery-item">
+            <button type="button" onclick="openImg('obra3.jpg')">
+              <img src="obra3.jpeg" alt="Trabajo 3">
+            </button>
+          </div>
 
-<script>
-function openImg(src){
-document.getElementById('lightbox').style.display='flex';
-document.getElementById('lightbox-img').src=src;
-}
-function closeImg(){
-document.getElementById('lightbox').style.display='none';
-}
-</script>
+          <div class="gallery-item">
+            <button type="button" onclick="openImg('obra4.jpg')">
+              <img src="obra4.jpeg" alt="Trabajo 4">
+            </button>
+          </div>
+
+          <div class="gallery-item">
+            <button type="button" onclick="openImg('obra5.jpg')">
+              <img src="obra5.jpeg" alt="Trabajo 5">
+            </button>
+          </div>
+
+          <div class="gallery-item">
+            <button type="button" onclick="openImg('obra6.jpg')">
+              <img src="obra6.jpeg" alt="Trabajo 6">
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="cta-box">
+          <h3>¿Tienes una idea?</h3>
+          <p>Convirtámosla en una pieza gráfica con presencia e impacto.</p>
+          <a class="btn" href="https://wa.me/573153910632" target="_blank">Cotizar ahora</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a>
+      </footer>
+
+    </div>
+  </main>
+
+  <a class="float-wa" href="https://wa.me/573153910632" target="_blank" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <div class="lightbox" id="lightbox" onclick="closeImg(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" type="button" aria-label="Cerrar" onclick="closeImg(event)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="Imagen ampliada">
+    </div>
+  </div>
+
+  <script>
+    function openImg(src){
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImg(event){
+      if (
+        event.target.id === 'lightbox' ||
+        event.target.classList.contains('lightbox-close') ||
+        event.target.closest('.lightbox-close')
+      ) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    window.addEventListener('load', function(){
+      const loader = document.getElementById('loader');
+      const page = document.getElementById('page');
+
+      setTimeout(() => {
+        loader.classList.add('hide');
+        page.classList.add('ready');
+      }, 1400);
+    });
+  </script>
 
 </body>
 </html>
