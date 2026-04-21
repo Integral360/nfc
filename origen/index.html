@@ -1,849 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Origen Diseño</title>
-  <meta name="description" content="Origen Diseño - Piezas gráficas, avisos 3D, decoración, vallas publicitarias, pendones, papelería comercial, impresión gran formato, sublimación y señalización." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#050505;
-      --bg-soft:#0d0d0d;
-      --card:#111111;
-      --card-2:#181818;
-      --text:#f5f5f5;
-      --muted:#bdbdbd;
-      --accent:#f2df15;
-      --accent-2:#fff16b;
-      --line:rgba(255,255,255,.08);
-      --shadow:0 20px 50px rgba(0,0,0,.45);
-      --radius:24px;
-      --max:1200px;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:'Montserrat',sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(242,223,21,.12), transparent 30%),
-        radial-gradient(circle at top right, rgba(242,223,21,.08), transparent 22%),
-        linear-gradient(180deg, #040404 0%, #0a0a0a 45%, #050505 100%);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    .container{
-      width:min(92%, var(--max));
-      margin:0 auto;
-    }
-
-    .section{
-      padding:90px 0;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 16px;
-      border:1px solid rgba(242,223,21,.25);
-      background:rgba(242,223,21,.08);
-      color:var(--accent);
-      border-radius:999px;
-      font-size:.88rem;
-      font-weight:600;
-      letter-spacing:.4px;
-      margin-bottom:18px;
-      backdrop-filter: blur(10px);
-    }
-
-    .section-title{
-      font-size:clamp(2rem,4vw,3.4rem);
-      line-height:1.05;
-      font-weight:800;
-      margin-bottom:14px;
-      letter-spacing:-1px;
-    }
-
-    .section-text{
-      color:var(--muted);
-      font-size:1.02rem;
-      line-height:1.8;
-      max-width:760px;
-    }
-
-    /* HERO */
-    .hero{
-      position:relative;
-      min-height:100svh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-
-    .hero-video{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:.28;
-      filter:contrast(1.05) saturate(1.05);
-    }
-
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.78)),
-        radial-gradient(circle at center, rgba(242,223,21,.08), transparent 35%);
-    }
-
-    .hero-grid{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:36px;
-      align-items:center;
-      width:min(92%, var(--max));
-      margin:0 auto;
-      padding:40px 0;
-    }
-
-    .hero-copy{
-      animation:fadeUp 1s ease both;
-    }
-
-    .hero-logo-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:32px;
-      padding:22px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(14px);
-      max-width:420px;
-      justify-self:end;
-      animation:floatCard 5s ease-in-out infinite;
-    }
-
-    .hero-logo-wrap{
-      background:#000;
-      border-radius:24px;
-      padding:18px;
-      border:1px solid rgba(255,255,255,.06);
-    }
-
-    .hero h1{
-      font-size:clamp(2.9rem,6vw,5.7rem);
-      line-height:.95;
-      font-weight:800;
-      letter-spacing:-2px;
-      margin-bottom:18px;
-    }
-
-    .hero h1 span{
-      color:var(--accent);
-      text-shadow:0 0 25px rgba(242,223,21,.2);
-    }
-
-    .hero p{
-      font-size:1.08rem;
-      line-height:1.9;
-      color:#dddddd;
-      max-width:700px;
-      margin-bottom:28px;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-bottom:26px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-height:54px;
-      padding:0 22px;
-      border-radius:999px;
-      font-weight:700;
-      transition:.28s ease;
-      border:1px solid transparent;
-    }
-
-    .btn-primary{
-      background:var(--accent);
-      color:#111;
-      box-shadow:0 10px 25px rgba(242,223,21,.24);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px) scale(1.01);
-      background:var(--accent-2);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.04);
-      color:#fff;
-      border-color:rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-2px);
-    }
-
-    .hero-mini{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .pill{
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-      color:#ececec;
-      font-size:.9rem;
-    }
-
-    /* INTRO */
-    .intro-card{
-      margin-top:-60px;
-      position:relative;
-      z-index:3;
-      background:linear-gradient(180deg, rgba(18,18,18,.88), rgba(10,10,10,.95));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:32px;
-      padding:28px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-
-    .intro-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:26px;
-      align-items:center;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .stat{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:22px 18px;
-      text-align:center;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:1.6rem;
-      color:var(--accent);
-      margin-bottom:6px;
-    }
-
-    .stat span{
-      color:var(--muted);
-      font-size:.92rem;
-      line-height:1.5;
-    }
-
-    /* SERVICES */
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:34px;
-    }
-
-    .service{
-      position:relative;
-      background:linear-gradient(180deg, #121212, #0b0b0b);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:26px 22px;
-      overflow:hidden;
-      transition:.3s ease;
-    }
-
-    .service::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:3px;
-      background:linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:.9;
-    }
-
-    .service:hover{
-      transform:translateY(-6px);
-      border-color:rgba(242,223,21,.24);
-      box-shadow:0 18px 34px rgba(0,0,0,.28);
-    }
-
-    .service-icon{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:18px;
-      font-size:1.4rem;
-      background:rgba(242,223,21,.1);
-      color:var(--accent);
-      border:1px solid rgba(242,223,21,.18);
-    }
-
-    .service h3{
-      font-size:1.1rem;
-      margin-bottom:10px;
-    }
-
-    .service p{
-      color:var(--muted);
-      line-height:1.7;
-      font-size:.96rem;
-    }
-
-    /* GALLERY */
-    .gallery-wrap{
-      margin-top:34px;
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
-    }
-
-    .gallery-item{
-      position:relative;
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background:#0b0b0b;
-      min-height:300px;
-      box-shadow:var(--shadow);
-    }
-
-    .gallery-item img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .6s ease, filter .4s ease;
-    }
-
-    .gallery-item:hover img{
-      transform:scale(1.06);
-      filter:brightness(.82);
-    }
-
-    .gallery-caption{
-      position:absolute;
-      inset:auto 0 0 0;
-      padding:20px;
-      background:linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,0));
-      color:#fff;
-      font-weight:600;
-      letter-spacing:.2px;
-    }
-
-    /* CTA */
-    .cta-box{
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at left center, rgba(242,223,21,.16), transparent 30%),
-        linear-gradient(135deg, #111111, #080808);
-      border:1px solid rgba(242,223,21,.14);
-      border-radius:32px;
-      padding:40px 28px;
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:24px;
-      align-items:center;
-      box-shadow:var(--shadow);
-    }
-
-    .cta-box h3{
-      font-size:clamp(1.8rem,3vw,2.8rem);
-      line-height:1.1;
-      margin-bottom:12px;
-    }
-
-    .cta-box p{
-      color:var(--muted);
-      line-height:1.8;
-      max-width:700px;
-    }
-
-    .cta-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    /* SOCIAL */
-    .socials{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:26px;
-    }
-
-    .social{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      padding:16px 18px;
-      border-radius:18px;
-      min-width:220px;
-      transition:.25s ease;
-    }
-
-    .social:hover{
-      transform:translateY(-4px);
-      border-color:rgba(242,223,21,.18);
-    }
-
-    .social small{
-      display:block;
-      color:var(--accent);
-      margin-bottom:6px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.6px;
-      font-size:.76rem;
-    }
-
-    .social span{
-      color:#f2f2f2;
-      line-height:1.5;
-      font-weight:500;
-    }
-
-    /* FOOTER */
-    footer{
-      padding:28px 0 38px;
-      border-top:1px solid rgba(255,255,255,.06);
-      margin-top:20px;
-    }
-
-    .footer-wrap{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-      color:#bcbcbc;
-      font-size:.94rem;
-    }
-
-    .footer-wrap a{
-      color:var(--accent);
-      font-weight:700;
-    }
-
-    /* FLOAT WHATSAPP */
-    .float-wa{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:999;
-      width:60px;
-      height:60px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--accent);
-      color:#111;
-      font-size:1.5rem;
-      font-weight:800;
-      box-shadow:0 14px 30px rgba(242,223,21,.28);
-      transition:.25s ease;
-    }
-
-    .float-wa:hover{
-      transform:scale(1.08);
-    }
-
-    /* ANIM */
-    .reveal{
-      opacity:0;
-      transform:translateY(30px);
-      transition:all .8s ease;
-    }
-
-    .reveal.visible{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    @keyframes fadeUp{
-      from{opacity:0; transform:translateY(28px);}
-      to{opacity:1; transform:translateY(0);}
-    }
-
-    @keyframes floatCard{
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-10px);}
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px){
-      .hero-grid,
-      .intro-grid,
-      .cta-box{
-        grid-template-columns:1fr;
-      }
-
-      .hero-logo-card{
-        justify-self:start;
-        max-width:320px;
-      }
-
-      .services-grid,
-      .gallery-wrap{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .stats{
-        grid-template-columns:1fr 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 680px){
-      .section{
-        padding:72px 0;
-      }
-
-      .hero{
-        min-height:100svh;
-      }
-
-      .hero h1{
-        font-size:3rem;
-        line-height:1;
-      }
-
-      .hero p{
-        font-size:1rem;
-      }
-
-      .intro-card{
-        margin-top:-36px;
-        padding:22px;
-      }
-
-      .services-grid,
-      .gallery-wrap,
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .gallery-item{
-        min-height:240px;
-      }
-
-      .btn{
-        width:100%;
-      }
-
-      .hero-actions,
-      .cta-actions{
-        flex-direction:column;
-      }
-
-      .social{
-        width:100%;
-        min-width:unset;
-      }
-
-      .footer-wrap{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origen Diseño</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:.3;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.9));
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:20px;
+animation:fadeUp 1s ease;
+}
+
+.logo{
+width:140px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:40px;
+font-weight:800;
+}
+
+.hero span{
+color:#f2df15;
+}
+
+.hero p{
+margin-top:15px;
+color:#ccc;
+}
+
+/* BOTONES APP */
+.social-apps{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+margin-top:25px;
+}
+
+.social-app{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 16px;
+border-radius:15px;
+background:#111;
+border:1px solid #222;
+min-width:180px;
+transition:.3s;
+}
+
+.social-app:hover{
+transform:translateY(-3px);
+border-color:#f2df15;
+}
+
+.social-app i{
+width:38px;
+height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+background:#f2df15;
+color:#000;
+}
+
+.social-app span{
+display:flex;
+flex-direction:column;
+font-size:13px;
+}
+
+.social-app strong{font-size:14px;}
+
+/* SECCIONES */
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+h2{
+margin-bottom:20px;
+font-size:26px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.service{
+background:#111;
+padding:20px;
+border-radius:10px;
+border:1px solid #222;
+}
+
+.service:hover{
+border-color:#f2df15;
+transform:translateY(-5px);
+}
+
+/* GALERIA */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* CTA */
+.cta{
+background:#111;
+padding:40px 20px;
+border-top:1px solid #222;
+border-bottom:1px solid #222;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+background:#f2df15;
+color:#000;
+border-radius:30px;
+font-weight:600;
+}
+
+/* FOOTER */
+footer{
+padding:20px;
+font-size:12px;
+color:#aaa;
+}
+
+/* WHATSAPP FLOAT */
+.float-wa{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#f2df15;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+color:#000;
+box-shadow:0 0 15px rgba(242,223,21,.5);
+}
+
+/* ANIM */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
-  <header class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
+<!-- HERO -->
+<div class="hero">
+<video autoplay muted loop>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="tag">Diseño gráfico • Impresión • Señalización</div>
-        <h1>Haz visible tu <span>marca</span></h1>
-        <p>
-          En <strong>Origen Diseño</strong> transformamos ideas en piezas gráficas impactantes.
-          Creamos soluciones visuales para negocios, marcas y espacios que quieren destacar con identidad,
-          presencia y calidad.
-        </p>
+<div class="hero-content">
+<img src="logo.png" class="logo">
+<h1>Origen <span>Diseño</span></h1>
+<p>Soluciones gráficas que impactan y venden</p>
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/573153910632" target="_blank">WhatsApp</a>
-          <a class="btn btn-secondary" href="#portafolio">Ver trabajos</a>
-        </div>
+<div class="social-apps">
 
-        <div class="hero-mini">
-          <div class="pill">Avisos 3D</div>
-          <div class="pill">Gran formato</div>
-          <div class="pill">Decoración</div>
-          <div class="pill">Papelería comercial</div>
-        </div>
-      </div>
+<a class="social-app" href="https://wa.me/573153910632" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+<span>
+<strong>WhatsApp</strong>
+<small>315 391 0632</small>
+</span>
+</a>
 
-      <div class="hero-logo-card">
-        <div class="hero-logo-wrap">
-          <img src="logo.png" alt="Logo Origen Diseño">
-        </div>
-      </div>
-    </div>
-  </header>
+<a class="social-app" href="https://www.instagram.com/origendiseno_ipk/" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+<span>
+<strong>Instagram</strong>
+<small>@origendiseno_ipk</small>
+</span>
+</a>
 
-  <main>
-    <section class="container">
-      <div class="intro-card reveal">
-        <div class="intro-grid">
-          <div>
-            <div class="tag">Origen Diseño</div>
-            <h2 class="section-title">Diseño que comunica, impacta y vende</h2>
-            <p class="section-text">
-              Somos una empresa dedicada al diseño y producción de piezas gráficas para negocios,
-              marcas y espacios comerciales. Desarrollamos soluciones visuales funcionales y atractivas
-              para interiores, exteriores y material publicitario.
-            </p>
+<a class="social-app" href="https://www.facebook.com/profile.php?id=100008930525252" target="_blank">
+<i class="fa-brands fa-facebook-f"></i>
+<span>
+<strong>Facebook</strong>
+<small>Origen Diseño</small>
+</span>
+</a>
 
-            <div class="socials">
-              <a class="social" href="https://www.instagram.com/origendiseno_ipk/" target="_blank">
-                <small>Instagram</small>
-                <span>@origendiseno_ipk</span>
-              </a>
+</div>
 
-              <a class="social" href="https://www.facebook.com/" target="_blank">
-                <small>Facebook</small>
-                <span>Origen diseño</span>
-              </a>
+</div>
+</div>
 
-              <a class="social" href="https://wa.me/573153910632" target="_blank">
-                <small>Contacto</small>
-                <span>315 391 0632</span>
-              </a>
-            </div>
-          </div>
+<!-- SERVICIOS -->
+<section>
+<h2>Servicios</h2>
+<div class="services">
+<div class="service">Avisos 3D</div>
+<div class="service">Decoración interior y exterior</div>
+<div class="service">Vallas publicitarias</div>
+<div class="service">Pendones</div>
+<div class="service">Papelería comercial</div>
+<div class="service">Impresión gran formato</div>
+<div class="service">Sublimación</div>
+<div class="service">Señalización</div>
+</div>
+</section>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>3D</strong>
-              <span>Avisos y piezas con presencia visual</span>
-            </div>
-            <div class="stat">
-              <strong>Full</strong>
-              <span>Producción para interior y exterior</span>
-            </div>
-            <div class="stat">
-              <strong>Brand</strong>
-              <span>Apoyo visual para negocios y marcas</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- GALERIA -->
+<section>
+<h2>Trabajos realizados</h2>
+<div class="gallery">
+<img src="obra1.jpg">
+<img src="obra2.jpg">
+<img src="obra3.jpg">
+<img src="obra4.jpg">
+<img src="obra5.jpg">
+<img src="obra6.jpg">
+</div>
+</section>
 
-    <section class="section container" id="servicios">
-      <div class="reveal">
-        <div class="tag">Nuestros servicios</div>
-        <h2 class="section-title">Soluciones visuales para tu negocio</h2>
-        <p class="section-text">
-          Estas son algunas de las líneas de trabajo de Origen Diseño.
-        </p>
-      </div>
+<!-- CTA -->
+<section class="cta">
+<h2>¿Tienes una idea?</h2>
+<p>Convirtámosla en una pieza gráfica que impacte</p>
+<a href="https://wa.me/573153910632" class="btn">Cotizar ahora</a>
+</section>
 
-      <div class="services-grid">
-        <article class="service reveal">
-          <div class="service-icon">3D</div>
-          <h3>Avisos 3D</h3>
-          <p>Piezas llamativas con volumen, presencia y acabados pensados para resaltar tu marca.</p>
-        </article>
+<!-- FOOTER -->
+<footer>
+Powered by <a href="https://integral360.com.co" target="_blank" style="color:#f2df15;">Integral360</a>
+</footer>
 
-        <article class="service reveal">
-          <div class="service-icon">DE</div>
-          <h3>Decoración interior y exterior</h3>
-          <p>Aplicaciones visuales para espacios comerciales, oficinas, locales y ambientes de marca.</p>
-        </article>
+<!-- WHATSAPP -->
+<a class="float-wa" href="https://wa.me/573153910632" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 
-        <article class="service reveal">
-          <div class="service-icon">VP</div>
-          <h3>Vallas publicitarias</h3>
-          <p>Formatos de alto impacto para campañas, negocios, promociones y posicionamiento visual.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">PD</div>
-          <h3>Pendones</h3>
-          <p>Material promocional práctico y efectivo para eventos, campañas y puntos de atención.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">PC</div>
-          <h3>Papelería comercial</h3>
-          <p>Diseño e impresión de piezas corporativas que fortalecen la identidad visual de tu empresa.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">GF</div>
-          <h3>Impresión gran formato</h3>
-          <p>Producción de piezas de gran tamaño con enfoque publicitario, decorativo y comercial.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">SB</div>
-          <h3>Sublimación</h3>
-          <p>Personalización de productos y superficies con identidad gráfica adaptada a tu marca.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">SN</div>
-          <h3>Señalización</h3>
-          <p>Soluciones visuales funcionales para orientar, informar y organizar espacios de forma profesional.</p>
-        </article>
-
-        <article class="service reveal">
-          <div class="service-icon">DG</div>
-          <h3>Diseño gráfico comercial</h3>
-          <p>Desarrollo de piezas visuales estratégicas para comunicar mejor y generar recordación.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section container" id="portafolio">
-      <div class="reveal">
-        <div class="tag">Portafolio</div>
-        <h2 class="section-title">Obras y trabajos realizados</h2>
-        <p class="section-text">
-          Muestra aquí algunos de los proyectos realizados por Origen Diseño.
-          Puedes reemplazar estas imágenes por tus mejores trabajos.
-        </p>
-      </div>
-
-      <div class="gallery-wrap">
-        <div class="gallery-item reveal">
-          <img src="obra1.jpg" alt="Proyecto realizado 1">
-          <div class="gallery-caption">Proyecto realizado</div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="obra2.jpg" alt="Proyecto realizado 2">
-          <div class="gallery-caption">Diseño aplicado</div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="obra3.jpg" alt="Proyecto realizado 3">
-          <div class="gallery-caption">Producción visual</div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="obra4.jpg" alt="Proyecto realizado 4">
-          <div class="gallery-caption">Trabajo comercial</div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="obra5.jpg" alt="Proyecto realizado 5">
-          <div class="gallery-caption">Aplicación publicitaria</div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <img src="obra6.jpg" alt="Proyecto realizado 6">
-          <div class="gallery-caption">Resultado final</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container">
-      <div class="cta-box reveal">
-        <div>
-          <div class="tag">Trabajemos juntos</div>
-          <h3>Lleva tu idea a una pieza gráfica con impacto real</h3>
-          <p>
-            Si necesitas diseño, impresión, señalización o producción visual para tu negocio,
-            Origen Diseño está listo para ayudarte.
-          </p>
-        </div>
-
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="https://wa.me/573153910632" target="_blank">Cotizar por WhatsApp</a>
-          <a class="btn btn-secondary" href="https://www.instagram.com/origendiseno_ipk/" target="_blank">Ver Instagram</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-wrap">
-      <div>© <span id="year"></span> Origen Diseño. Todos los derechos reservados.</div>
-      <div>Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a></div>
-    </div>
-  </footer>
-
-  <a class="float-wa" href="https://wa.me/573153910632" target="_blank" aria-label="WhatsApp">
-    W
-  </a>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
-
-    revealElements.forEach((el) => observer.observe(el));
-  </script>
 </body>
 </html>
