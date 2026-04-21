@@ -1,108 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Integral360 | Landings Digitales</title>
-  <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color:#fff;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:30px;
-    }
-    .box{
-      max-width:800px;
-      width:100%;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:20px;
-      padding:50px 30px;
-      box-shadow:0 20px 60px rgba(0,0,0,0.35);
-    }
-    .tag{
-      display:inline-block;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(212,175,55,0.12);
-      color:#d4af37;
-      font-size:14px;
-      margin-bottom:18px;
-      border:1px solid rgba(212,175,55,0.28);
-    }
-    h1{
-      margin:0 0 15px;
-      font-size:clamp(2rem, 4vw, 3.4rem);
-      line-height:1.1;
-      color:#d4af37;
-    }
-    p{
-      margin:0 auto 28px;
-      max-width:620px;
-      font-size:1.08rem;
-      line-height:1.7;
-      color:#e8e8e8;
-    }
-    .buttons{
-      display:flex;
-      gap:14px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-block;
-      padding:14px 22px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:bold;
-      transition:.25s ease;
-    }
-    .btn-primary{
-      background:#d4af37;
-      color:#111;
-    }
-    .btn-primary:hover{
-      transform:translateY(-2px);
-    }
-    .btn-secondary{
-      background:transparent;
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.18);
-    }
-    .btn-secondary:hover{
-      background:rgba(255,255,255,0.05);
-    }
-    .foot{
-      margin-top:28px;
-      font-size:14px;
-      color:#bdbdbd;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origen Diseño</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:.3;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.9));
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:20px;
+animation:fadeUp 1s ease;
+}
+
+.logo{
+width:140px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:40px;
+font-weight:800;
+}
+
+.hero span{
+color:#f2df15;
+}
+
+.hero p{
+margin-top:15px;
+color:#ccc;
+}
+
+/* BOTONES APP */
+.social-apps{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+margin-top:25px;
+}
+
+.social-app{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 16px;
+border-radius:15px;
+background:#111;
+border:1px solid #222;
+min-width:180px;
+transition:.3s;
+}
+
+.social-app:hover{
+transform:translateY(-3px);
+border-color:#f2df15;
+}
+
+.social-app i{
+width:38px;
+height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+background:#f2df15;
+color:#000;
+}
+
+.social-app span{
+display:flex;
+flex-direction:column;
+font-size:13px;
+}
+
+.social-app strong{font-size:14px;}
+
+/* SECCIONES */
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+h2{
+margin-bottom:20px;
+font-size:26px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.service{
+background:#111;
+padding:20px;
+border-radius:10px;
+border:1px solid #222;
+}
+
+.service:hover{
+border-color:#f2df15;
+transform:translateY(-5px);
+}
+
+/* GALERIA */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* CTA */
+.cta{
+background:#111;
+padding:40px 20px;
+border-top:1px solid #222;
+border-bottom:1px solid #222;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+background:#f2df15;
+color:#000;
+border-radius:30px;
+font-weight:600;
+}
+
+/* FOOTER */
+footer{
+padding:20px;
+font-size:12px;
+color:#aaa;
+}
+
+/* WHATSAPP FLOAT */
+.float-wa{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#f2df15;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+color:#000;
+box-shadow:0 0 15px rgba(242,223,21,.5);
+}
+
+/* ANIM */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
-  <div class="box">
-    <div class="tag">Integral360</div>
-    <h1>Landings digitales con identidad profesional</h1>
-    <p>
-      Creamos páginas de presentación para empresas, marcas, profesionales y soluciones
-      comerciales con acceso rápido por enlace o tecnología NFC.
-    </p>
 
-    <div class="buttons">
-      <a class="btn btn-primary" href="https://wa.me/573163119312" target="_blank">Solicitar información</a>
-      <a class="btn btn-secondary" href="https://integral360.com.co" target="_blank">Visitar sitio web</a>
-    </div>
+<!-- HERO -->
+<div class="hero">
+<video autoplay muted loop>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 
-    <div class="foot">
-      Soluciones digitales desarrolladas por Integral360
-    </div>
-  </div>
+<div class="hero-content">
+<img src="logo.png" class="logo">
+<h1>Origen <span>Diseño</span></h1>
+<p>Soluciones gráficas que impactan y venden</p>
+
+<div class="social-apps">
+
+<a class="social-app" href="https://wa.me/573153910632" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+<span>
+<strong>WhatsApp</strong>
+<small>315 391 0632</small>
+</span>
+</a>
+
+<a class="social-app" href="https://www.instagram.com/origendiseno_ipk/" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+<span>
+<strong>Instagram</strong>
+<small>@origendiseno_ipk</small>
+</span>
+</a>
+
+<a class="social-app" href="https://www.facebook.com/profile.php?id=100008930525252" target="_blank">
+<i class="fa-brands fa-facebook-f"></i>
+<span>
+<strong>Facebook</strong>
+<small>Origen Diseño</small>
+</span>
+</a>
+
+</div>
+
+</div>
+</div>
+
+<!-- SERVICIOS -->
+<section>
+<h2>Servicios</h2>
+<div class="services">
+<div class="service">Avisos 3D</div>
+<div class="service">Decoración interior y exterior</div>
+<div class="service">Vallas publicitarias</div>
+<div class="service">Pendones</div>
+<div class="service">Papelería comercial</div>
+<div class="service">Impresión gran formato</div>
+<div class="service">Sublimación</div>
+<div class="service">Señalización</div>
+</div>
+</section>
+
+<!-- GALERIA -->
+<section>
+<h2>Trabajos realizados</h2>
+<div class="gallery">
+<img src="obra1.jpg">
+<img src="obra2.jpg">
+<img src="obra3.jpg">
+<img src="obra4.jpg">
+<img src="obra5.jpg">
+<img src="obra6.jpg">
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<h2>¿Tienes una idea?</h2>
+<p>Convirtámosla en una pieza gráfica que impacte</p>
+<a href="https://wa.me/573153910632" class="btn">Cotizar ahora</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+Powered by <a href="https://integral360.com.co" target="_blank" style="color:#f2df15;">Integral360</a>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="float-wa" href="https://wa.me/573153910632" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
 </body>
 </html>
