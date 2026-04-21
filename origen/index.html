@@ -1,583 +1,301 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Origen Diseño</title>
-  <meta name="description" content="Origen Diseño - Soluciones gráficas que impactan y venden." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origen Diseño</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <style>
-    :root{
-      --bg:#000000;
-      --card:#0d0d0f;
-      --card-2:#121216;
-      --line:rgba(255,255,255,.08);
-      --text:#ffffff;
-      --muted:#c7c7cc;
-      --accent:#f2df15;
-      --accent-soft:rgba(242,223,21,.16);
-      --shadow:0 20px 60px rgba(0,0,0,.45);
-      --radius-xl:34px;
-      --radius-lg:24px;
-      --radius-md:18px;
-      --app-width:460px;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
 
-    html{
-      scroll-behavior:smooth;
-    }
+/* VIDEO */
+.video-bg{
+position:fixed;
+width:100%;
+height:100%;
+z-index:0;
+}
 
-    body{
-      font-family:'Montserrat',sans-serif;
-      color:var(--text);
-      background:#000;
-      overflow-x:hidden;
-      min-height:100vh;
-      position:relative;
-    }
+.video-bg video{
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:.35;
+}
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
+/* CONTENEDOR APP */
+.app{
+position:relative;
+z-index:2;
+max-width:420px;
+margin:auto;
+padding:20px 15px 120px;
+}
 
-    img{
-      display:block;
-      max-width:100%;
-    }
+.app-box{
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:35px;
+padding:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
 
-    /* Fondo video */
-    .video-bg{
-      position:fixed;
-      inset:0;
-      z-index:0;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at top center, rgba(242,223,21,.10), transparent 28%),
-        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.88));
-    }
+/* HERO */
+.hero{text-align:center;}
 
-    .video-bg video{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:.28;
-      filter:brightness(.85) contrast(1.05) saturate(1.05);
-    }
+.logo{
+width:200px;
+margin:auto;
+margin-bottom:15px;
+}
 
-    .video-fallback{
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at top center, rgba(242,223,21,.09), transparent 22%),
-        linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.78));
-      pointer-events:none;
-    }
+h1{
+font-size:32px;
+font-weight:800;
+}
 
-    .page{
-      position:relative;
-      z-index:2;
-      width:min(100%, 560px);
-      margin:0 auto;
-      padding:18px 14px 120px;
-    }
+h1 span{color:#f2df15;}
 
-    /* Contenedor tipo app */
-    .app-shell{
-      width:100%;
-      max-width:var(--app-width);
-      margin:0 auto;
-      background:linear-gradient(180deg, rgba(8,8,10,.72), rgba(3,3,4,.86));
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:40px;
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-      overflow:hidden;
-    }
+.subtitle{
+color:#ccc;
+margin:10px 0 20px;
+}
 
-    .hero{
-      padding:28px 18px 26px;
-      text-align:center;
-      position:relative;
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-    }
+/* BOTONES */
+.social{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      left:18px;
-      right:18px;
-      bottom:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-    }
+.card{
+display:flex;
+align-items:center;
+gap:12px;
+background:#111;
+border-radius:20px;
+padding:12px;
+border:1px solid #222;
+transition:.3s;
+}
 
-    .logo-wrap{
-      width:min(56vw, 250px);
-      margin:0 auto 20px;
-      padding:10px;
-      border-radius:26px;
-      background:rgba(0,0,0,.34);
-      border:1px solid rgba(255,255,255,.05);
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-    }
+.card:hover{
+border-color:#f2df15;
+transform:translateY(-3px);
+}
 
-    .logo-wrap img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
-    }
+.icon{
+width:60px;
+height:60px;
+border-radius:15px;
+background:#f2df15;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#000;
+font-size:20px;
+}
 
-    .brand{
-      font-size:clamp(2.2rem, 7vw, 4rem);
-      line-height:.96;
-      font-weight:800;
-      letter-spacing:-1.8px;
-      margin-bottom:12px;
-    }
+.card-text strong{
+color:#f2df15;
+font-size:18px;
+}
 
-    .brand .accent{
-      color:var(--accent);
-      text-shadow:0 0 24px rgba(242,223,21,.12);
-    }
+/* SECCIONES */
+section{padding:30px 0;text-align:center;}
 
-    .subtitle{
-      font-size:clamp(1rem, 3.2vw, 1.2rem);
-      color:var(--muted);
-      line-height:1.5;
-      margin-bottom:22px;
-      padding:0 6px;
-    }
+h2{margin-bottom:15px;}
 
-    .social-apps{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      width:100%;
-      margin:0 auto;
-    }
+/* SERVICIOS */
+.services{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
 
-    .social-app{
-      width:100%;
-      display:grid;
-      grid-template-columns:74px 1fr;
-      align-items:center;
-      gap:14px;
-      padding:14px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(14,14,16,.92), rgba(10,10,12,.92));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 10px 24px rgba(0,0,0,.20);
-      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-      min-height:92px;
-    }
+.service{
+background:#111;
+padding:15px;
+border-radius:15px;
+border:1px solid #222;
+}
 
-    .social-app:hover{
-      transform:translateY(-2px);
-      border-color:rgba(242,223,21,.28);
-      box-shadow:0 16px 30px rgba(0,0,0,.25);
-    }
+/* GALERIA */
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
 
-    .social-icon{
-      width:74px;
-      height:74px;
-      border-radius:22px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--accent);
-      color:#000;
-      font-size:1.95rem;
-      box-shadow:0 10px 24px rgba(242,223,21,.16);
-      flex-shrink:0;
-    }
+.gallery img{
+width:100%;
+border-radius:10px;
+cursor:pointer;
+}
 
-    .social-text{
-      min-width:0;
-      text-align:left;
-    }
+/* LIGHTBOX */
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
 
-    .social-text strong{
-      display:block;
-      font-size:1.7rem;
-      line-height:1.05;
-      font-weight:800;
-      color:var(--accent);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      margin-bottom:4px;
-    }
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
 
-    .social-text small{
-      display:block;
-      font-size:1rem;
-      line-height:1.35;
-      color:#ececec;
-      white-space:normal;
-      word-break:break-word;
-    }
+/* CTA */
+.btn{
+display:block;
+margin-top:15px;
+padding:12px;
+background:#f2df15;
+color:#000;
+border-radius:30px;
+font-weight:700;
+}
 
-    .section{
-      padding:26px 18px;
-      position:relative;
-    }
+/* FLOAT */
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#f2df15;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#000;
+font-size:22px;
+}
 
-    .section + .section::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:18px;
-      right:18px;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
-    }
-
-    .section-head{
-      text-align:center;
-      margin-bottom:18px;
-    }
-
-    .section-head h2{
-      font-size:1.7rem;
-      line-height:1.1;
-      font-weight:800;
-      margin-bottom:8px;
-    }
-
-    .section-head p{
-      color:var(--muted);
-      line-height:1.6;
-      font-size:.98rem;
-    }
-
-    .services{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .service{
-      background:linear-gradient(180deg, rgba(15,15,17,.96), rgba(10,10,12,.96));
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:16px 14px;
-      min-height:94px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      font-weight:700;
-      line-height:1.35;
-      box-shadow:0 8px 24px rgba(0,0,0,.18);
-    }
-
-    .gallery{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-    }
-
-    .gallery-item{
-      position:relative;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      background:#0a0a0a;
-      min-height:160px;
-    }
-
-    .gallery-item img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .35s ease;
-    }
-
-    .gallery-item:hover img{
-      transform:scale(1.04);
-    }
-
-    .cta{
-      padding:24px 18px 30px;
-      text-align:center;
-    }
-
-    .cta-box{
-      border-radius:28px;
-      padding:24px 18px;
-      background:
-        radial-gradient(circle at top center, rgba(242,223,21,.12), transparent 40%),
-        linear-gradient(180deg, rgba(15,15,17,.95), rgba(8,8,9,.95));
-      border:1px solid rgba(242,223,21,.14);
-      box-shadow:0 16px 34px rgba(0,0,0,.24);
-    }
-
-    .cta-box h3{
-      font-size:1.8rem;
-      line-height:1.08;
-      margin-bottom:10px;
-      font-weight:800;
-    }
-
-    .cta-box p{
-      color:var(--muted);
-      line-height:1.6;
-      margin-bottom:16px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      min-height:54px;
-      padding:0 18px;
-      border-radius:999px;
-      background:var(--accent);
-      color:#000;
-      font-weight:800;
-      font-size:1rem;
-      box-shadow:0 10px 24px rgba(242,223,21,.16);
-    }
-
-    .footer{
-      text-align:center;
-      padding:20px 18px 24px;
-      font-size:.86rem;
-      color:#c4c4c8;
-    }
-
-    .footer a{
-      color:var(--accent);
-      font-weight:700;
-    }
-
-    .float-wa{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:20;
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--accent);
-      color:#000;
-      font-size:1.9rem;
-      box-shadow:0 0 0 8px rgba(242,223,21,.06), 0 12px 26px rgba(242,223,21,.20);
-    }
-
-    @media (min-width: 681px){
-      .page{
-        padding-top:34px;
-      }
-
-      .hero{
-        padding:34px 24px 30px;
-      }
-
-      .section,
-      .cta,
-      .footer{
-        padding-left:24px;
-        padding-right:24px;
-      }
-
-      .section + .section::before{
-        left:24px;
-        right:24px;
-      }
-
-      .services{
-        grid-template-columns:repeat(3,1fr);
-      }
-
-      .gallery{
-        grid-template-columns:repeat(3,1fr);
-      }
-
-      .gallery-item{
-        min-height:190px;
-      }
-    }
-
-    @media (max-width: 420px){
-      .page{
-        padding-left:10px;
-        padding-right:10px;
-      }
-
-      .app-shell{
-        border-radius:30px;
-      }
-
-      .hero{
-        padding:24px 14px 22px;
-      }
-
-      .brand{
-        font-size:2.05rem;
-      }
-
-      .subtitle{
-        font-size:.96rem;
-      }
-
-      .social-app{
-        grid-template-columns:64px 1fr;
-        gap:12px;
-        padding:12px;
-        border-radius:22px;
-        min-height:84px;
-      }
-
-      .social-icon{
-        width:64px;
-        height:64px;
-        border-radius:18px;
-        font-size:1.65rem;
-      }
-
-      .social-text strong{
-        font-size:1.25rem;
-      }
-
-      .social-text small{
-        font-size:.94rem;
-      }
-
-      .services{
-        grid-template-columns:1fr;
-      }
-
-      .gallery{
-        grid-template-columns:1fr 1fr;
-      }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:400px){
+.logo{width:160px;}
+}
+</style>
 </head>
+
 <body>
 
-  <div class="video-bg">
-    <video autoplay muted loop playsinline preload="auto" poster="logo.png">
-      <source src="video.mp4" type="video/mp4">
-    </video>
-    <div class="video-fallback"></div>
-  </div>
+<!-- VIDEO -->
+<div class="video-bg">
+<video autoplay muted loop playsinline>
+<source src="video.mp4">
+</video>
+</div>
 
-  <main class="page">
-    <div class="app-shell">
+<div class="app">
+<div class="app-box">
 
-      <section class="hero">
-        <div class="logo-wrap">
-          <img src="logo.jpeg" alt="Logo Origen Diseño">
-        </div>
+<div class="hero">
+<img src="logo.jpeg" class="logo">
+<h1>Origen <span>Diseño</span></h1>
+<p class="subtitle">Soluciones gráficas que impactan y venden</p>
 
-        <h1 class="brand">Origen <span class="accent">Diseño</span></h1>
-        <p class="subtitle">Soluciones gráficas que impactan y venden</p>
+<div class="social">
 
-        <div class="social-apps">
-          <a class="social-app" href="https://wa.me/573153910632" target="_blank">
-            <div class="social-icon">
-              <i class="fa-brands fa-whatsapp"></i>
-            </div>
-            <div class="social-text">
-              <strong>WhatsApp</strong>
-              <small>315 391 0632</small>
-            </div>
-          </a>
+<a class="card" href="https://wa.me/573153910632">
+<div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
+<div class="card-text">
+<strong>WhatsApp</strong><br>
+315 391 0632
+</div>
+</a>
 
-          <a class="social-app" href="https://www.instagram.com/origendiseno_ipk/" target="_blank">
-            <div class="social-icon">
-              <i class="fa-brands fa-instagram"></i>
-            </div>
-            <div class="social-text">
-              <strong>Instagram</strong>
-              <small>@origendiseno_ipk</small>
-            </div>
-          </a>
+<a class="card" href="https://www.instagram.com/origendiseno_ipk/">
+<div class="icon"><i class="fa-brands fa-instagram"></i></div>
+<div class="card-text">
+<strong>Instagram</strong><br>
+@origendiseno_ipk
+</div>
+</a>
 
-          <a class="social-app" href="https://www.facebook.com/profile.php?id=100008930525252" target="_blank">
-            <div class="social-icon">
-              <i class="fa-brands fa-facebook-f"></i>
-            </div>
-            <div class="social-text">
-              <strong>Facebook</strong>
-              <small>Origen Diseño</small>
-            </div>
-          </a>
-        </div>
-      </section>
+<a class="card" href="https://www.facebook.com/profile.php?id=100008930525252">
+<div class="icon"><i class="fa-brands fa-facebook-f"></i></div>
+<div class="card-text">
+<strong>Facebook</strong><br>
+Origen Diseño
+</div>
+</a>
 
-      <section class="section" id="servicios">
-        <div class="section-head">
-          <h2>Servicios</h2>
-          <p>Soluciones visuales para marcas, negocios y espacios comerciales.</p>
-        </div>
+</div>
+</div>
 
-        <div class="services">
-          <div class="service">Avisos 3D</div>
-          <div class="service">Decoración interior y exterior</div>
-          <div class="service">Vallas publicitarias</div>
-          <div class="service">Pendones</div>
-          <div class="service">Papelería comercial</div>
-          <div class="service">Impresión gran formato</div>
-          <div class="service">Sublimación</div>
-          <div class="service">Señalización</div>
-        </div>
-      </section>
+<section>
+<h2>Servicios</h2>
+<div class="services">
+<div class="service">Avisos 3D</div>
+<div class="service">Decoración interior y exterior</div>
+<div class="service">Vallas publicitarias</div>
+<div class="service">Pendones</div>
+<div class="service">Papelería comercial</div>
+<div class="service">Impresión gran formato</div>
+<div class="service">Sublimación</div>
+<div class="service">Señalización</div>
+</div>
+</section>
 
-      <section class="section" id="trabajos">
-        <div class="section-head">
-          <h2>Trabajos realizados</h2>
-          <p>Agrega aquí las mejores obras para que el landing venda más.</p>
-        </div>
+<section>
+<h2>Trabajos realizados</h2>
+<div class="gallery">
+<img src="obra1.jpeg" onclick="openImg(this.src)">
+<img src="obra2.jpeg" onclick="openImg(this.src)">
+<img src="obra3.jpeg" onclick="openImg(this.src)">
+<img src="obra4.jpeg" onclick="openImg(this.src)">
+<img src="obra5.jpeg" onclick="openImg(this.src)">
+<img src="obra6.jpeg" onclick="openImg(this.src)">
+</div>
+</section>
 
-        <div class="gallery">
-          <div class="gallery-item"><img src="obra1.jpeg" alt="Trabajo 1"></div>
-          <div class="gallery-item"><img src="obra2.jpeg" alt="Trabajo 2"></div>
-          <div class="gallery-item"><img src="obra3.jpeg" alt="Trabajo 3"></div>
-          <div class="gallery-item"><img src="obra4.jpeg" alt="Trabajo 4"></div>
-          <div class="gallery-item"><img src="obra5.jpeg" alt="Trabajo 5"></div>
-          <div class="gallery-item"><img src="obra6.jpeg" alt="Trabajo 6"></div>
-        </div>
-      </section>
+<section>
+<h2>¿Tienes una idea?</h2>
+<a href="https://wa.me/573153910632" class="btn">Cotizar ahora</a>
+</section>
 
-      <section class="cta">
-        <div class="cta-box">
-          <h3>¿Tienes una idea?</h3>
-          <p>Convirtámosla en una pieza gráfica con presencia e impacto.</p>
-          <a class="btn" href="https://wa.me/573153910632" target="_blank">Cotizar ahora</a>
-        </div>
-      </section>
+</div>
+</div>
 
-      <footer class="footer">
-        Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a>
-      </footer>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+<img id="lightbox-img">
+</div>
 
-    </div>
-  </main>
+<!-- FLOAT -->
+<a class="float" href="https://wa.me/573153910632">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 
-  <a class="float-wa" href="https://wa.me/573153910632" target="_blank" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
+<script>
+function openImg(src){
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('lightbox-img').src=src;
+}
+function closeImg(){
+document.getElementById('lightbox').style.display='none';
+}
+</script>
 
 </body>
 </html>
