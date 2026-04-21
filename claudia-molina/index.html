@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Landings | Integral360 Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-top">
+          <div class="brand-badge">I360</div>
+          <div>
+            <h1>Generador de Landings</h1>
+            <p>Integral360 · Versión Pro 3.0</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-primary" id="downloadLandingBtn">Descargar carpeta GitHub</button>
+          <button class="btn btn-secondary" id="downloadConfigBtn">Exportar configuración</button>
+          <button class="btn btn-secondary" id="importConfigBtn">Importar configuración</button>
+          <input type="file" id="configFileInput" accept="application/json" hidden />
+        </div>
+      </div>
+
+      <div class="panel-scroller">
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Plantilla</h2>
+          </div>
+
+          <label>Tipo de landing</label>
+          <select id="templateType">
+            <option value="person">Profesional / Personal</option>
+            <option value="business">Empresa / Negocio</option>
+            <option value="catalog">Catálogo comercial</option>
+            <option value="restaurant">Menú / Restaurante</option>
+            <option value="senior">Adulto mayor / Emergencia</option>
+          </select>
+
+          <label>Estilo visual</label>
+          <select id="visualStyle">
+            <option value="elegant">Elegante</option>
+            <option value="modern">Moderno</option>
+            <option value="warm">Cálido</option>
+            <option value="dark">Oscuro</option>
+          </select>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Identidad</h2>
+          </div>
+
+          <label>Empresa</label>
+          <input id="companyName" type="text" placeholder="Integral360" />
+
+          <label>Nombre principal</label>
+          <input id="mainName" type="text" placeholder="Nombre de la persona o negocio" />
+
+          <label>Cargo / perfil / subtítulo</label>
+          <input id="tagline" type="text" placeholder="Gerente Comercial · Especialista" />
+
+          <label>Descripción</label>
+          <textarea id="description" placeholder="Texto corto de presentación"></textarea>
+
+          <div class="grid-2">
+            <div>
+              <label>Ruta logo</label>
+              <input id="logoPath" type="text" placeholder="logo.png" />
+            </div>
+            <div>
+              <label>Ruta foto principal</label>
+              <input id="photoPath" type="text" placeholder="foto.jpeg" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <label>Visualizar logo</label>
+              <div class="inline-upload-row">
+                <button class="btn btn-secondary btn-mini" id="pickLogoBtn" type="button">Cargar imagen</button>
+                <input id="logoFileInput" type="file" accept="image/*" hidden />
+                <span class="mini-help">Solo vista previa</span>
+              </div>
+            </div>
+            <div>
+              <label>Visualizar foto</label>
+              <div class="inline-upload-row">
+                <button class="btn btn-secondary btn-mini" id="pickPhotoBtn" type="button">Cargar imagen</button>
+                <input id="photoFileInput" type="file" accept="image/*" hidden />
+                <span class="mini-help">Solo vista previa</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-preview-grid">
+            <div class="image-preview-card">
+              <span>Logo</span>
+              <img id="logoPreviewThumb" alt="Vista previa logo" />
+            </div>
+            <div class="image-preview-card">
+              <span>Foto</span>
+              <img id="photoPreviewThumb" alt="Vista previa foto" />
+            </div>
+          </div>
+
+          <div class="logo-controls">
+            <div class="section-head compact-head">
+              <h3>Ajuste de logo</h3>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label>Forma del logo</label>
+                <select id="logoShape">
+                  <option value="rounded">Rectangular redondeado</option>
+                  <option value="circle">Circular</option>
+                  <option value="square">Cuadrado</option>
+                  <option value="rectangle">Rectangular horizontal</option>
+                </select>
+              </div>
+              <div>
+                <label>Tamaño rápido</label>
+                <select id="logoPreset">
+                  <option value="custom">Personalizado</option>
+                  <option value="sm">Pequeño</option>
+                  <option value="md">Mediano</option>
+                  <option value="lg">Grande</option>
+                  <option value="xl">Extra grande</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid-2 logo-size-grid">
+              <div>
+                <label>Ancho del logo <span id="logoWidthValue">96</span> px</label>
+                <input id="logoWidth" type="range" min="60" max="220" step="2" />
+              </div>
+              <div>
+                <label>Alto del logo <span id="logoHeightValue">96</span> px</label>
+                <input id="logoHeight" type="range" min="50" max="170" step="2" />
+              </div>
+            </div>
+
+            <div class="grid-2 logo-size-grid">
+              <div>
+                <label>Zoom logo <span id="logoScaleValue">100</span>%</label>
+                <input id="logoScale" type="range" min="60" max="220" step="1" />
+              </div>
+              <div>
+                <label>Desplazamiento X <span id="logoXValue">0</span> px</label>
+                <input id="logoX" type="range" min="-120" max="120" step="1" />
+              </div>
+            </div>
+
+            <div>
+              <label>Desplazamiento Y <span id="logoYValue">0</span> px</label>
+              <input id="logoY" type="range" min="-120" max="120" step="1" />
+            </div>
+          </div>
+
+          <div class="logo-controls">
+            <div class="section-head compact-head">
+              <h3>Ajuste de foto</h3>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label>Forma de la foto</label>
+                <select id="photoShape">
+                  <option value="circle">Circular</option>
+                  <option value="square">Cuadrada</option>
+                  <option value="rounded">Rectangular redondeada</option>
+                </select>
+              </div>
+              <div>
+                <label>Tamaño rápido</label>
+                <select id="photoPreset">
+                  <option value="custom">Personalizado</option>
+                  <option value="sm">Pequeña</option>
+                  <option value="md">Mediana</option>
+                  <option value="lg">Grande</option>
+                  <option value="xl">Extra grande</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid-2 logo-size-grid">
+              <div>
+                <label>Ancho foto <span id="photoWidthValue">104</span> px</label>
+                <input id="photoWidth" type="range" min="70" max="220" step="2" />
+              </div>
+              <div>
+                <label>Alto foto <span id="photoHeightValue">104</span> px</label>
+                <input id="photoHeight" type="range" min="70" max="240" step="2" />
+              </div>
+            </div>
+
+            <div class="grid-2 logo-size-grid">
+              <div>
+                <label>Zoom foto <span id="photoScaleValue">100</span>%</label>
+                <input id="photoScale" type="range" min="80" max="260" step="1" />
+              </div>
+              <div>
+                <label>Desplazamiento X <span id="photoXValue">0</span> px</label>
+                <input id="photoX" type="range" min="-140" max="140" step="1" />
+              </div>
+            </div>
+
+            <div>
+              <label>Desplazamiento Y <span id="photoYValue">0</span> px</label>
+              <input id="photoY" type="range" min="-140" max="140" step="1" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <label>Color primario</label>
+              <input id="primaryColor" type="color" />
+            </div>
+            <div>
+              <label>Color secundario</label>
+              <input id="secondaryColor" type="color" />
+            </div>
+          </div>
+
+          <label>Color de acento</label>
+          <input id="accentColor" type="color" />
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Paleta desde imagen</h2>
+            <div class="section-head-actions">
+              <button class="btn btn-small" id="extractPaletteBtn" type="button">Analizar</button>
+              <button class="btn btn-secondary btn-mini" id="applyPaletteBtn" type="button">Auto aplicar</button>
+            </div>
+          </div>
+
+          <label>Aplicar color individual a</label>
+          <select id="paletteTarget">
+            <option value="primaryColor">Color primario</option>
+            <option value="secondaryColor">Color secundario</option>
+            <option value="accentColor">Color de acento</option>
+          </select>
+
+          <div class="palette-swatches" id="paletteSwatches"></div>
+          <p class="panel-note">Carga un logo o foto, analiza y usa las muestras para construir la paleta. También puedes aplicar automáticamente los 3 primeros colores.</p>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Secciones activas</h2>
+          </div>
+
+          <div class="toggle-list">
+            <label class="switch-row"><input id="showPhoto" type="checkbox" checked /> <span>Mostrar foto principal</span></label>
+            <label class="switch-row"><input id="showButtons" type="checkbox" checked /> <span>Mostrar botones de acción</span></label>
+            <label class="switch-row"><input id="showSocial" type="checkbox" checked /> <span>Mostrar redes sociales</span></label>
+            <label class="switch-row"><input id="showCatalog" type="checkbox" checked /> <span>Mostrar catálogo / ítems</span></label>
+            <label class="switch-row"><input id="showLocation" type="checkbox" checked /> <span>Mostrar dirección / ubicación</span></label>
+            <label class="switch-row"><input id="showAbout" type="checkbox" checked /> <span>Mostrar bloque informativo</span></label>
+            <label class="switch-row"><input id="showFooterBrand" type="checkbox" checked /> <span>Mostrar marca Integral360</span></label>
+          </div>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Botones de acción</h2>
+            <button class="btn btn-small" id="addActionBtn" type="button">+ Agregar</button>
+          </div>
+          <div id="actionsContainer"></div>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Redes sociales</h2>
+            <button class="btn btn-small" id="addSocialBtn" type="button">+ Agregar</button>
+          </div>
+          <div id="socialContainer"></div>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Productos / servicios / ítems</h2>
+            <button class="btn btn-small" id="addItemBtn" type="button">+ Agregar</button>
+          </div>
+
+          <label>Título de la sección</label>
+          <input id="itemsSectionTitle" type="text" placeholder="Productos o servicios" />
+
+          <div id="itemsContainer"></div>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Dirección / ubicación</h2>
+          </div>
+
+          <label>Título de la ubicación</label>
+          <input id="locationTitle" type="text" placeholder="Ubicación" />
+
+          <label>Dirección o descripción</label>
+          <textarea id="locationText" placeholder="Dirección, referencia o instrucciones"></textarea>
+
+          <label>Enlace de ubicación (Google Maps u otro)</label>
+          <input id="locationLink" type="text" placeholder="https://maps.google.com/..." />
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Bloque informativo</h2>
+          </div>
+
+          <label>Título del bloque</label>
+          <input id="aboutTitle" type="text" placeholder="Sobre nosotros" />
+
+          <label>Contenido</label>
+          <textarea id="aboutText" placeholder="Información complementaria"></textarea>
+        </section>
+
+        <section class="panel-card">
+          <div class="section-head">
+            <h2>Ajustes rápidos</h2>
+          </div>
+
+          <div class="action-grid">
+            <button class="btn btn-secondary" id="saveLocalBtn">Guardar en navegador</button>
+            <button class="btn btn-secondary" id="loadSampleBtn">Cargar demo</button>
+            <button class="btn btn-secondary" id="resetBtn">Restablecer</button>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <main class="preview-area">
+      <div class="preview-sticky-shell">
+        <div class="preview-topbar">
+          <div>
+            <h2>Vista previa móvil</h2>
+            <p>La vista previa queda fija arriba mientras deslizas los parámetros.</p>
+          </div>
+          <div class="preview-mode-pill" id="previewModePill">Profesional / Personal</div>
+        </div>
+
+        <div class="phone-stage">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="landing-preview" id="landingPreview"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <template id="actionRowTemplate">
+    <div class="repeat-card action-row">
+      <div class="repeat-head">
+        <strong>Botón</strong>
+        <button class="icon-remove" type="button">×</button>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label>Texto</label>
+          <input type="text" data-field="label" placeholder="Llamar" />
+        </div>
+        <div>
+          <label>Tipo</label>
+          <select data-field="kind">
+            <option value="phone">Teléfono</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="link">Enlace</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Valor</label>
+      <input type="text" data-field="value" placeholder="3123456789 o https://..." />
+    </div>
+  </template>
+
+  <template id="socialRowTemplate">
+    <div class="repeat-card social-row">
+      <div class="repeat-head">
+        <strong>Red social</strong>
+        <button class="icon-remove" type="button">×</button>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label>Plataforma</label>
+          <select data-field="platform">
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="tiktok">TikTok</option>
+            <option value="youtube">YouTube</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="web">Web</option>
+          </select>
+        </div>
+        <div>
+          <label>URL</label>
+          <input type="text" data-field="url" placeholder="https://..." />
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="itemRowTemplate">
+    <div class="repeat-card item-row">
+      <div class="repeat-head">
+        <strong>Ítem</strong>
+        <button class="icon-remove" type="button">×</button>
+      </div>
+
+      <label>Título</label>
+      <input type="text" data-field="title" placeholder="Producto o servicio" />
+
+      <label>Descripción</label>
+      <textarea data-field="text" placeholder="Descripción breve"></textarea>
+
+      <div class="grid-2">
+        <div>
+          <label>Etiqueta</label>
+          <input type="text" data-field="tag" placeholder="Nuevo / Popular / $30.000" />
+        </div>
+        <div>
+          <label>Ruta imagen</label>
+          <input type="text" data-field="image" placeholder="foto1.jpeg" />
+        </div>
+      </div>
+
+      <div class="item-upload-line">
+        <button class="btn btn-secondary btn-mini item-pick-btn" type="button">Cargar vista previa</button>
+        <input class="item-file-input" type="file" accept="image/*" hidden />
+        <span class="mini-help">Solo visualización</span>
+      </div>
+
+      <div class="item-thumb-wrap">
+        <img class="item-thumb" alt="Vista previa del ítem" />
+      </div>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
