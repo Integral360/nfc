@@ -13,21 +13,13 @@
 
   <style>
     :root{
-      --bg:#080512;
-      --bg2:#100a22;
-      --card:rgba(13,12,27,.58);
-      --card-2:rgba(255,255,255,.08);
+      --text:#f7f5ff;
+      --muted:#d8d1ef;
       --border:rgba(255,255,255,.14);
-      --text:#f6f4ff;
-      --muted:#ddd7f3;
       --accent:#8b5cf6;
       --accent2:#22d3ee;
       --accent3:#ec4899;
       --spotify:#1db954;
-      --shadow:0 20px 60px rgba(0,0,0,.45);
-      --radius-xl:30px;
-      --radius-lg:22px;
-      --radius-md:16px;
       --max:470px;
     }
 
@@ -46,7 +38,7 @@
       min-height:100vh;
       color:var(--text);
       background:
-        linear-gradient(rgba(5,4,14,.76), rgba(8,5,18,.93)),
+        linear-gradient(rgba(5,4,14,.78), rgba(8,5,18,.94)),
         url('assets/fondo.jpg') center center / cover no-repeat fixed;
       overflow-x:hidden;
       position:relative;
@@ -56,13 +48,13 @@
       content:"";
       position:fixed;
       inset:0;
-      pointer-events:none;
       z-index:0;
+      pointer-events:none;
       background:
-        radial-gradient(circle at 15% 20%, rgba(34,211,238,.13), transparent 24%),
-        radial-gradient(circle at 82% 12%, rgba(236,72,153,.16), transparent 22%),
-        radial-gradient(circle at 50% 78%, rgba(139,92,246,.16), transparent 30%),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.46));
+        radial-gradient(circle at 20% 18%, rgba(34,211,238,.13), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(236,72,153,.17), transparent 22%),
+        radial-gradient(circle at 50% 76%, rgba(139,92,246,.15), transparent 30%),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.52));
     }
 
     body::after{
@@ -71,101 +63,163 @@
       inset:0;
       z-index:0;
       pointer-events:none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.10) 0.7px, transparent 0.9px);
-      background-size:12px 12px;
-      opacity:.10;
+      opacity:.08;
       mix-blend-mode:screen;
+      background-image: radial-gradient(circle, rgba(255,255,255,.14) 0.8px, transparent 1px);
+      background-size: 12px 12px;
     }
 
     .wrap{
       position:relative;
       z-index:1;
       min-height:100vh;
-      padding:20px 14px 26px;
       display:flex;
       justify-content:center;
       align-items:flex-start;
+      padding:20px 14px 28px;
     }
 
     .app{
       width:100%;
-      max-width:470px;
+      max-width:var(--max);
       border-radius:30px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(180deg, rgba(18,17,40,.56), rgba(7,7,20,.78));
+      background:linear-gradient(180deg, rgba(16,15,35,.62), rgba(7,7,20,.82));
       backdrop-filter:blur(16px);
       -webkit-backdrop-filter:blur(16px);
-      box-shadow:0 20px 60px rgba(0,0,0,.45);
+      box-shadow:0 22px 60px rgba(0,0,0,.48);
       position:relative;
-      isolation:isolate;
     }
 
     .hero{
       position:relative;
-      min-height:590px;
-      padding:20px 18px 28px;
+      min-height:640px;
       overflow:hidden;
+      padding:20px 18px 30px;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.40) 48%, rgba(5,5,14,.76));
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.38) 44%, rgba(5,5,14,.82));
     }
 
     .hero::before{
       content:"";
       position:absolute;
       inset:0;
+      z-index:2;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 52% 42%, rgba(6,7,20,.82) 0%, rgba(6,7,20,.58) 24%, rgba(6,7,20,.20) 48%, transparent 68%),
+        linear-gradient(180deg, rgba(6,7,20,.05), rgba(6,7,20,.26) 28%, rgba(6,7,20,.58) 70%, rgba(6,7,20,.82));
+    }
+
+    .hero-bg-blur{
+      position:absolute;
+      inset:0;
       z-index:1;
       pointer-events:none;
       background:
-        radial-gradient(circle at 52% 45%, rgba(5,7,20,.80) 0%, rgba(5,7,20,.62) 26%, rgba(5,7,20,.18) 48%, transparent 66%),
-        linear-gradient(180deg, rgba(4,5,14,.12), rgba(4,5,14,.30) 35%, rgba(4,5,14,.58) 72%, rgba(4,5,14,.78));
+        radial-gradient(circle at 30% 28%, rgba(34,211,238,.18), transparent 24%),
+        radial-gradient(circle at 74% 22%, rgba(236,72,153,.16), transparent 20%),
+        radial-gradient(circle at 65% 78%, rgba(139,92,246,.18), transparent 28%);
+      filter:blur(12px);
     }
 
-    .hero-glow{
+    .hero-collage{
       position:absolute;
-      border-radius:50%;
-      filter:blur(40px);
+      inset:0;
+      z-index:1;
       pointer-events:none;
-      opacity:.62;
-      z-index:0;
     }
 
-    .glow-a{
-      width:180px;
-      height:180px;
-      top:50px;
-      left:-35px;
-      background:rgba(34,211,238,.20);
-      animation:floatA 9s ease-in-out infinite;
+    .hero-main{
+      position:absolute;
+      left:-70px;
+      bottom:-8px;
+      width:68%;
+      max-width:330px;
+      opacity:.80;
+      mix-blend-mode:screen;
+      filter:
+        grayscale(1)
+        contrast(1.16)
+        brightness(.86)
+        saturate(.9)
+        drop-shadow(0 0 16px rgba(34,211,238,.14))
+        drop-shadow(0 0 24px rgba(139,92,246,.12));
+      -webkit-mask-image:
+        linear-gradient(to top, rgba(0,0,0,1) 76%, rgba(0,0,0,.7) 90%, rgba(0,0,0,0) 100%),
+        linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,.82) 80%, rgba(0,0,0,0) 100%);
+      mask-image:
+        linear-gradient(to top, rgba(0,0,0,1) 76%, rgba(0,0,0,.7) 90%, rgba(0,0,0,0) 100%),
+        linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,.82) 80%, rgba(0,0,0,0) 100%);
     }
 
-    .glow-b{
-      width:220px;
+    .hero-side-a{
+      position:absolute;
+      right:-18px;
+      top:120px;
+      width:150px;
       height:220px;
-      top:70px;
-      right:-80px;
-      background:rgba(236,72,153,.18);
-      animation:floatB 10s ease-in-out infinite;
+      object-fit:cover;
+      object-position:center;
+      border-radius:26px;
+      opacity:.18;
+      mix-blend-mode:screen;
+      transform:rotate(-7deg);
+      filter:grayscale(1) contrast(1.08) blur(.3px);
+      -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.65), rgba(0,0,0,0));
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.65), rgba(0,0,0,0));
     }
 
-    .glow-c{
-      width:180px;
-      height:180px;
-      bottom:90px;
-      right:30px;
-      background:rgba(139,92,246,.18);
-      animation:floatA 11s ease-in-out infinite;
+    .hero-side-b{
+      position:absolute;
+      right:38px;
+      top:86px;
+      width:120px;
+      opacity:.88;
+      filter:
+        drop-shadow(0 0 18px rgba(236,72,153,.24))
+        drop-shadow(0 0 26px rgba(34,211,238,.12));
+      transform:rotate(-2deg);
     }
 
-    @keyframes floatA{
-      0%,100%{transform:translateY(0) translateX(0) scale(1)}
-      50%{transform:translateY(-18px) translateX(10px) scale(1.08)}
+    .hero-side-c{
+      position:absolute;
+      right:14px;
+      bottom:120px;
+      width:132px;
+      height:92px;
+      object-fit:cover;
+      border-radius:18px;
+      opacity:.16;
+      mix-blend-mode:screen;
+      transform:rotate(6deg);
+      filter:grayscale(1) contrast(1.1);
+      -webkit-mask-image:linear-gradient(to left, rgba(0,0,0,.95), rgba(0,0,0,.6), rgba(0,0,0,0));
+      mask-image:linear-gradient(to left, rgba(0,0,0,.95), rgba(0,0,0,.6), rgba(0,0,0,0));
     }
 
-    @keyframes floatB{
-      0%,100%{transform:translateY(0) translateX(0) scale(1)}
-      50%{transform:translateY(12px) translateX(-8px) scale(1.05)}
+    .shape-triangle{
+      position:absolute;
+      left:24px;
+      bottom:118px;
+      width:138px;
+      height:138px;
+      clip-path:polygon(50% 0, 0 100%, 100% 100%);
+      border:1px solid rgba(236,72,153,.22);
+      opacity:.34;
+      filter:drop-shadow(0 0 12px rgba(236,72,153,.14));
+    }
+
+    .shape-circle{
+      position:absolute;
+      right:70px;
+      top:188px;
+      width:78px;
+      height:78px;
+      border-radius:50%;
+      border:1px solid rgba(34,211,238,.20);
+      opacity:.28;
     }
 
     .topbar{
@@ -175,23 +229,25 @@
       justify-content:space-between;
       align-items:center;
       gap:10px;
-      margin-bottom:18px;
+      margin-bottom:14px;
     }
 
-    .badge{
+    .badge,
+    .spotify-top{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.10);
       padding:8px 12px;
       border-radius:999px;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-weight:700;
-      color:#f7f5ff;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.10);
       box-shadow:0 8px 20px rgba(0,0,0,.18);
+      text-decoration:none;
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
     }
 
     .dot{
@@ -199,36 +255,7 @@
       height:8px;
       border-radius:50%;
       background:linear-gradient(135deg, var(--accent2), var(--accent));
-      box-shadow:0 0 12px rgba(139,92,246,.85);
-      animation:pulse 1.8s infinite;
-    }
-
-    @keyframes pulse{
-      0%,100%{transform:scale(1);opacity:1}
-      50%{transform:scale(1.35);opacity:.75}
-    }
-
-    .spotify-top{
-      text-decoration:none;
-      color:white;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.10);
-      transition:.25s ease;
-      box-shadow:0 8px 20px rgba(0,0,0,.18);
-    }
-
-    .spotify-top:hover{
-      transform:translateY(-2px);
-      background:rgba(255,255,255,.14);
+      box-shadow:0 0 12px rgba(139,92,246,.8);
     }
 
     .spotify-icon{
@@ -237,8 +264,8 @@
       border-radius:50%;
       background:var(--spotify);
       position:relative;
-      box-shadow:0 0 14px rgba(29,185,84,.45);
       flex:0 0 16px;
+      box-shadow:0 0 14px rgba(29,185,84,.4);
     }
 
     .spotify-icon::before,
@@ -254,93 +281,22 @@
     .spotify-icon::before{ top:5px; }
     .spotify-icon::after{ top:9px; }
 
-    .hero-media{
-      position:absolute;
-      inset:0;
-      z-index:2;
-      pointer-events:none;
-    }
-
-    .cerati{
-      position:absolute;
-      left:-78px;
-      bottom:-8px;
-      width:66%;
-      max-width:315px;
-      mix-blend-mode:screen;
-      opacity:.84;
-      filter:
-        grayscale(1)
-        contrast(1.18)
-        brightness(.88)
-        drop-shadow(0 0 12px rgba(34,211,238,.16))
-        drop-shadow(0 0 26px rgba(139,92,246,.16));
-      transform:translateZ(0);
-      mask-image:
-        linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,.72) 90%, rgba(0,0,0,0) 100%),
-        linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,.82) 78%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image:
-        linear-gradient(to top, rgba(0,0,0,1) 78%, rgba(0,0,0,.72) 90%, rgba(0,0,0,0) 100%),
-        linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,.82) 78%, rgba(0,0,0,0) 100%);
-    }
-
-    .soda{
-      position:absolute;
-      right:18px;
-      top:88px;
-      width:118px;
-      opacity:.92;
-      filter:
-        drop-shadow(0 0 18px rgba(236,72,153,.28))
-        drop-shadow(0 0 28px rgba(34,211,238,.16));
-      animation:sodaFloat 6s ease-in-out infinite;
-    }
-
-    @keyframes sodaFloat{
-      0%,100%{transform:translateY(0) rotate(-2deg)}
-      50%{transform:translateY(-8px) rotate(1deg)}
-    }
-
-    .triangle{
-      position:absolute;
-      left:22px;
-      bottom:116px;
-      width:138px;
-      height:138px;
-      border:1px solid rgba(236,72,153,.28);
-      clip-path:polygon(50% 0, 0 100%, 100% 100%);
-      opacity:.38;
-      filter:drop-shadow(0 0 10px rgba(236,72,153,.18));
-    }
-
-    .circle-line{
-      position:absolute;
-      right:78px;
-      top:178px;
-      width:76px;
-      height:76px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:50%;
-      opacity:.34;
-    }
-
     .hero-content{
       position:relative;
       z-index:4;
-      padding-top:150px;
-      text-align:center;
       max-width:360px;
       margin:0 auto;
+      padding-top:152px;
+      text-align:center;
     }
 
     .eyebrow{
       display:inline-block;
+      margin-bottom:12px;
+      color:#f1ecff;
       font-size:13px;
       letter-spacing:.22em;
       text-transform:uppercase;
-      color:#f3efff;
-      opacity:1;
-      margin-bottom:12px;
       text-shadow:
         0 2px 10px rgba(0,0,0,.55),
         0 0 18px rgba(139,92,246,.18);
@@ -349,26 +305,24 @@
     .title-script{
       font-family:'Playfair Display',serif;
       font-size:28px;
-      line-height:1;
       color:#f4b0ff;
+      margin-bottom:4px;
       text-shadow:
         0 0 12px rgba(236,72,153,.50),
         0 0 28px rgba(236,72,153,.22),
         0 2px 12px rgba(0,0,0,.45);
-      margin-bottom:4px;
     }
 
     .title-main{
-      font-size:55px;
+      font-size:56px;
       line-height:.94;
       font-weight:800;
       letter-spacing:.03em;
       text-transform:uppercase;
-      color:#ffffff;
       text-shadow:
-        0 2px 8px rgba(0,0,0,.50),
+        0 2px 8px rgba(0,0,0,.55),
         0 0 18px rgba(255,255,255,.08),
-        0 0 30px rgba(139,92,246,.18);
+        0 0 30px rgba(139,92,246,.16);
     }
 
     .title-main span{
@@ -376,33 +330,31 @@
       font-size:18px;
       margin:10px 0 8px;
       letter-spacing:.34em;
-      color:#f7f4ff;
-      opacity:1;
     }
 
     .subtitle{
-      width:min(100%, 325px);
+      width:min(100%, 326px);
       margin:12px auto 0;
-      color:#f2edff;
+      color:#f4efff;
       font-size:15px;
       line-height:1.65;
       font-weight:500;
       text-shadow:
         0 2px 8px rgba(0,0,0,.72),
-        0 0 18px rgba(0,0,0,.32);
+        0 0 18px rgba(0,0,0,.28);
     }
 
     .quote{
-      width:min(100%, 345px);
+      width:min(100%, 346px);
       margin:22px auto 0;
       padding:16px 18px;
-      border-radius:18px;
+      border-radius:20px;
       border:1px solid rgba(255,255,255,.12);
-      background:rgba(6,6,20,.52);
+      background:rgba(6,6,20,.54);
       backdrop-filter:blur(10px);
+      color:#f8f5ff;
       font-size:13px;
       line-height:1.7;
-      color:#f8f5ff;
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.05),
         0 12px 28px rgba(0,0,0,.22);
@@ -412,10 +364,10 @@
       display:block;
       margin-top:10px;
       color:#f1a4ff;
-      letter-spacing:.22em;
-      text-transform:uppercase;
       font-size:11px;
       font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.22em;
     }
 
     .section{
@@ -440,8 +392,8 @@
     .section-title p{
       font-size:11px;
       color:var(--muted);
-      letter-spacing:.14em;
       text-transform:uppercase;
+      letter-spacing:.14em;
       white-space:nowrap;
     }
 
@@ -455,14 +407,14 @@
       display:flex;
       align-items:center;
       gap:12px;
-      text-decoration:none;
-      color:inherit;
       padding:12px;
       border-radius:20px;
       border:1px solid var(--border);
       background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      transition:.28s ease;
       overflow:hidden;
+      text-decoration:none;
+      color:inherit;
+      transition:.28s ease;
     }
 
     .playlist::before{
@@ -485,16 +437,13 @@
     }
 
     .playlist-thumb{
-      width:76px;
-      height:76px;
-      border-radius:16px;
+      width:78px;
+      height:78px;
+      flex:0 0 78px;
+      border-radius:18px;
       overflow:hidden;
-      flex:0 0 76px;
       border:1px solid rgba(255,255,255,.12);
-      background:
-        linear-gradient(135deg, rgba(139,92,246,.32), rgba(34,211,238,.22), rgba(236,72,153,.22));
-      display:grid;
-      place-items:center;
+      background:linear-gradient(135deg, rgba(139,92,246,.30), rgba(34,211,238,.20), rgba(236,72,153,.20));
     }
 
     .playlist-thumb img{
@@ -502,12 +451,6 @@
       height:100%;
       object-fit:cover;
       display:block;
-    }
-
-    .playlist-thumb.logo img{
-      object-fit:contain;
-      padding:6px;
-      background:rgba(0,0,0,.10);
     }
 
     .playlist-body{
@@ -518,36 +461,36 @@
 
     .playlist-body h3{
       font-size:14px;
-      font-weight:800;
       line-height:1.3;
       margin-bottom:4px;
+      font-weight:800;
       text-transform:uppercase;
       letter-spacing:.03em;
     }
 
     .playlist-body .tags{
-      font-size:11px;
-      color:#9fdfff;
-      letter-spacing:.14em;
-      text-transform:uppercase;
       margin-bottom:6px;
+      color:#9fdfff;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
     }
 
     .playlist-body p{
       font-size:12px;
-      color:var(--muted);
       line-height:1.55;
+      color:var(--muted);
     }
 
     .playlist-action{
       display:flex;
       align-items:center;
       gap:8px;
-      color:#6dff9f;
+      color:#71ff9d;
       font-size:11px;
       font-weight:800;
-      letter-spacing:.11em;
       text-transform:uppercase;
+      letter-spacing:.11em;
       white-space:nowrap;
     }
 
@@ -555,7 +498,6 @@
       color:#fff;
       font-size:22px;
       line-height:1;
-      margin-left:2px;
     }
 
     .player-wrap{
@@ -589,17 +531,17 @@
     }
 
     .message h3{
+      margin-bottom:10px;
       font-size:15px;
       font-weight:800;
-      margin-bottom:10px;
       text-transform:uppercase;
       letter-spacing:.05em;
     }
 
     .message p{
+      color:var(--muted);
       font-size:13px;
       line-height:1.8;
-      color:var(--muted);
     }
 
     .footer{
@@ -607,8 +549,8 @@
       padding:0 18px 22px;
       color:var(--muted);
       font-size:11px;
-      letter-spacing:.16em;
       text-transform:uppercase;
+      letter-spacing:.16em;
     }
 
     .footer-line{
@@ -622,17 +564,17 @@
 
     @media (max-width:420px){
       .hero{
-        min-height:575px;
+        min-height:620px;
         padding:18px 16px 26px;
       }
 
       .hero-content{
-        padding-top:158px;
         max-width:340px;
+        padding-top:162px;
       }
 
       .title-main{
-        font-size:47px;
+        font-size:48px;
       }
 
       .title-script{
@@ -643,15 +585,27 @@
         font-size:14px;
       }
 
-      .cerati{
+      .hero-main{
         width:70%;
-        left:-86px;
-        bottom:-6px;
+        left:-82px;
       }
 
-      .soda{
-        width:106px;
-        top:90px;
+      .hero-side-a{
+        width:128px;
+        height:190px;
+        top:124px;
+        right:-24px;
+      }
+
+      .hero-side-b{
+        width:104px;
+        right:10px;
+        top:92px;
+      }
+
+      .hero-side-c{
+        width:116px;
+        height:84px;
         right:8px;
       }
 
@@ -672,9 +626,16 @@
     <section class="app">
 
       <header class="hero">
-        <div class="hero-glow glow-a"></div>
-        <div class="hero-glow glow-b"></div>
-        <div class="hero-glow glow-c"></div>
+        <div class="hero-bg-blur"></div>
+
+        <div class="hero-collage">
+          <img src="assets/cerati-hero.jpg" alt="Cerati hero" class="hero-main">
+          <img src="assets/cerati-3.jpg" alt="Cerati secundario" class="hero-side-a">
+          <img src="assets/soda-logo.png" alt="Soda Stereo logo" class="hero-side-b">
+          <img src="assets/soda-3.jpg" alt="Soda Stereo fondo" class="hero-side-c">
+          <div class="shape-triangle"></div>
+          <div class="shape-circle"></div>
+        </div>
 
         <div class="topbar">
           <div class="badge">
@@ -688,13 +649,6 @@
           </a>
         </div>
 
-        <div class="hero-media">
-          <img src="assets/cerati.jpg" alt="Imagen artística en blanco y negro" class="cerati">
-          <img src="assets/soda.png" alt="Logo artístico de Soda Stereo" class="soda">
-          <div class="triangle"></div>
-          <div class="circle-line"></div>
-        </div>
-
         <div class="hero-content">
           <div class="eyebrow">música • poesía • eternidad</div>
           <div class="title-script">Gustavo</div>
@@ -705,7 +659,7 @@
           </h1>
 
           <p class="subtitle">
-            Recordar, sentir y volver
+            Un landing para poner play, recordar, sentir y volver
             una y otra vez a ese universo sonoro que nunca se apaga.
           </p>
 
@@ -725,15 +679,13 @@
         <div class="playlist-list">
           <a class="playlist" href="https://open.spotify.com/intl-es/artist/1QOmebWGB6FdFtW7Bo3F0W" target="_blank" rel="noopener noreferrer">
             <div class="playlist-thumb">
-              <img src="assets/cerati.jpg" alt="Imagen artística">
+              <img src="assets/cerati-2.jpg" alt="Gustavo Cerati">
             </div>
-
             <div class="playlist-body">
               <h3>Gustavo Cerati</h3>
               <div class="tags">éxitos • esencia • profundo</div>
               <p>Perfil oficial para recorrer álbumes, canciones y joyas de su etapa solista.</p>
             </div>
-
             <div class="playlist-action">
               spotify
               <span class="arrow">›</span>
@@ -741,16 +693,14 @@
           </a>
 
           <a class="playlist" href="https://open.spotify.com/intl-es/artist/7An4yvF7hDYDolN4m5zKBp" target="_blank" rel="noopener noreferrer">
-            <div class="playlist-thumb logo">
-              <img src="assets/soda.png" alt="Soda Stereo">
+            <div class="playlist-thumb">
+              <img src="assets/soda-2.jpg" alt="Soda Stereo">
             </div>
-
             <div class="playlist-body">
               <h3>Soda Stereo</h3>
               <div class="tags">clásicos • himnos • leyenda</div>
               <p>Perfil oficial con canciones eternas, discos inolvidables y toda su energía.</p>
             </div>
-
             <div class="playlist-action">
               spotify
               <span class="arrow">›</span>
@@ -759,15 +709,13 @@
 
           <a class="playlist" href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO1zE9rd" target="_blank" rel="noopener noreferrer">
             <div class="playlist-thumb">
-              <img src="assets/cerati.jpg" alt="Imagen artística">
+              <img src="assets/cerati-3.jpg" alt="This is Cerati">
             </div>
-
             <div class="playlist-body">
               <h3>This Is Gustavo Cerati</h3>
               <div class="tags">editorial • solista • imprescindible</div>
               <p>Una selección ideal para entrar de lleno en su universo creativo.</p>
             </div>
-
             <div class="playlist-action">
               spotify
               <span class="arrow">›</span>
@@ -775,16 +723,14 @@
           </a>
 
           <a class="playlist" href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO2mPzlU" target="_blank" rel="noopener noreferrer">
-            <div class="playlist-thumb logo">
-              <img src="assets/soda.png" alt="Soda Stereo">
+            <div class="playlist-thumb">
+              <img src="assets/soda-3.jpg" alt="This is Soda Stereo">
             </div>
-
             <div class="playlist-body">
               <h3>This Is Soda Stereo</h3>
               <div class="tags">rock • nostalgia • infinito</div>
               <p>Un viaje directo a la esencia sonora y emocional de la banda.</p>
             </div>
-
             <div class="playlist-action">
               spotify
               <span class="arrow">›</span>
@@ -809,7 +755,7 @@
       </section>
 
       <section class="message">
-        <h3>Mensaje</h3>
+        <h3>Mensaje de regalo</h3>
         <p>
           Para alguien que merece un detalle distinto:
           una página hecha de luces, canciones y memoria.
