@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cerati & Soda Stereo | Gracias Totales</title>
+  <meta name="description" content="Landing homenaje con playlists de Spotify inspiradas en Cerati y Soda Stereo." />
+  <meta name="theme-color" content="#0b0720" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#080512;
+      --bg2:#100a22;
+      --card:rgba(13,12,27,.58);
+      --card-2:rgba(255,255,255,.08);
+      --border:rgba(255,255,255,.14);
+      --text:#f6f4ff;
+      --muted:#cbc6e6;
+      --accent:#8b5cf6;
+      --accent2:#22d3ee;
+      --accent3:#ec4899;
+      --spotify:#1db954;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius-xl:30px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --max:470px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      min-height:100vh;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(5,4,14,.70), rgba(8,5,18,.90)),
+        url('assets/fondo.jpg') center center / cover no-repeat fixed;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(34,211,238,.16), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(236,72,153,.20), transparent 22%),
+        radial-gradient(circle at 50% 78%, rgba(139,92,246,.18), transparent 30%),
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.38));
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.12) 0.7px, transparent 0.9px);
+      background-size:12px 12px;
+      opacity:.12;
+      mix-blend-mode:screen;
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      min-height:100vh;
+      padding:20px 14px 26px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .app{
+      width:100%;
+      max-width:var(--max);
+      border-radius:var(--radius-xl);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(18,17,40,.52), rgba(7,7,20,.74));
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      box-shadow:var(--shadow);
+      position:relative;
+      isolation:isolate;
+    }
+
+    .hero{
+      position:relative;
+      min-height:560px;
+      padding:20px 18px 24px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.34) 55%, rgba(5,5,14,.70));
+    }
+
+    .hero-glow{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(40px);
+      pointer-events:none;
+      opacity:.7;
+      z-index:0;
+    }
+
+    .glow-a{
+      width:180px;
+      height:180px;
+      top:50px;
+      left:-35px;
+      background:rgba(34,211,238,.24);
+      animation:floatA 9s ease-in-out infinite;
+    }
+
+    .glow-b{
+      width:220px;
+      height:220px;
+      top:70px;
+      right:-80px;
+      background:rgba(236,72,153,.20);
+      animation:floatB 10s ease-in-out infinite;
+    }
+
+    .glow-c{
+      width:180px;
+      height:180px;
+      bottom:90px;
+      right:30px;
+      background:rgba(139,92,246,.22);
+      animation:floatA 11s ease-in-out infinite;
+    }
+
+    @keyframes floatA{
+      0%,100%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(-18px) translateX(10px) scale(1.08)}
+    }
+
+    @keyframes floatB{
+      0%,100%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(12px) translateX(-8px) scale(1.05)}
+    }
+
+    .topbar{
+      position:relative;
+      z-index:3;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:700;
+      color:#f7f5ff;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow:0 0 12px rgba(139,92,246,.85);
+      animation:pulse 1.8s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(1.35);opacity:.75}
+    }
+
+    .spotify-top{
+      text-decoration:none;
+      color:white;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      transition:.25s ease;
+    }
+
+    .spotify-top:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.12);
+    }
+
+    .spotify-icon{
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background:var(--spotify);
+      position:relative;
+      box-shadow:0 0 14px rgba(29,185,84,.45);
+      flex:0 0 16px;
+    }
+
+    .spotify-icon::before,
+    .spotify-icon::after{
+      content:"";
+      position:absolute;
+      left:3px;
+      right:3px;
+      border-top:2px solid #08110b;
+      border-radius:50%;
+    }
+
+    .spotify-icon::before{
+      top:5px;
+    }
+
+    .spotify-icon::after{
+      top:9px;
+    }
+
+    .hero-media{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .cerati{
+      position:absolute;
+      left:-54px;
+      bottom:0;
+      width:77%;
+      max-width:360px;
+      mix-blend-mode:screen;
+      opacity:.94;
+      filter:
+        grayscale(1)
+        contrast(1.16)
+        brightness(.96)
+        drop-shadow(0 0 18px rgba(34,211,238,.28))
+        drop-shadow(0 0 34px rgba(139,92,246,.26));
+      transform:translateZ(0);
+      mask-image:linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,.82) 78%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,.82) 78%, rgba(0,0,0,0) 100%);
+    }
+
+    .soda{
+      position:absolute;
+      right:10px;
+      top:78px;
+      width:126px;
+      opacity:.93;
+      filter:
+        drop-shadow(0 0 18px rgba(236,72,153,.34))
+        drop-shadow(0 0 28px rgba(34,211,238,.18));
+      animation:sodaFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes sodaFloat{
+      0%,100%{transform:translateY(0) rotate(-2deg)}
+      50%{transform:translateY(-8px) rotate(1deg)}
+    }
+
+    .triangle{
+      position:absolute;
+      left:18px;
+      bottom:106px;
+      width:160px;
+      height:160px;
+      border:1px solid rgba(236,72,153,.40);
+      clip-path:polygon(50% 0, 0 100%, 100% 100%);
+      opacity:.48;
+      filter:drop-shadow(0 0 12px rgba(236,72,153,.24));
+    }
+
+    .circle-line{
+      position:absolute;
+      right:70px;
+      top:155px;
+      width:84px;
+      height:84px;
+      border:1px solid rgba(34,211,238,.28);
+      border-radius:50%;
+      opacity:.5;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:3;
+      padding-top:128px;
+      text-align:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:#e8e4ff;
+      opacity:.95;
+      margin-bottom:10px;
+      text-shadow:0 0 12px rgba(139,92,246,.28);
+    }
+
+    .title-script{
+      font-family:'Playfair Display',serif;
+      font-size:26px;
+      line-height:1;
+      color:#f7b6ff;
+      text-shadow:
+        0 0 12px rgba(236,72,153,.55),
+        0 0 28px rgba(236,72,153,.25);
+      margin-bottom:2px;
+    }
+
+    .title-main{
+      font-size:52px;
+      line-height:.92;
+      font-weight:800;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      text-shadow:
+        0 0 16px rgba(255,255,255,.10),
+        0 0 36px rgba(139,92,246,.20);
+    }
+
+    .title-main span{
+      display:block;
+      font-size:18px;
+      margin:10px 0 8px;
+      letter-spacing:.34em;
+      color:#f4f0ff;
+      opacity:.98;
+    }
+
+    .subtitle{
+      width:min(100%, 320px);
+      margin:0 auto;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+      text-shadow:0 0 18px rgba(0,0,0,.35);
+    }
+
+    .quote{
+      width:min(100%, 340px);
+      margin:18px auto 0;
+      padding:14px 16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(6,6,20,.32);
+      backdrop-filter:blur(8px);
+      font-size:13px;
+      line-height:1.7;
+      color:#f3efff;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .quote small{
+      display:block;
+      margin-top:8px;
+      color:#f1a4ff;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .section{
+      padding:18px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .section-title h2{
+      font-size:16px;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+
+    .section-title p{
+      font-size:11px;
+      color:var(--muted);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .playlist-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .playlist{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+      padding:12px;
+      border-radius:20px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      transition:.28s ease;
+      overflow:hidden;
+    }
+
+    .playlist::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+      transform:translateX(-100%);
+      transition:.55s ease;
+    }
+
+    .playlist:hover::before{
+      transform:translateX(100%);
+    }
+
+    .playlist:hover{
+      transform:translateY(-3px);
+      border-color:rgba(255,255,255,.22);
+      box-shadow:0 16px 28px rgba(0,0,0,.20);
+    }
+
+    .playlist-thumb{
+      width:76px;
+      height:76px;
+      border-radius:16px;
+      overflow:hidden;
+      flex:0 0 76px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(135deg, rgba(139,92,246,.32), rgba(34,211,238,.22), rgba(236,72,153,.22));
+      display:grid;
+      place-items:center;
+    }
+
+    .playlist-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .playlist-thumb.logo img{
+      object-fit:contain;
+      padding:6px;
+      background:rgba(0,0,0,.10);
+    }
+
+    .playlist-body{
+      min-width:0;
+      flex:1;
+    }
+
+    .playlist-body h3{
+      font-size:14px;
+      font-weight:800;
+      line-height:1.3;
+      margin-bottom:4px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+
+    .playlist-body .tags{
+      font-size:11px;
+      color:#9fdfff;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+
+    .playlist-body p{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .playlist-action{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#6dff9f;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .playlist-action .arrow{
+      color:#fff;
+      font-size:22px;
+      line-height:1;
+      margin-left:2px;
+    }
+
+    .player-wrap{
+      padding:0 18px 18px;
+    }
+
+    .player-card{
+      padding:12px;
+      border-radius:22px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+    }
+
+    .player-card iframe{
+      width:100%;
+      height:152px;
+      border:0;
+      border-radius:16px;
+      display:block;
+    }
+
+    .message{
+      margin:0 18px 18px;
+      padding:18px;
+      border-radius:24px;
+      border:1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(139,92,246,.10), rgba(34,211,238,.07), rgba(236,72,153,.08)),
+        rgba(255,255,255,.05);
+    }
+
+    .message h3{
+      font-size:15px;
+      font-weight:800;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .message p{
+      font-size:13px;
+      line-height:1.8;
+      color:var(--muted);
+    }
+
+    .footer{
+      text-align:center;
+      padding:0 18px 22px;
+      color:var(--muted);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .footer-line{
+      width:84px;
+      height:4px;
+      margin:0 auto 14px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      box-shadow:0 0 18px rgba(139,92,246,.30);
+    }
+
+    @media (max-width:420px){
+      .hero{
+        min-height:540px;
+        padding:18px 16px 22px;
+      }
+
+      .hero-content{
+        padding-top:132px;
+      }
+
+      .title-main{
+        font-size:44px;
+      }
+
+      .title-script{
+        font-size:23px;
+      }
+
+      .cerati{
+        width:80%;
+        left:-62px;
+      }
+
+      .soda{
+        width:112px;
+        top:84px;
+        right:4px;
+      }
+
+      .playlist{
+        align-items:flex-start;
+      }
+
+      .playlist-action{
+        position:absolute;
+        right:12px;
+        bottom:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="app">
+
+      <header class="hero">
+        <div class="hero-glow glow-a"></div>
+        <div class="hero-glow glow-b"></div>
+        <div class="hero-glow glow-c"></div>
+
+        <div class="topbar">
+          <div class="badge">
+            <span class="dot"></span>
+            regalo musical
+          </div>
+
+          <a class="spotify-top" href="https://open.spotify.com/intl-es/artist/1QOmebWGB6FdFtW7Bo3F0W" target="_blank" rel="noopener noreferrer">
+            <span class="spotify-icon"></span>
+            abrir en spotify
+          </a>
+        </div>
+
+        <div class="hero-media">
+          <img src="assets/cerati.jpg" alt="Imagen artística en blanco y negro" class="cerati">
+          <img src="assets/soda.png" alt="Logo artístico de Soda Stereo" class="soda">
+          <div class="triangle"></div>
+          <div class="circle-line"></div>
+        </div>
+
+        <div class="hero-content">
+          <div class="eyebrow">música • poesía • eternidad</div>
+          <div class="title-script">Gustavo</div>
+          <h1 class="title-main">
+            Cerati
+            <span>&</span>
+            Soda Stereo
+          </h1>
+
+          <p class="subtitle">
+            Un landing para poner play, recordar, sentir y volver una y otra vez
+            a ese universo sonoro que nunca se apaga.
+          </p>
+
+          <div class="quote">
+            “Tarda en llegar… y al final, hay recompensa.”
+            <small>gracias totales</small>
+          </div>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>Playlists</h2>
+          <p>seleccionadas</p>
+        </div>
+
+        <div class="playlist-list">
+          <a class="playlist" href="https://open.spotify.com/intl-es/artist/1QOmebWGB6FdFtW7Bo3F0W" target="_blank" rel="noopener noreferrer">
+            <div class="playlist-thumb">
+              <img src="assets/cerati.jpg" alt="Imagen artística">
+            </div>
+
+            <div class="playlist-body">
+              <h3>Gustavo Cerati</h3>
+              <div class="tags">éxitos • esencia • profundo</div>
+              <p>Perfil oficial para recorrer álbumes, canciones y joyas de su etapa solista.</p>
+            </div>
+
+            <div class="playlist-action">
+              spotify
+              <span class="arrow">›</span>
+            </div>
+          </a>
+
+          <a class="playlist" href="https://open.spotify.com/intl-es/artist/7An4yvF7hDYDolN4m5zKBp" target="_blank" rel="noopener noreferrer">
+            <div class="playlist-thumb logo">
+              <img src="assets/soda.png" alt="Soda Stereo">
+            </div>
+
+            <div class="playlist-body">
+              <h3>Soda Stereo</h3>
+              <div class="tags">clásicos • himnos • leyenda</div>
+              <p>Perfil oficial con canciones eternas, discos inolvidables y toda su energía.</p>
+            </div>
+
+            <div class="playlist-action">
+              spotify
+              <span class="arrow">›</span>
+            </div>
+          </a>
+
+          <a class="playlist" href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO1zE9rd" target="_blank" rel="noopener noreferrer">
+            <div class="playlist-thumb">
+              <img src="assets/cerati.jpg" alt="Imagen artística">
+            </div>
+
+            <div class="playlist-body">
+              <h3>This Is Gustavo Cerati</h3>
+              <div class="tags">editorial • solista • imprescindible</div>
+              <p>Una selección ideal para entrar de lleno en su universo creativo.</p>
+            </div>
+
+            <div class="playlist-action">
+              spotify
+              <span class="arrow">›</span>
+            </div>
+          </a>
+
+          <a class="playlist" href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO2mPzlU" target="_blank" rel="noopener noreferrer">
+            <div class="playlist-thumb logo">
+              <img src="assets/soda.png" alt="Soda Stereo">
+            </div>
+
+            <div class="playlist-body">
+              <h3>This Is Soda Stereo</h3>
+              <div class="tags">rock • nostalgia • infinito</div>
+              <p>Un viaje directo a la esencia sonora y emocional de la banda.</p>
+            </div>
+
+            <div class="playlist-action">
+              spotify
+              <span class="arrow">›</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="player-wrap">
+        <div class="section-title" style="padding:0 2px 12px;">
+          <h2>Escuchá ahora</h2>
+          <p>player</p>
+        </div>
+
+        <div class="player-card">
+          <iframe
+            src="https://open.spotify.com/embed/artist/1QOmebWGB6FdFtW7Bo3F0W?utm_source=generator&theme=0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+      <section class="message">
+        <h3>Mensaje de regalo</h3>
+        <p>
+          Para alguien que merece un detalle distinto:
+          una página hecha de luces, canciones y memoria.
+          Que cada botón sea una puerta a esos temas que acompañan,
+          elevan y se quedan para siempre.
+          <br><br>
+          Ojalá este regalo sirva para volver a escuchar con calma,
+          con nostalgia bonita y con el volumen bien alto.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-line"></div>
+        hecho con música • diseño • emoción
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
