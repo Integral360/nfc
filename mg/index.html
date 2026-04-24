@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>M&G Comercializadora</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --azul:#0077b6;
+  --azul2:#00b4d8;
+  --oscuro:#061826;
+  --claro:#f4fbff;
+  --verde:#25D366;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left, rgba(0,180,216,.35), transparent 35%),
+    linear-gradient(145deg,#04111d,#08283f);
+  display:flex;
+  justify-content:center;
+  color:#123;
+}
+
+.app{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  background:linear-gradient(180deg,#ffffff,#eefaff);
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 0 40px rgba(0,0,0,.35);
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  padding:38px 22px 30px;
+  color:white;
+  text-align:center;
+  background:
+    linear-gradient(135deg,rgba(0,119,182,.96),rgba(0,180,216,.9)),
+    radial-gradient(circle at top right,rgba(255,255,255,.4),transparent 40%);
+  border-bottom-left-radius:34px;
+  border-bottom-right-radius:34px;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  top:-60px;
+  right:-60px;
+  animation:float 6s ease-in-out infinite;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:rgba(255,255,255,.09);
+  bottom:-50px;
+  left:-40px;
+  animation:float 8s ease-in-out infinite reverse;
+}
+
+.logo-box{
+  width:112px;
+  height:112px;
+  margin:0 auto 15px;
+  border-radius:30px;
+  background:white;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 16px 35px rgba(0,0,0,.22);
+  position:relative;
+  z-index:2;
+  animation:pop .8s ease;
+}
+
+.logo-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.logo-fallback{
+  font-size:28px;
+  font-weight:800;
+  color:var(--azul);
+}
+
+.hero h1{
+  position:relative;
+  z-index:2;
+  font-size:25px;
+  line-height:1.1;
+  font-weight:800;
+}
+
+.hero p{
+  position:relative;
+  z-index:2;
+  font-size:14px;
+  margin:11px auto 0;
+  max-width:330px;
+  opacity:.95;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:15px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);
+  font-size:12px;
+  font-weight:600;
+  position:relative;
+  z-index:2;
+}
+
+/* ACCIONES */
+.actions{
+  margin:-24px 18px 18px;
+  background:white;
+  border-radius:24px;
+  padding:14px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  position:relative;
+  z-index:5;
+  box-shadow:0 12px 30px rgba(0,77,120,.18);
+  animation:up .8s ease;
+}
+
+.action{
+  text-decoration:none;
+  color:#05324c;
+  background:#effaff;
+  border-radius:18px;
+  padding:12px 6px;
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+  transition:.25s;
+}
+
+.action span{
+  display:block;
+  font-size:23px;
+  margin-bottom:5px;
+}
+
+.action:hover{
+  transform:translateY(-4px);
+  background:#dff6ff;
+}
+
+/* SECCIONES */
+.section{
+  padding:20px;
+}
+
+.section-title{
+  margin-bottom:14px;
+}
+
+.section-title h2{
+  color:#005f8f;
+  font-size:20px;
+}
+
+.section-title p{
+  font-size:13px;
+  color:#5b6b75;
+  margin-top:4px;
+}
+
+/* CATEGORÍAS */
+.grid{
+  display:grid;
+  gap:14px;
+}
+
+.card{
+  background:white;
+  border-radius:24px;
+  padding:18px;
+  box-shadow:0 8px 24px rgba(0,68,110,.10);
+  border:1px solid rgba(0,119,182,.08);
+  animation:fadeIn linear both;
+  animation-timeline:view();
+  animation-range:entry 0% cover 22%;
+}
+
+.card-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#caf0f8,#e9fbff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+}
+
+.card h3{
+  color:#023e8a;
+  font-size:16px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.tag{
+  font-size:12px;
+  background:#eef9ff;
+  color:#06425f;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,119,182,.12);
+}
+
+/* CTA */
+.cta{
+  margin:10px 20px 25px;
+  border-radius:28px;
+  padding:24px 20px;
+  background:linear-gradient(135deg,#0077b6,#00b4d8);
+  color:white;
+  text-align:center;
+  box-shadow:0 14px 35px rgba(0,119,182,.28);
+}
+
+.cta h2{
+  font-size:22px;
+}
+
+.cta p{
+  font-size:13px;
+  opacity:.95;
+  margin:8px 0 16px;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:white;
+  color:#0077b6;
+  padding:13px 22px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+  transition:.25s;
+}
+
+.cta-btn:hover{
+  transform:scale(1.04);
+}
+
+/* BENEFICIOS */
+.benefits{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.benefit{
+  background:#f1fbff;
+  padding:13px;
+  border-radius:18px;
+  font-size:12px;
+  font-weight:600;
+  color:#06425f;
+}
+
+/* FLOAT */
+.float-wa{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:62px;
+  height:62px;
+  background:var(--verde);
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:30px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  z-index:30;
+  animation:pulse 1.8s infinite;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:22px 15px 28px;
+  font-size:12px;
+  color:#667;
+}
+
+.footer a{
+  color:#0077b6;
+  text-decoration:none;
+  font-weight:800;
+}
+
+/* ANIMACIONES */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(18px)}
+}
+
+@keyframes pop{
+  from{transform:scale(.75);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+@keyframes up{
+  from{transform:translateY(25px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}
+  70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+</style>
+</head>
+
+<body>
+
+<main class="app">
+
+  <section class="hero">
+    <div class="logo-box">
+      <img src="logo.png" alt="Logo M&G" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-fallback" style="display:none;">M&G</div>
+    </div>
+
+    <h1>M&G Comercializadora</h1>
+    <p>Productos de aseo, uso médico, desechables, industriales e institucionales para empresas, hogares y negocios.</p>
+    <div class="badge">Cotizaciones rápidas · Atención personalizada</div>
+  </section>
+
+  <section class="actions">
+    <a class="action" href="https://wa.me/message/4KJADAPYHM74C1">
+      <span>💬</span>WhatsApp
+    </a>
+    <a class="action" href="https://maps.app.goo.gl/43YxkccZriR2F6SX8?g_st=ac">
+      <span>📍</span>Ubicación
+    </a>
+    <a class="action" href="#catalogo">
+      <span>🛒</span>Catálogo
+    </a>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>Soluciones para tu negocio</h2>
+      <p>Encuentra productos esenciales para operación, limpieza, bioseguridad y dotación.</p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">✅ Atención por WhatsApp</div>
+      <div class="benefit">✅ Variedad de productos</div>
+      <div class="benefit">✅ Uso empresarial</div>
+      <div class="benefit">✅ Cotización rápida</div>
+    </div>
+  </section>
+
+  <section class="section" id="catalogo">
+    <div class="section-title">
+      <h2>Catálogo de productos</h2>
+      <p>Selecciona una categoría y solicita tu cotización.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="icon">🧼</div>
+          <h3>Productos de Aseo</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Traperos</span>
+          <span class="tag">Escobas</span>
+          <span class="tag">Recogedores</span>
+          <span class="tag">Desinfectantes</span>
+          <span class="tag">Blanqueadores</span>
+          <span class="tag">Jabón en polvo</span>
+          <span class="tag">Limpia vidrios</span>
+          <span class="tag">Desmanchadores</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="icon">🏥</div>
+          <h3>Uso Médico</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Gorros</span>
+          <span class="tag">Tapabocas</span>
+          <span class="tag">Batas desechables</span>
+          <span class="tag">Guantes</span>
+          <span class="tag">Pantalones blancos</span>
+          <span class="tag">Polainas</span>
+          <span class="tag">Rollo sábana camilla</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="icon">🍽️</div>
+          <h3>Desechables</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Vasos</span>
+          <span class="tag">Platos</span>
+          <span class="tag">Servilletas</span>
+          <span class="tag">Cubiertos</span>
+          <span class="tag">Contenedores</span>
+          <span class="tag">Portacomidas</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="icon">🦺</div>
+          <h3>Industrial</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Guantes de trabajo</span>
+          <span class="tag">Carnaza</span>
+          <span class="tag">Gafas de protección</span>
+          <span class="tag">Tapa oídos</span>
+          <span class="tag">Mascarillas industriales</span>
+          <span class="tag">Ropa de protección</span>
+          <span class="tag">Zapatos industriales</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="icon">🏢</div>
+          <h3>Institucional</h3>
+        </div>
+        <div class="tags">
+          <span class="tag">Bolsas de basura</span>
+          <span class="tag">Jabón de manos</span>
+          <span class="tag">Desengrasantes</span>
+          <span class="tag">Gel antibacterial</span>
+          <span class="tag">Guantes domésticos</span>
+          <span class="tag">Guantes vinilo</span>
+          <span class="tag">Guantes nitrilo</span>
+          <span class="tag">Puntos ecológicos</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>¿Necesitas una cotización?</h2>
+    <p>Escríbenos por WhatsApp y cuéntanos qué productos necesitas.</p>
+    <a class="cta-btn" href="https://wa.me/message/4KJADAPYHM74C1">Solicitar cotización</a>
+  </section>
+
+  <footer class="footer">
+    Powered by 
+    <a href="https://integral360.com.co/" target="_blank">Integral360</a>
+  </footer>
+
+</main>
+
+<a class="float-wa" href="https://wa.me/message/4KJADAPYHM74C1">💬</a>
+
+</body>
+</html>
