@@ -1,299 +1,675 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iván Mauricio Bolaños Muñoz | Arquitectura & Vehículos</title>
 
-<title>Iván Bolaños</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
+    :root {
+      --black: #050505;
+      --dark: #101010;
+      --gray: #1c1c1c;
+      --line: #353535;
+      --yellow: #ffd000;
+      --yellow2: #b89200;
+      --text: #ffffff;
+      --muted: #bdbdbd;
+      --green: #25d366;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body{
-font-family:Arial, sans-serif;
-background:#0a0a0a;
-color:#fff;
-display:flex;
-justify-content:center;
-}
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 208, 0, .18), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(255, 208, 0, .12), transparent 25%),
+        linear-gradient(160deg, #000, #111, #050505);
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
 
-.app{
-width:100%;
-max-width:430px;
-padding:18px;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(120deg, transparent 0%, transparent 45%, rgba(255,208,0,.08) 46%, transparent 48%),
+        linear-gradient(145deg, transparent 0%, transparent 65%, rgba(255,255,255,.05) 66%, transparent 68%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-/* HEADER */
+    .app {
+      width: 100%;
+      max-width: 460px;
+      min-height: 100vh;
+      padding: 18px;
+      position: relative;
+    }
 
-.header{
-text-align:center;
-margin-bottom:15px;
-}
+    .top-line {
+      height: 4px;
+      width: 90px;
+      background: linear-gradient(90deg, var(--yellow), transparent);
+      border-radius: 999px;
+      margin: 0 auto 14px;
+    }
 
-.logo{
-width:120px;
-margin-bottom:10px;
-}
+    .brand {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 26px;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      backdrop-filter: blur(14px);
+      animation: fadeUp .8s ease;
+    }
 
-.name{
-font-size:28px;
-font-weight:bold;
-}
+    .logo {
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      border-radius: 24px;
+      background: #fff;
+      padding: 8px;
+      box-shadow: 0 0 25px rgba(255,208,0,.25);
+    }
 
-.name span{
-color:#f5c400;
-}
+    .brand h1 {
+      margin-top: 12px;
+      font-size: 27px;
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
 
-/* HERO */
+    .brand h1 span {
+      color: var(--yellow);
+    }
 
-.hero{
-background:linear-gradient(145deg,#111,#1c1c1c);
-border-radius:25px;
-padding:20px;
-border:1px solid rgba(255,255,255,.1);
-text-align:center;
-}
+    .role {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
 
-.photo{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid #f5c400;
-margin-bottom:10px;
-}
+    .hero {
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 32px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03)),
+        linear-gradient(135deg, #111, #050505);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 22px 60px rgba(0,0,0,.65);
+      animation: fadeUp 1s ease;
+    }
 
-.subtitle{
-color:#bbb;
-font-size:14px;
-margin-bottom:15px;
-}
+    .photo-wrap {
+      position: relative;
+      height: 310px;
+      overflow: hidden;
+    }
 
-.actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.btn{
-padding:14px;
-border-radius:15px;
-text-decoration:none;
-font-weight:bold;
-text-align:center;
-}
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, #050505 3%, transparent 55%),
+        linear-gradient(120deg, rgba(255,208,0,.25), transparent 35%);
+    }
 
-.btn-yellow{
-background:#f5c400;
-color:#000;
-}
+    .hero-content {
+      padding: 0 18px 22px;
+      margin-top: -70px;
+      position: relative;
+      z-index: 2;
+    }
 
-.btn-dark{
-background:#222;
-color:#fff;
-border:1px solid #333;
-}
+    .chip {
+      display: inline-block;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,208,0,.14);
+      color: var(--yellow);
+      border: 1px solid rgba(255,208,0,.35);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-/* SELECTORES */
+    .hero-content h2 {
+      font-size: 31px;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
 
-.selector{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:15px;
-}
+    .hero-content h2 span {
+      color: var(--yellow);
+    }
 
-.card{
-padding:20px;
-border-radius:18px;
-text-align:center;
-font-weight:bold;
-cursor:pointer;
-}
+    .hero-content p {
+      color: #e2e2e2;
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 95%;
+    }
 
-.card-arch{
-background:#222;
-border:1px solid #333;
-}
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      margin-top: 18px;
+    }
 
-.card-veh{
-background:#f5c400;
-color:#000;
-}
+    .btn {
+      text-decoration: none;
+      border-radius: 18px;
+      padding: 14px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: .25s ease;
+      border: 1px solid rgba(255,255,255,.12);
+      cursor: pointer;
+      text-align: center;
+    }
 
-/* SECCIONES */
+    .btn:hover {
+      transform: translateY(-3px);
+    }
 
-.section{
-margin-top:15px;
-padding:15px;
-border-radius:20px;
-background:#151515;
-border:1px solid #2a2a2a;
-}
+    .btn-yellow {
+      background: linear-gradient(135deg, var(--yellow), #c99c00);
+      color: #000;
+      box-shadow: 0 12px 25px rgba(255,208,0,.18);
+    }
 
-.section h2{
-margin-bottom:10px;
-}
+    .btn-dark {
+      background: linear-gradient(135deg, #202020, #0b0b0b);
+      color: #fff;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-}
+    .btn-green {
+      background: linear-gradient(135deg, #25d366, #08783f);
+      color: #fff;
+    }
 
-.grid img{
-width:100%;
-height:120px;
-object-fit:cover;
-border-radius:12px;
-}
+    .selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+      animation: fadeUp 1.15s ease;
+    }
 
-/* VEHICULOS */
+    .select-card {
+      min-height: 112px;
+      border-radius: 24px;
+      padding: 18px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255,255,255,.13);
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-.vehicle{
-margin-top:12px;
-background:#111;
-border-radius:15px;
-overflow:hidden;
-border:1px solid #333;
-}
+    .select-card:hover {
+      transform: translateY(-3px);
+    }
 
-.vehicle img{
-width:100%;
-}
+    .select-card strong {
+      font-size: 18px;
+      line-height: 1.1;
+      z-index: 2;
+    }
 
-.vehicle a{
-display:block;
-padding:12px;
-background:#25D366;
-text-align:center;
-color:#fff;
-text-decoration:none;
-font-weight:bold;
-}
+    .select-card small {
+      font-size: 12px;
+      z-index: 2;
+    }
 
-/* FOOTER */
+    .arch-card {
+      background: linear-gradient(145deg, #222, #101010);
+      color: #fff;
+    }
 
-.footer{
-text-align:center;
-margin-top:20px;
-font-size:12px;
-color:#aaa;
-}
+    .veh-card {
+      background: linear-gradient(145deg, var(--yellow), #b88e00);
+      color: #000;
+    }
 
-.footer a{
-color:#f5c400;
-text-decoration:none;
-}
+    .select-card::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      right: -25px;
+      bottom: -25px;
+    }
 
-</style>
+    .section {
+      margin-top: 18px;
+      padding: 19px;
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+      border: 1px solid rgba(255,255,255,.11);
+      box-shadow: 0 18px 45px rgba(0,0,0,.5);
+      backdrop-filter: blur(14px);
+      animation: fadeUp 1.2s ease;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .section h2 span {
+      color: var(--yellow);
+    }
+
+    .section .mini-line {
+      width: 42px;
+      height: 4px;
+      background: var(--yellow);
+      border-radius: 999px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .services {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .service {
+      padding: 13px 14px;
+      border-radius: 17px;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.09);
+      color: #f3f3f3;
+      font-size: 14px;
+      display: flex;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .service b {
+      color: var(--yellow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .grid img {
+      width: 100%;
+      height: 132px;
+      object-fit: cover;
+      border-radius: 18px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .25s ease;
+    }
+
+    .grid img:hover {
+      transform: scale(1.03);
+      filter: brightness(1.1);
+    }
+
+    .vehicle-card {
+      margin-top: 14px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 35px rgba(0,0,0,.4);
+    }
+
+    .vehicle-card img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+
+    .vehicle-info {
+      padding: 14px;
+    }
+
+    .vehicle-info h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .vehicle-info p {
+      margin: 0 0 11px;
+      font-size: 13px;
+    }
+
+    .contact-strip {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 24px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.12);
+      display: grid;
+      gap: 11px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #e9e9e9;
+      font-size: 14px;
+    }
+
+    .contact-item span {
+      color: var(--yellow);
+      font-size: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 26px 0 12px;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--yellow);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 18px;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 86vh;
+      border-radius: 20px;
+      box-shadow: 0 0 45px rgba(0,0,0,.8);
+    }
+
+    .close {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      font-size: 34px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 18px;
+      right: calc(50% - 215px + 18px);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 26px;
+      box-shadow: 0 15px 35px rgba(0,0,0,.45);
+      z-index: 20;
+      border: 2px solid rgba(255,255,255,.25);
+    }
+
+    @media (max-width: 460px) {
+      .floating-whatsapp {
+        right: 18px;
+      }
+
+      .photo-wrap {
+        height: 285px;
+      }
+
+      .hero-content h2 {
+        font-size: 28px;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-<div class="app">
+  <main class="app">
 
-<!-- LOGO -->
-<div class="header">
-<img src="assets/logo.jpeg" class="logo">
-<div class="name">Iván Mauricio <span>Bolaños Muñoz</span></div>
-</div>
+    <div class="top-line"></div>
 
-<!-- HERO -->
-<div class="hero">
+    <header class="brand">
+      <img src="assets/logo.jpeg" alt="Logo Iván Bolaños Arquitecto" class="logo">
+      <h1>Iván Mauricio <span>Bolaños Muñoz</span></h1>
+      <div class="role">Arquitectura & Comercialización de Vehículos</div>
+    </header>
 
-<img src="assets/foto.jpg" class="photo">
+    <section class="hero">
+      <div class="photo-wrap">
+        <img src="assets/foto.jpg" alt="Iván Mauricio Bolaños Muñoz">
+      </div>
 
-<div class="subtitle">
-Arquitecto | Comercialización de vehículos
-</div>
+      <div class="hero-content">
+        <span class="chip">Perfil profesional multifunción</span>
 
-<div class="actions">
-<a href="https://wa.me/573178821345" class="btn btn-yellow">WhatsApp</a>
-<a href="tel:3178821345" class="btn btn-dark">Llamar</a>
-</div>
+        <h2>Diseño, construcción y <span>vehículos</span></h2>
 
-</div>
+        <p>
+          Arquitecto con enfoque moderno y funcional. Desarrollo proyectos, renders y espacios con identidad.
+          También acompaño la comercialización de vehículos seleccionados.
+        </p>
 
-<!-- SELECTOR -->
-<div class="selector">
-<div class="card card-arch" onclick="scrollToSection('arquitectura')">
-Arquitectura
-</div>
+        <div class="actions">
+          <a href="https://wa.me/573178821345" class="btn btn-yellow">💬 WhatsApp</a>
+          <a href="tel:3178821345" class="btn btn-dark">📞 Llamar</a>
+          <a href="#arquitectura" class="btn btn-dark">🏗️ Arquitectura</a>
+          <a href="#vehiculos" class="btn btn-yellow">🚗 Vehículos</a>
+        </div>
+      </div>
+    </section>
 
-<div class="card card-veh" onclick="scrollToSection('vehiculos')">
-Vehículos
-</div>
-</div>
+    <nav class="selector">
+      <a href="#arquitectura" class="select-card arch-card">
+        <strong>Arquitectura</strong>
+        <small>Proyectos, renders y diseño</small>
+      </a>
 
-<!-- ARQUITECTURA -->
-<div id="arquitectura" class="section">
+      <a href="#vehiculos" class="select-card veh-card">
+        <strong>Vehículos</strong>
+        <small>Disponibles y consultas</small>
+      </a>
+    </nav>
 
-<h2>Arquitectura & Diseño</h2>
+    <section id="arquitectura" class="section">
+      <div class="section-title">
+        <h2>Arquitectura <span>& Diseño</span></h2>
+        <div class="mini-line"></div>
+      </div>
 
-<div class="grid">
-<img src="assets/arq1.jpg">
-<img src="assets/arq2.jpg">
-<img src="assets/arq3.jpg">
-<img src="assets/arq4.jpg">
-<img src="assets/arq5.jpg">
-<img src="assets/arq6.jpg">
-</div>
+      <p>
+        Propuestas arquitectónicas con estética contemporánea, funcionalidad y presentación visual profesional.
+      </p>
 
-<a href="https://wa.me/573178821345?text=Hola%20quiero%20cotizar%20un%20proyecto"
-class="btn btn-yellow" style="margin-top:10px;display:block;">
-Cotizar proyecto
-</a>
+      <div class="grid">
+        <img src="assets/arq1.jpg" alt="Proyecto arquitectura 1" onclick="openLightbox(this.src)">
+        <img src="assets/arq2.jpg" alt="Proyecto arquitectura 2" onclick="openLightbox(this.src)">
+        <img src="assets/arq3.jpg" alt="Proyecto arquitectura 3" onclick="openLightbox(this.src)">
+        <img src="assets/arq4.jpg" alt="Proyecto arquitectura 4" onclick="openLightbox(this.src)">
+        <img src="assets/arq5.jpg" alt="Proyecto arquitectura 5" onclick="openLightbox(this.src)">
+        <img src="assets/arq6.jpg" alt="Proyecto arquitectura 6" onclick="openLightbox(this.src)">
+      </div>
 
-</div>
+      <div class="services">
+        <div class="service"><b>01</b> Diseño arquitectónico residencial y comercial</div>
+        <div class="service"><b>02</b> Modelado 3D y renders profesionales</div>
+        <div class="service"><b>03</b> Remodelaciones y diseño de interiores</div>
+        <div class="service"><b>04</b> Conceptualización de espacios modernos</div>
+      </div>
 
-<!-- VEHICULOS -->
-<div id="vehiculos" class="section">
+      <a class="btn btn-yellow" style="width:100%; margin-top:14px;"
+         href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20quiero%20cotizar%20un%20proyecto%20de%20arquitectura">
+        💬 Cotizar proyecto
+      </a>
+    </section>
 
-<h2>Vehículos disponibles</h2>
+    <section id="vehiculos" class="section">
+      <div class="section-title">
+        <h2>Vehículos <span>Disponibles</span></h2>
+        <div class="mini-line"></div>
+      </div>
 
-<div class="vehicle">
-<img src="assets/vehi1.jpg">
-<a href="https://wa.me/573178821345?text=Me%20interesa%20la%20AKT">
-Consultar
-</a>
-</div>
+      <p>
+        Consulta disponibilidad, precio, estado del vehículo, documentación y opciones de negociación.
+      </p>
 
-<div class="vehicle">
-<img src="assets/vehi2.jpg">
-<a href="https://wa.me/573178821345?text=Me%20interesa%20el%20Kia">
-Consultar
-</a>
-</div>
+      <div class="vehicle-card">
+        <img src="assets/vehi1.jpg" alt="AKT TTR 200 EIII" onclick="openLightbox(this.src)">
+        <div class="vehicle-info">
+          <h3>AKT TTR 200 EIII</h3>
+          <p>Modelo 2022, documentos al día y lista para consulta.</p>
+          <a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20la%20AKT%20TTR%20200%20EIII">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
 
-<div class="vehicle">
-<img src="assets/vehi3.jpg">
-<a href="https://wa.me/573178821345?text=Me%20interesa%20Mitsubishi">
-Consultar
-</a>
-</div>
+      <div class="vehicle-card">
+        <img src="assets/vehi2.jpg" alt="Kia Koup" onclick="openLightbox(this.src)">
+        <div class="vehicle-info">
+          <h3>Kia Koup</h3>
+          <p>Consulta precio, estado y disponibilidad.</p>
+          <a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20el%20Kia%20Koup">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
 
-<div class="vehicle">
-<img src="assets/vehi6.jpg">
-<a href="https://wa.me/573178821345?text=Me%20interesa%20Fiat">
-Consultar
-</a>
-</div>
+      <div class="vehicle-card">
+        <img src="assets/vehi3.jpg" alt="Mitsubishi Eclipse Cross" onclick="openLightbox(this.src)">
+        <div class="vehicle-info">
+          <h3>Mitsubishi Eclipse Cross</h3>
+          <p>Modelo 2021. Consulta condiciones y disponibilidad.</p>
+          <a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20la%20Mitsubishi%20Eclipse%20Cross">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
 
-</div>
+      <div class="vehicle-card">
+        <img src="assets/vehi6.jpg" alt="Fiat 750Z" onclick="openLightbox(this.src)">
+        <div class="vehicle-info">
+          <h3>Fiat 750Z</h3>
+          <p>Vehículo clásico. Consulta detalles y disponibilidad.</p>
+          <a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20el%20Fiat%20750Z">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
 
-<div class="footer">
-Powered by <a href="https://integral360.com.co">Integral360</a>
-</div>
+    </section>
 
-</div>
+    <section class="contact-strip">
+      <div class="contact-item"><span>📞</span> 317 882 1345</div>
+      <div class="contact-item"><span>💬</span> WhatsApp y llamadas</div>
+      <div class="contact-item"><span>📍</span> Atención personalizada</div>
+    </section>
 
-<script>
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-</script>
+    <footer class="footer">
+      Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a>
+    </footer>
+
+  </main>
+
+  <a class="floating-whatsapp" href="https://wa.me/573178821345" aria-label="WhatsApp">💬</a>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Vista ampliada">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
