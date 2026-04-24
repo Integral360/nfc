@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M&G Comercializadora</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --azul:#0077b6;
-  --azul2:#00b4d8;
+  --azul:#00aeea;
+  --azul-oscuro:#171934;
+  --celeste:#6bd5ec;
+  --blanco:#ffffff;
   --verde:#25D366;
 }
 
@@ -22,7 +24,7 @@
 }
 
 body{
-  background:linear-gradient(145deg,#04111d,#08283f);
+  background:linear-gradient(145deg,#10162f,#00aeea);
   display:flex;
   justify-content:center;
 }
@@ -30,259 +32,499 @@ body{
 .app{
   width:100%;
   max-width:430px;
-  background:#fff;
   min-height:100vh;
+  background:#f6fcff;
+  overflow:hidden;
+  box-shadow:0 0 40px rgba(0,0,0,.35);
 }
 
 /* HERO */
 .hero{
-  padding:40px 20px;
+  background:
+    radial-gradient(circle at top left,rgba(255,255,255,.55),transparent 28%),
+    linear-gradient(135deg,#6bd5ec,#00aeea);
   text-align:center;
-  color:white;
-  background:linear-gradient(135deg,#0077b6,#00b4d8);
+  padding:36px 20px 32px;
+  color:var(--azul-oscuro);
+  border-bottom-left-radius:34px;
+  border-bottom-right-radius:34px;
 }
 
-.logo-box{
-  width:120px;
-  height:120px;
-  margin:auto;
-  border-radius:30px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:15px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+.logo{
+  width:150px;
+  height:150px;
+  margin:0 auto 18px;
+  border-radius:50%;
   overflow:hidden;
+  background:white;
+  padding:5px;
+  box-shadow:0 14px 32px rgba(0,0,0,.22);
+  animation:pop .8s ease;
 }
 
-.logo-box img{
-  width:120%;
-  height:120%;
+.logo img{
+  width:100%;
+  height:100%;
   object-fit:cover;
 }
 
-.hero h1{font-size:22px;font-weight:800;}
-.hero p{font-size:14px;margin-top:10px;}
+.hero h1{
+  font-size:27px;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.hero p{
+  font-size:14px;
+  font-weight:500;
+  margin-top:10px;
+}
 
 /* BOTONES */
 .actions{
+  margin:-22px 16px 20px;
+  background:white;
+  border-radius:24px;
+  padding:14px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  padding:15px;
+  box-shadow:0 12px 30px rgba(0,0,0,.16);
+  position:relative;
+  z-index:5;
 }
 
 .action{
-  background:#eef9ff;
-  text-align:center;
-  padding:12px;
-  border-radius:15px;
   text-decoration:none;
+  background:#edfaff;
+  color:var(--azul-oscuro);
+  text-align:center;
+  border-radius:18px;
+  padding:12px 6px;
   font-size:12px;
-  font-weight:600;
+  font-weight:700;
+  transition:.25s;
 }
 
 .action span{
   display:block;
-  font-size:22px;
+  font-size:23px;
+  margin-bottom:4px;
+}
+
+.action:hover{
+  transform:translateY(-4px);
 }
 
 /* SECCIONES */
-.section{padding:20px;}
-.section h2{color:#0077b6;margin-bottom:10px;}
+.section{
+  padding:20px;
+}
 
-/* CARDS */
+.section h2{
+  color:var(--azul-oscuro);
+  font-size:21px;
+  margin-bottom:6px;
+}
+
+.section p{
+  font-size:13px;
+  color:#53636d;
+}
+
+/* CARRUSEL */
+.carousel{
+  margin-top:16px;
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  box-shadow:0 14px 35px rgba(0,0,0,.18);
+  background:white;
+}
+
+.track{
+  display:flex;
+  transition:transform .5s ease;
+}
+
+.slide{
+  min-width:100%;
+}
+
+.slide img{
+  width:100%;
+  display:block;
+  aspect-ratio:1/1.23;
+  object-fit:cover;
+}
+
+.carousel-buttons{
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:space-between;
+  transform:translateY(-50%);
+  padding:0 10px;
+}
+
+.carousel-buttons button{
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.9);
+  color:var(--azul-oscuro);
+  font-size:22px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  padding:12px;
+  background:white;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#b7dce8;
+}
+
+.dot.active{
+  background:var(--azul);
+}
+
+/* CATALOGO */
 .card{
-  background:#f7fcff;
-  padding:15px;
-  border-radius:18px;
-  margin-bottom:15px;
+  background:white;
+  border-radius:22px;
+  padding:16px;
+  margin-top:14px;
+  box-shadow:0 8px 24px rgba(0,68,110,.10);
+  border:1px solid rgba(0,174,234,.13);
 }
 
 .card h3{
-  margin-bottom:8px;
-  color:#023e8a;
-}
-
-.sub{
+  color:var(--azul-oscuro);
+  font-size:16px;
   margin-bottom:10px;
 }
 
-.sub strong{
-  font-size:13px;
-  color:#0077b6;
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
-.sub p{
-  font-size:13px;
+.tag{
+  background:#eefdff;
+  color:#143044;
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* REDES */
+.socials{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+
+.socials a{
+  text-decoration:none;
+  text-align:center;
+  background:white;
+  border-radius:18px;
+  padding:13px 8px;
+  color:var(--azul-oscuro);
+  font-size:12px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(0,0,0,.10);
+}
+
+.socials span{
+  display:block;
+  font-size:24px;
+  margin-bottom:4px;
 }
 
 /* CTA */
 .cta{
+  margin:10px 20px 25px;
+  border-radius:28px;
+  padding:24px 20px;
   text-align:center;
-  background:#00b4d8;
+  background:linear-gradient(135deg,#171934,#00aeea);
   color:white;
-  padding:25px;
+  box-shadow:0 14px 35px rgba(0,0,0,.22);
+}
+
+.cta h2{
+  font-size:22px;
+}
+
+.cta p{
+  font-size:13px;
+  margin:8px 0 16px;
+  color:white;
 }
 
 .cta a{
   display:inline-block;
   background:white;
-  color:#0077b6;
-  padding:10px 20px;
-  border-radius:20px;
+  color:var(--azul-oscuro);
+  padding:13px 22px;
+  border-radius:999px;
   text-decoration:none;
-  font-weight:700;
-  margin-top:10px;
+  font-weight:800;
 }
 
 /* FLOAT */
-.float{
+.float-wa{
   position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  width:60px;
-  height:60px;
+  right:18px;
+  bottom:18px;
+  width:62px;
+  height:62px;
+  background:var(--verde);
+  color:white;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
-  color:white;
   text-decoration:none;
+  font-size:30px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  z-index:30;
+  animation:pulse 1.8s infinite;
 }
 
 /* FOOTER */
 .footer{
   text-align:center;
+  padding:22px 15px 28px;
   font-size:12px;
-  padding:15px;
+  color:#667;
 }
 
 .footer a{
   color:#0077b6;
-  font-weight:bold;
   text-decoration:none;
+  font-weight:800;
 }
 
+@keyframes pop{
+  from{transform:scale(.75);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}
+  70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<main class="app">
 
-<div class="hero">
-  <div class="logo-box">
-    <img src="logo.jpg" onerror="this.style.display='none'">
-  </div>
-  <h1>M&G Comercializadora</h1>
-  <p>Soluciones en aseo, bioseguridad e insumos</p>
-</div>
+  <section class="hero">
+    <div class="logo">
+      <img src="assets/logo.jpg" alt="Logo M&G Comercializadora">
+    </div>
+    <h1>M&G Comercializadora</h1>
+    <p>Aseo · Desechables · Piñatería · Productos institucionales</p>
+  </section>
 
-<div class="actions">
-  <a class="action" href="https://wa.me/message/4KJADAPYHM74C1"><span>💬</span>WhatsApp</a>
-  <a class="action" href="tel:+573000000000"><span>📞</span>Llamar</a>
-  <a class="action" href="https://maps.app.goo.gl/43YxkccZriR2F6SX8?g_st=ac"><span>📍</span>Ubicación</a>
-</div>
+  <section class="actions">
+    <a class="action" href="https://wa.me/message/4KJADAPYHM74C1">
+      <span>💬</span>WhatsApp
+    </a>
+    <a class="action" href="tel:+573165766374">
+      <span>📞</span>Llamar
+    </a>
+    <a class="action" href="https://maps.app.goo.gl/43YxkccZriR2F6SX8?g_st=ac">
+      <span>📍</span>Ubicación
+    </a>
+  </section>
 
-<div class="section">
-<h2>Catálogo</h2>
+  <section class="section">
+    <h2>Todo en un solo lugar</h2>
+    <p>Productos para empresas, hogares, instituciones, negocios y eventos.</p>
 
-<div class="card">
-<h3>🧼 Aseo</h3>
-<div class="sub">
-<strong>Limpieza general:</strong>
-<p>Traperos, escobas, recogedores</p>
-</div>
-<div class="sub">
-<strong>Químicos:</strong>
-<p>Desinfectantes, blanqueadores, desmanchadores</p>
-</div>
-<div class="sub">
-<strong>Especializados:</strong>
-<p>Limpia vidrios, jabón en polvo</p>
-</div>
-</div>
+    <div class="carousel">
+      <div class="track" id="track">
+        <div class="slide"><img src="assets/foto6.jpg" alt="M&G Comercializadora"></div>
+        <div class="slide"><img src="assets/foto1.jpg" alt="Productos de aseo"></div>
+        <div class="slide"><img src="assets/foto2.jpg" alt="Productos de uso médico"></div>
+        <div class="slide"><img src="assets/foto5.jpg" alt="Productos desechables"></div>
+        <div class="slide"><img src="assets/foto4.jpg" alt="Productos industriales"></div>
+        <div class="slide"><img src="assets/foto3.jpg" alt="Productos institucionales"></div>
+        <div class="slide"><img src="assets/foto7.jpg" alt="Redes sociales"></div>
+        <div class="slide"><img src="assets/foto8.jpg" alt="M&G"></div>
+      </div>
 
-<div class="card">
-<h3>🏥 Uso Médico</h3>
-<div class="sub">
-<strong>Protección:</strong>
-<p>Tapabocas, gorros, guantes</p>
-</div>
-<div class="sub">
-<strong>Dotación:</strong>
-<p>Batas, pantalones, polainas</p>
-</div>
-<div class="sub">
-<strong>Insumos:</strong>
-<p>Sábanas camilla</p>
-</div>
-</div>
+      <div class="carousel-buttons">
+        <button onclick="prevSlide()">‹</button>
+        <button onclick="nextSlide()">›</button>
+      </div>
 
-<div class="card">
-<h3>🍽️ Desechables</h3>
-<div class="sub">
-<strong>Consumo:</strong>
-<p>Vasos, platos, cubiertos</p>
-</div>
-<div class="sub">
-<strong>Complementos:</strong>
-<p>Servilletas, contenedores</p>
-</div>
-</div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>🦺 Industrial</h3>
-<div class="sub">
-<strong>Protección personal:</strong>
-<p>Guantes, gafas, tapa oídos</p>
-</div>
-<div class="sub">
-<strong>Seguridad:</strong>
-<p>Mascarillas, ropa de protección</p>
-</div>
-<div class="sub">
-<strong>Dotación:</strong>
-<p>Zapatos industriales</p>
-</div>
-</div>
+  <section class="section">
+    <h2>Catálogo principal</h2>
+    <p>Solicita cotización según la categoría que necesitas.</p>
 
-<div class="card">
-<h3>🏢 Institucional</h3>
-<div class="sub">
-<strong>Higiene:</strong>
-<p>Jabón, gel antibacterial</p>
-</div>
-<div class="sub">
-<strong>Residuos:</strong>
-<p>Bolsas de basura, puntos ecológicos</p>
-</div>
-<div class="sub">
-<strong>Guantes:</strong>
-<p>Domésticos, vinilo, nitrilo</p>
-</div>
-</div>
+    <div class="card">
+      <h3>🧼 Productos de aseo</h3>
+      <div class="tags">
+        <span class="tag">Traperos</span>
+        <span class="tag">Escobas</span>
+        <span class="tag">Recogedores</span>
+        <span class="tag">Desinfectantes</span>
+        <span class="tag">Blanqueadores</span>
+        <span class="tag">Jabón en polvo</span>
+        <span class="tag">Limpia vidrios</span>
+        <span class="tag">Desmanchadores</span>
+      </div>
+    </div>
 
-</div>
+    <div class="card">
+      <h3>🏥 Uso médico y alimentos</h3>
+      <div class="tags">
+        <span class="tag">Gorros</span>
+        <span class="tag">Tapabocas</span>
+        <span class="tag">Batas desechables</span>
+        <span class="tag">Guantes</span>
+        <span class="tag">Pantalones blancos</span>
+        <span class="tag">Polainas</span>
+        <span class="tag">Rollos sábana camilla</span>
+      </div>
+    </div>
 
-<div class="cta">
-<h2>Solicita tu cotización</h2>
-<p>Atención rápida por WhatsApp</p>
-<a href="https://wa.me/message/4KJADAPYHM74C1">Escribir ahora</a>
-</div>
+    <div class="card">
+      <h3>🍽️ Desechables</h3>
+      <div class="tags">
+        <span class="tag">Vasos</span>
+        <span class="tag">Platos</span>
+        <span class="tag">Servilletas</span>
+        <span class="tag">Cubiertos</span>
+        <span class="tag">Contenedores</span>
+        <span class="tag">Portacomidas</span>
+      </div>
+    </div>
 
-<div class="footer">
-Powered by <a href="https://integral360.com.co/">Integral360</a>
-</div>
+    <div class="card">
+      <h3>🦺 Industriales</h3>
+      <div class="tags">
+        <span class="tag">Guantes de trabajo</span>
+        <span class="tag">Guantes de carnaza</span>
+        <span class="tag">Gafas de protección</span>
+        <span class="tag">Tapa oídos</span>
+        <span class="tag">Mascarillas industriales</span>
+        <span class="tag">Ropa de protección</span>
+        <span class="tag">Zapatos industriales</span>
+      </div>
+    </div>
 
-</div>
+    <div class="card">
+      <h3>🏢 Institucionales</h3>
+      <div class="tags">
+        <span class="tag">Bolsas de basura</span>
+        <span class="tag">Jabón de manos</span>
+        <span class="tag">Desengrasante</span>
+        <span class="tag">Gel antibacterial</span>
+        <span class="tag">Guantes domésticos</span>
+        <span class="tag">Guantes de vinilo</span>
+        <span class="tag">Guantes de nitrilo</span>
+        <span class="tag">Puntos ecológicos</span>
+      </div>
+    </div>
+  </section>
 
-<a class="float" href="https://wa.me/message/4KJADAPYHM74C1">💬</a>
+  <section class="section">
+    <h2>Síguenos en redes</h2>
+    <p>Conoce novedades, productos y promociones.</p>
+
+    <div class="socials">
+      <a href="https://www.tiktok.com/@comercializadoramygmd?_r=1&_t=ZS-95nD9Mz06wU" target="_blank">
+        <span>🎵</span>TikTok
+      </a>
+      <a href="https://www.facebook.com/share/17FGKHSwea/" target="_blank">
+        <span>📘</span>Facebook
+      </a>
+      <a href="https://www.instagram.com/comercializadoramygmd?igsh=MXhpbHB2dzhqZ2k1Nw==" target="_blank">
+        <span>📸</span>Instagram
+      </a>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>¿Necesitas una cotización?</h2>
+    <p>Escríbenos por WhatsApp y cuéntanos qué productos necesitas.</p>
+    <a href="https://wa.me/message/4KJADAPYHM74C1">Solicitar cotización</a>
+  </section>
+
+  <footer class="footer">
+    Landing desarrollado por 
+    <a href="https://integral360.com.co/" target="_blank">Integral360</a>
+  </footer>
+
+</main>
+
+<a class="float-wa" href="https://wa.me/message/4KJADAPYHM74C1">💬</a>
+
+<script>
+const track = document.getElementById('track');
+const dotsBox = document.getElementById('dots');
+const slides = document.querySelectorAll('.slide');
+let index = 0;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if(i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsBox.appendChild(dot);
+});
+
+function updateCarousel(){
+  track.style.transform = `translateX(-${index * 100}%)`;
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide(){
+  index = (index + 1) % slides.length;
+  updateCarousel();
+}
+
+function prevSlide(){
+  index = (index - 1 + slides.length) % slides.length;
+  updateCarousel();
+}
+
+function goToSlide(i){
+  index = i;
+  updateCarousel();
+}
+
+setInterval(nextSlide, 4500);
+</script>
 
 </body>
 </html>
