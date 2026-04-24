@@ -6,7 +6,6 @@
 <title>Iván Mauricio Bolaños Jácome</title>
 
 <style>
-
 *{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
@@ -16,28 +15,34 @@
 --green:#25d366;
 }
 
+html{scroll-behavior:smooth;}
+
 body{
 min-height:100vh;
-font-family:Arial;
+font-family:Arial, Helvetica, sans-serif;
+background:#000;
 color:var(--text);
-background:
-linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.85)),
-url("assets/fondo.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
 display:flex;
 justify-content:center;
+overflow-x:hidden;
 }
 
-/* CONTENEDOR */
 .app{
 width:100%;
 max-width:460px;
+min-height:100vh;
 padding:18px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.82)),
+url("assets/fondo.jpg");
+background-size:cover;
+background-position:center top;
+background-repeat:no-repeat;
+box-shadow:0 0 90px rgba(0,0,0,.95);
 }
 
-/* LINEA SUPERIOR */
 .top-line{
 height:4px;
 width:90px;
@@ -46,19 +51,17 @@ border-radius:999px;
 margin:0 auto 14px;
 }
 
-/* BLOQUES TRANSPARENTES */
 .brand,
 .hero,
 .section{
-background:rgba(10,10,10,.45);
+background:rgba(10,10,10,.38);
 border:1px solid rgba(255,255,255,.15);
 border-radius:28px;
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+box-shadow:0 20px 60px rgba(0,0,0,.55);
 }
 
-/* HEADER */
 .brand{
 text-align:center;
 padding:14px;
@@ -66,27 +69,32 @@ padding:14px;
 
 .logo{
 width:120px;
+height:120px;
+object-fit:contain;
 background:#fff;
-border-radius:20px;
+border-radius:22px;
 padding:8px;
 margin-bottom:10px;
+box-shadow:0 0 25px rgba(255,208,0,.35);
 }
 
 .brand h1{
 font-size:26px;
+line-height:1.05;
 }
 
-.brand span{
+.brand h1 span{
 color:var(--yellow);
 }
 
 .role{
 font-size:12px;
 color:var(--muted);
-margin-top:5px;
+margin-top:6px;
+text-transform:uppercase;
+letter-spacing:.5px;
 }
 
-/* HERO */
 .hero{
 margin-top:15px;
 overflow:hidden;
@@ -95,6 +103,7 @@ overflow:hidden;
 .photo-wrap{
 height:300px;
 position:relative;
+overflow:hidden;
 }
 
 .photo-wrap img{
@@ -102,7 +111,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 object-position:center top;
-opacity:.9;
+opacity:.88;
 }
 
 .photo-wrap::after{
@@ -110,28 +119,32 @@ content:"";
 position:absolute;
 inset:0;
 background:
-linear-gradient(to top, rgba(0,0,0,.9), transparent 60%),
-linear-gradient(120deg, rgba(255,208,0,.2), transparent);
+linear-gradient(to top, rgba(0,0,0,.90), transparent 62%),
+linear-gradient(120deg, rgba(255,208,0,.18), transparent 45%);
 }
 
 .hero-content{
 padding:15px;
-margin-top:-60px;
+margin-top:-62px;
 position:relative;
+z-index:2;
 }
 
 .chip{
-background:rgba(255,208,0,.15);
-color:var(--yellow);
-padding:6px 12px;
-border-radius:20px;
-font-size:12px;
 display:inline-block;
+background:rgba(255,208,0,.18);
+color:var(--yellow);
+border:1px solid rgba(255,208,0,.35);
+padding:7px 12px;
+border-radius:999px;
+font-size:12px;
+font-weight:bold;
 margin-bottom:10px;
 }
 
 .hero h2{
 font-size:28px;
+line-height:1.08;
 }
 
 .hero h2 span{
@@ -140,11 +153,11 @@ color:var(--yellow);
 
 .hero p{
 font-size:14px;
-color:#ddd;
+color:#e0e0e0;
 margin-top:8px;
+line-height:1.45;
 }
 
-/* BOTONES */
 .actions{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -158,6 +171,13 @@ border-radius:15px;
 text-align:center;
 text-decoration:none;
 font-weight:bold;
+font-size:14px;
+transition:.25s;
+border:1px solid rgba(255,255,255,.12);
+}
+
+.btn:hover{
+transform:translateY(-3px);
 }
 
 .btn-yellow{
@@ -166,22 +186,32 @@ color:#000;
 }
 
 .btn-dark{
-background:#1a1a1a;
+background:rgba(20,20,20,.72);
 color:#fff;
-border:1px solid #333;
+border:1px solid rgba(255,255,255,.16);
 }
 
-/* SECCIONES */
 .section{
 margin-top:15px;
 padding:15px;
+}
+
+.section h2{
+font-size:22px;
+margin-bottom:10px;
 }
 
 .section h2 span{
 color:var(--yellow);
 }
 
-/* GRID */
+.section p{
+color:var(--muted);
+font-size:14px;
+line-height:1.45;
+margin-bottom:12px;
+}
+
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -195,111 +225,174 @@ height:120px;
 object-fit:cover;
 border-radius:12px;
 cursor:pointer;
+border:1px solid rgba(255,255,255,.12);
 }
 
-/* VEHICULOS */
-.vehicle{
-margin-top:10px;
-border-radius:15px;
+.services{
+display:grid;
+gap:8px;
+margin-top:12px;
+}
+
+.service{
+background:rgba(0,0,0,.38);
+border:1px solid rgba(255,255,255,.1);
+border-radius:14px;
+padding:11px;
+font-size:14px;
+}
+
+.service b{
+color:var(--yellow);
+}
+
+.vehicle-card{
+margin-top:12px;
+border-radius:18px;
 overflow:hidden;
-background:rgba(0,0,0,.4);
+background:rgba(0,0,0,.42);
+border:1px solid rgba(255,255,255,.12);
 }
 
-.vehicle img{
+.vehicle-card img{
 width:100%;
+display:block;
+cursor:pointer;
 }
 
-.vehicle a{
-display:block;
-background:var(--green);
-text-align:center;
-padding:10px;
+.vehicle-info{
+padding:13px;
+}
+
+.vehicle-info h3{
+font-size:17px;
+margin-bottom:5px;
+}
+
+.vehicle-info p{
+font-size:13px;
+color:var(--muted);
+margin-bottom:10px;
+}
+
+.btn-green{
+background:linear-gradient(135deg,#25d366,#08783f);
 color:#fff;
+display:block;
+}
+
+.footer{
+text-align:center;
+font-size:13px;
+color:#aaa;
+padding:24px 0 8px;
+}
+
+.footer a{
+color:var(--yellow);
+font-weight:bold;
 text-decoration:none;
 }
 
-/* LIGHTBOX */
+.floating-whatsapp{
+position:fixed;
+bottom:18px;
+right:calc(50% - 230px + 18px);
+width:56px;
+height:56px;
+border-radius:50%;
+background:var(--green);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.55);
+z-index:20;
+}
+
 .lightbox{
 position:fixed;
 inset:0;
-background:#000c;
+background:rgba(0,0,0,.92);
 display:none;
 justify-content:center;
 align-items:center;
+z-index:999;
+padding:18px;
 }
 
 .lightbox img{
-max-width:90%;
-max-height:90%;
+max-width:100%;
+max-height:86vh;
+border-radius:18px;
 }
 
 .close{
 position:absolute;
-top:20px;
-right:20px;
-font-size:30px;
+top:18px;
+right:24px;
+font-size:34px;
 cursor:pointer;
 }
 
-/* FLOAT */
-.float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:var(--green);
-width:55px;
-height:55px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-text-decoration:none;
-font-size:24px;
+@media(max-width:460px){
+.floating-whatsapp{
+right:18px;
 }
-
+.photo-wrap{
+height:285px;
+}
+.hero h2{
+font-size:27px;
+}
+}
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<main class="app">
 
 <div class="top-line"></div>
 
-<!-- HEADER -->
-<div class="brand">
-<img src="assets/logo.jpeg" class="logo">
+<header class="brand">
+<img src="assets/logo.jpeg" alt="Logo Iván Bolaños" class="logo">
 <h1>Iván Mauricio <span>Bolaños Jácome</span></h1>
-<div class="role">ARQUITECTURA & VEHÍCULOS</div>
-</div>
+<div class="role">Arquitectura & Vehículos</div>
+</header>
 
-<!-- HERO -->
-<div class="hero">
+<section class="hero">
 <div class="photo-wrap">
-<img src="assets/foto.jpg">
+<img src="assets/foto.jpg" alt="Iván Mauricio Bolaños Jácome">
 </div>
 
 <div class="hero-content">
 <span class="chip">Perfil profesional</span>
+
 <h2>Diseño, construcción y <span>vehículos</span></h2>
 
 <p>
 Arquitecto con enfoque moderno. Desarrollo proyectos, renders y espacios con identidad.
+También acompaño la comercialización de vehículos seleccionados.
 </p>
 
 <div class="actions">
-<a href="https://wa.me/573178821345" class="btn btn-yellow">WhatsApp</a>
-<a href="tel:3178821345" class="btn btn-dark">Llamar</a>
-<a href="#arquitectura" class="btn btn-dark">Arquitectura</a>
-<a href="#vehiculos" class="btn btn-yellow">Vehículos</a>
+<a href="https://wa.me/573178821345" class="btn btn-yellow">💬 WhatsApp</a>
+<a href="tel:3178821345" class="btn btn-dark">📞 Llamar</a>
+<a href="#arquitectura" class="btn btn-dark">🏗️ Arquitectura</a>
+<a href="#vehiculos" class="btn btn-yellow">🚗 Vehículos</a>
 </div>
 </div>
-</div>
+</section>
 
-<!-- ARQUITECTURA -->
-<div id="arquitectura" class="section">
+<section id="arquitectura" class="section">
 <h2>Arquitectura <span>& Diseño</span></h2>
+
+<p>
+Propuestas arquitectónicas con estética contemporánea, funcionalidad y presentación visual profesional.
+</p>
 
 <div class="grid">
 <img src="assets/arq1.jpg" onclick="openLightbox(this.src)">
@@ -309,52 +402,86 @@ Arquitecto con enfoque moderno. Desarrollo proyectos, renders y espacios con ide
 <img src="assets/arq5.jpg" onclick="openLightbox(this.src)">
 <img src="assets/arq6.jpg" onclick="openLightbox(this.src)">
 </div>
+
+<div class="services">
+<div class="service"><b>01</b> Diseño arquitectónico residencial y comercial</div>
+<div class="service"><b>02</b> Modelado 3D y renders profesionales</div>
+<div class="service"><b>03</b> Remodelaciones y diseño de interiores</div>
+<div class="service"><b>04</b> Conceptualización de espacios modernos</div>
 </div>
 
-<!-- VEHICULOS -->
-<div id="vehiculos" class="section">
+<a class="btn btn-yellow" style="display:block;margin-top:14px;"
+href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20quiero%20cotizar%20un%20proyecto%20de%20arquitectura">
+💬 Cotizar proyecto
+</a>
+</section>
+
+<section id="vehiculos" class="section">
 <h2>Vehículos <span>Disponibles</span></h2>
 
-<div class="vehicle">
+<p>
+Consulta disponibilidad, precio, estado del vehículo, documentación y opciones de negociación.
+</p>
+
+<div class="vehicle-card">
 <img src="assets/vehi1.jpg" onclick="openLightbox(this.src)">
-<a href="https://wa.me/573178821345">Consultar</a>
+<div class="vehicle-info">
+<h3>AKT TTR 200 EIII</h3>
+<p>Modelo 2022, documentos al día y lista para consulta.</p>
+<a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20la%20AKT%20TTR%20200%20EIII">Consultar por WhatsApp</a>
+</div>
 </div>
 
-<div class="vehicle">
+<div class="vehicle-card">
 <img src="assets/vehi2.jpg" onclick="openLightbox(this.src)">
-<a href="https://wa.me/573178821345">Consultar</a>
+<div class="vehicle-info">
+<h3>Kia Koup</h3>
+<p>Consulta precio, estado y disponibilidad.</p>
+<a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20el%20Kia%20Koup">Consultar por WhatsApp</a>
+</div>
 </div>
 
-<div class="vehicle">
+<div class="vehicle-card">
 <img src="assets/vehi3.jpg" onclick="openLightbox(this.src)">
-<a href="https://wa.me/573178821345">Consultar</a>
+<div class="vehicle-info">
+<h3>Mitsubishi Eclipse Cross</h3>
+<p>Modelo 2021. Consulta condiciones y disponibilidad.</p>
+<a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20la%20Mitsubishi%20Eclipse%20Cross">Consultar por WhatsApp</a>
+</div>
 </div>
 
-<div class="vehicle">
+<div class="vehicle-card">
 <img src="assets/vehi6.jpg" onclick="openLightbox(this.src)">
-<a href="https://wa.me/573178821345">Consultar</a>
+<div class="vehicle-info">
+<h3>Fiat 750Z</h3>
+<p>Vehículo clásico. Consulta detalles y disponibilidad.</p>
+<a class="btn btn-green" href="https://wa.me/573178821345?text=Hola%20Iv%C3%A1n,%20me%20interesa%20el%20Fiat%20750Z">Consultar por WhatsApp</a>
+</div>
 </div>
 
-</div>
+</section>
 
-</div>
+<footer class="footer">
+Powered by <a href="https://integral360.com.co" target="_blank">Integral360</a>
+</footer>
 
-<!-- FLOAT -->
-<a href="https://wa.me/573178821345" class="float">💬</a>
+</main>
 
-<!-- LIGHTBOX -->
+<a class="floating-whatsapp" href="https://wa.me/573178821345">💬</a>
+
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
 <span class="close">&times;</span>
-<img id="img">
+<img id="lightbox-img" src="">
 </div>
 
 <script>
 function openLightbox(src){
-document.getElementById("lightbox").style.display="flex";
-document.getElementById("img").src=src;
+document.getElementById("lightbox-img").src = src;
+document.getElementById("lightbox").style.display = "flex";
 }
+
 function closeLightbox(){
-document.getElementById("lightbox").style.display="none";
+document.getElementById("lightbox").style.display = "none";
 }
 </script>
 
