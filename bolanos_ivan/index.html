@@ -385,6 +385,54 @@ height:285px;
 font-size:27px;
 }
 }
+  /* FORZAR FONDO DENTRO DE LOS CONTENEDORES */
+.brand,
+.section{
+  position:relative;
+  overflow:hidden;
+  background:transparent !important;
+}
+
+.brand::before,
+.section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("assets/fondo.png");
+  background-size:cover;
+  background-position:center;
+  opacity:.55;
+  z-index:0;
+}
+
+.brand::after,
+.section::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  z-index:1;
+}
+
+.brand > *,
+.section > *{
+  position:relative;
+  z-index:2;
+}
+
+/* HERO MÁS LIVIANO */
+.hero{
+  background:rgba(0,0,0,.10) !important;
+  border:1px solid rgba(255,255,255,.25);
+}
+
+/* CONTENIDO DEL HERO MÁS TRANSPARENTE */
+.hero-content{
+  background:rgba(0,0,0,.18);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  border-radius:0 0 28px 28px;
+}
 </style>
 </head>
 
