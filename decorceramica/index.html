@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acabados Premium | NFC Demo</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.85)),
+        url("fondo.jpeg");
+      background-size: cover;
+      background-position: center;
+      padding: 22px 18px 35px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 28px 16px;
+      border-radius: 28px;
+      background: rgba(20,20,20,.58);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 209, 102, .25);
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+    }
+
+    .logo {
+      width: 95px;
+      height: 95px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 24px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 30px;
+      background: rgba(255, 193, 7, .15);
+      color: #ffd166;
+      font-size: 12px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 209, 102, .35);
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .gold {
+      color: #ffd166;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #ddd;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .cta {
+      display: block;
+      text-decoration: none;
+      color: #111;
+      background: linear-gradient(135deg, #ffd166, #c9962f);
+      padding: 15px;
+      border-radius: 18px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .cta.secondary {
+      background: rgba(255,255,255,.09);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(18,18,18,.62);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      min-height: 110px;
+    }
+
+    .card span {
+      font-size: 30px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: #ccc;
+      line-height: 1.4;
+    }
+
+    .survey label {
+      display: block;
+      font-size: 14px;
+      color: #ddd;
+      margin: 14px 0 8px;
+    }
+
+    .survey select,
+    .survey input,
+    .survey textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 15px;
+      padding: 13px;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .survey textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .survey button {
+      width: 100%;
+      margin-top: 18px;
+      border: none;
+      padding: 15px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffd166, #b98217);
+      font-weight: bold;
+      color: #111;
+      font-size: 15px;
+    }
+
+    .benefit {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #e8e8e8;
+    }
+
+    .coupon {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(255,209,102,.13);
+      border: 1px dashed #ffd166;
+      color: #ffd166;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 25px;
+    }
+
+    .footer a {
+      color: #ffd166;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section class="hero">
+      <img src="logo.png" alt="Logo empresa" class="logo">
+
+      <div class="badge">Experiencia NFC + Fidelización</div>
+
+      <h1>Acabados que transforman <span class="gold">tu espacio</span></h1>
+
+      <p class="subtitle">
+        Cerámica, pisos, grifería, muebles de baño y soluciones para remodelar con estilo.
+      </p>
+
+      <a class="cta" href="https://wa.me/573163119312?text=Hola,%20quiero%20recibir%20asesoría%20sobre%20acabados%20de%20construcción">
+        Cotizar por WhatsApp
+      </a>
+
+      <a class="cta secondary" href="#encuesta">
+        Responder encuesta y ganar beneficio
+      </a>
+    </section>
+
+    <section class="section">
+      <h2>Productos destacados</h2>
+
+      <div class="grid">
+        <div class="card">
+          <span>🏠</span>
+          <h3>Piso y pared</h3>
+          <p>Cerámicas modernas para interiores y exteriores.</p>
+        </div>
+
+        <div class="card">
+          <span>🛁</span>
+          <h3>Muebles de baño</h3>
+          <p>Diseños funcionales, elegantes y duraderos.</p>
+        </div>
+
+        <div class="card">
+          <span>🚿</span>
+          <h3>Grifería</h3>
+          <p>Acabados premium para baños y cocinas.</p>
+        </div>
+
+        <div class="card">
+          <span>🧱</span>
+          <h3>Pegantes</h3>
+          <p>Materiales confiables para instalación profesional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Beneficio para clientes</h2>
+
+      <p class="benefit">
+        Al responder esta encuesta corta podrás acceder a beneficios especiales,
+        asesoría personalizada y campañas de fidelización.
+      </p>
+
+      <div class="coupon">
+        🎁 Cupón demo: 5% en próxima compra
+      </div>
+    </section>
+
+    <section class="section survey" id="encuesta">
+      <h2>Encuesta rápida</h2>
+
+      <form onsubmit="enviarEncuesta(event)">
+        <label>Nombre</label>
+        <input id="nombre" type="text" placeholder="Tu nombre" required>
+
+        <label>¿Qué producto compraste o consultaste?</label>
+        <select id="producto" required>
+          <option value="">Selecciona una opción</option>
+          <option>Cerámica piso/pared</option>
+          <option>Mueble de baño</option>
+          <option>Grifería</option>
+          <option>Pegante o materiales</option>
+          <option>Otro producto</option>
+        </select>
+
+        <label>Califica la atención recibida</label>
+        <select id="calificacion" required>
+          <option value="">Selecciona</option>
+          <option>Excelente</option>
+          <option>Buena</option>
+          <option>Regular</option>
+          <option>Debe mejorar</option>
+        </select>
+
+        <label>Comentario adicional</label>
+        <textarea id="comentario" placeholder="Cuéntanos tu opinión"></textarea>
+
+        <button type="submit">Enviar opinión</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2>Atención directa</h2>
+
+      <a class="cta" href="tel:+573163119312">Llamar ahora</a>
+
+      <a class="cta secondary" href="https://wa.me/573163119312">
+        Escribir por WhatsApp
+      </a>
+    </section>
+
+    <div class="footer">
+      Demo NFC desarrollado por  
+      <a href="https://integral360.com.co" target="_blank">Integral360</a>
+    </div>
+
+  </main>
+
+  <script>
+    function enviarEncuesta(event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById("nombre").value;
+      const producto = document.getElementById("producto").value;
+      const calificacion = document.getElementById("calificacion").value;
+      const comentario = document.getElementById("comentario").value;
+
+      const mensaje = `Hola, soy ${nombre}.%0AProducto: ${producto}.%0ACalificación: ${calificacion}.%0AComentario: ${comentario}`;
+
+      window.open(`https://wa.me/573163119312?text=${mensaje}`, "_blank");
+    }
+  </script>
+
+</body>
+</html>
