@@ -6,7 +6,7 @@
 <title>Decorcerámica</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 
 body{
   background:#0b0f1a;
@@ -18,35 +18,34 @@ body{
 .app{
   width:100%;
   max-width:430px;
+  min-height:100vh;
+  background:#0b0f1a;
 }
 
-/* HERO */
 .hero{
-  background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.85)),
-  url("fachada.jpg");
+  background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)), url("fachada.jpg");
   background-size:cover;
   background-position:center;
-  padding:30px 20px;
+  padding:32px 20px 26px;
   text-align:center;
 }
 
 .logo{
-  width:95px;
+  width:98px;
   background:#fff;
   border-radius:20px;
   padding:10px;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
-.hero h1{font-size:24px;}
-.hero p{font-size:14px;color:#ddd;margin-top:5px;}
+.hero h1{font-size:25px;margin-bottom:6px;}
+.hero p{font-size:14px;color:#ddd;}
 
-/* ICONOS APP */
 .icons{
   display:flex;
   justify-content:center;
-  gap:15px;
-  margin-top:15px;
+  gap:14px;
+  margin-top:18px;
   flex-wrap:wrap;
 }
 
@@ -60,41 +59,51 @@ body{
   background:#fff;
   text-decoration:none;
   transition:.2s;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
 .icon-btn img{
-  width:30px;
-  height:30px;
+  width:31px;
+  height:31px;
+  object-fit:contain;
 }
 
 .icon-btn:hover{
-  transform:scale(1.1);
+  transform:scale(1.08);
 }
 
-/* SECCIONES */
 .section{
   padding:20px;
 }
 
 .section h2{
   margin-bottom:15px;
+  font-size:20px;
 }
 
-/* CARRUSEL */
 .carousel{
   display:flex;
   overflow-x:auto;
-  gap:10px;
+  gap:12px;
   scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding-bottom:4px;
+}
+
+.carousel::-webkit-scrollbar{
+  display:none;
 }
 
 .carousel img{
-  width:80%;
-  border-radius:15px;
+  width:75%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:18px;
   scroll-snap-align:center;
+  flex-shrink:0;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
 }
 
-/* CATEGORIAS */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -103,16 +112,35 @@ body{
 
 .card{
   background:#141a2a;
-  padding:15px;
-  border-radius:15px;
+  padding:18px 12px;
+  border-radius:16px;
   text-align:center;
+  border:1px solid rgba(255,255,255,.08);
 }
 
-/* ENCUESTA */
+.card span{
+  display:block;
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.form-box{
+  background:linear-gradient(135deg,#1e88e5,#0d47a1);
+  padding:20px;
+  border-radius:20px;
+}
+
+.form-box p{
+  font-size:14px;
+  color:#e8e8e8;
+  line-height:1.5;
+  margin-bottom:14px;
+}
+
 .form-link{
   display:block;
-  background:linear-gradient(135deg,#1e88e5,#0d47a1);
-  color:#fff;
+  background:#fff;
+  color:#0d47a1;
   padding:15px;
   border-radius:15px;
   text-align:center;
@@ -124,93 +152,118 @@ body{
   text-align:center;
   font-size:12px;
   color:#aaa;
-  padding:20px;
+  padding:22px;
+}
+
+.footer a{
+  color:#fff;
+  text-decoration:none;
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="app">
 
-<!-- HERO -->
-<section class="hero">
-  <img src="logo.PNG" class="logo">
-  <h1>Decorcerámica S.A.S</h1>
-  <p>En construcción y acabados somos la solución ideal</p>
+  <section class="hero">
+    <img src="logo.png" class="logo" alt="Decorcerámica">
 
-  <!-- ICONOS -->
-  <div class="icons">
+    <h1>Decorcerámica S.A.S</h1>
+    <p>En construcción y acabados somos la solución ideal</p>
 
-    <a class="icon-btn" href="https://wa.me/573229653919">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-    </a>
+    <div class="icons">
+      <a class="icon-btn" href="https://wa.me/573229653919" aria-label="WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
 
-    <a class="icon-btn" href="tel:3176903666">
-      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
-    </a>
+      <a class="icon-btn" href="tel:3176903666" aria-label="Llamar">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Llamar">
+      </a>
 
-    <a class="icon-btn" href="https://maps.app.goo.gl/hA574zVuZMo9YPAg8" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
-    </a>
+      <a class="icon-btn" href="https://maps.app.goo.gl/hA574zVuZMo9YPAg8" target="_blank" aria-label="Ubicación">
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Ubicación">
+      </a>
 
-    <a class="icon-btn" href="https://www.facebook.com/DecorceramicaIpiales/photos" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
-    </a>
+      <a class="icon-btn" href="https://www.facebook.com/DecorceramicaIpiales/photos" target="_blank" aria-label="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      </a>
 
-    <a class="icon-btn" href="https://www.instagram.com/decorceramicaipiales/" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
-    </a>
+      <a class="icon-btn" href="https://www.instagram.com/decorceramicaipiales/" target="_blank" aria-label="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+      </a>
+    </div>
+  </section>
 
+  <section class="section">
+    <h2>Productos destacados</h2>
+
+    <div class="carousel" id="carousel">
+      <img src="producto1.jpg" alt="Producto Decorcerámica 1">
+      <img src="producto2.jpg" alt="Producto Decorcerámica 2">
+      <img src="producto3.jpg" alt="Producto Decorcerámica 3">
+      <img src="producto4.jpg" alt="Producto Decorcerámica 4">
+      <img src="producto5.jpg" alt="Producto Decorcerámica 5">
+      <img src="producto6.jpg" alt="Producto Decorcerámica 6">
+      <img src="producto7.jpg" alt="Producto Decorcerámica 7">
+      <img src="producto8.jpg" alt="Producto Decorcerámica 8">
+      <img src="producto9.jpg" alt="Producto Decorcerámica 9">
+      <img src="producto10.jpg" alt="Producto Decorcerámica 10">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Categorías</h2>
+
+    <div class="grid">
+      <div class="card"><span>🏠</span>Cerámica</div>
+      <div class="card"><span>🚿</span>Grifería</div>
+      <div class="card"><span>🛁</span>Baños</div>
+      <div class="card"><span>🧱</span>Pegantes</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Tu opinión es importante</h2>
+
+    <div class="form-box">
+      <p>
+        Ayúdanos a mejorar tu experiencia. Responde una encuesta corta y participa en nuestros beneficios de fidelización.
+      </p>
+
+      <a class="form-link" href="https://forms.gle/AQUI_TU_FORMULARIO" target="_blank">
+        Responder encuesta
+      </a>
+    </div>
+  </section>
+
+  <div class="footer">
+    Demo NFC desarrollado por <a href="https://integral360.com.co" target="_blank">Integral360</a>
   </div>
 
-</section>
-
-<!-- CARRUSEL -->
-<section class="section">
-  <h2>Productos destacados</h2>
-
-  <div class="carousel">
-    <img src="producto1.jpg">
-    <img src="producto2.jpg">
-    <img src="producto3.jpg">
-    <img src="producto4.jpg">
-    <img src="producto5.jpg">
-    <img src="producto6.jpg">
-    <img src="producto7.jpg">
-    <img src="producto8.jpg">
-    <img src="producto9.jpg">
-    <img src="producto10.jpg">
-  </div>
-</section>
-
-<!-- CATEGORIAS -->
-<section class="section">
-  <h2>Categorías</h2>
-
-  <div class="grid">
-    <div class="card">Cerámica</div>
-    <div class="card">Grifería</div>
-    <div class="card">Baños</div>
-    <div class="card">Pegantes</div>
-  </div>
-</section>
-
-<!-- ENCUESTA -->
-<section class="section">
-  <h2>Tu opinión es importante</h2>
-
-  <a class="form-link" href="https://forms.gle/AQUI_TU_FORMULARIO" target="_blank">
-    Responder encuesta y ganar beneficios
-  </a>
-</section>
-
-<div class="footer">
-  Demo NFC - Integral360
 </div>
 
-</div>
+<script>
+const carousel = document.getElementById("carousel");
+let scrollAmount = 0;
+
+setInterval(() => {
+  const firstImage = carousel.querySelector("img");
+  if (!firstImage) return;
+
+  const cardWidth = firstImage.offsetWidth + 12;
+  scrollAmount += cardWidth;
+
+  if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+    scrollAmount = 0;
+  }
+
+  carousel.scrollTo({
+    left: scrollAmount,
+    behavior: "smooth"
+  });
+}, 3000);
+</script>
 
 </body>
 </html>
