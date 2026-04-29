@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decorcerámica S.A.S</title>
+<title>Decorcerámica</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
@@ -22,7 +22,7 @@ body{
 
 /* HERO */
 .hero{
-  background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.8)),
+  background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.85)),
   url("fachada.jpg");
   background-size:cover;
   background-position:center;
@@ -31,38 +31,45 @@ body{
 }
 
 .logo{
-  width:100px;
+  width:95px;
   background:#fff;
   border-radius:20px;
   padding:10px;
   margin-bottom:10px;
 }
 
-.hero h1{
-  font-size:24px;
-  margin:10px 0;
+.hero h1{font-size:24px;}
+.hero p{font-size:14px;color:#ddd;margin-top:5px;}
+
+/* ICONOS APP */
+.icons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:15px;
+  flex-wrap:wrap;
 }
 
-.hero p{
-  font-size:14px;
-  color:#ddd;
-}
-
-/* BOTONES */
-.btn{
-  display:block;
+.icon-btn{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#fff;
   text-decoration:none;
-  padding:14px;
-  border-radius:15px;
-  margin-top:10px;
-  font-weight:bold;
-  text-align:center;
+  transition:.2s;
 }
 
-.whatsapp{background:#25D366;color:#fff;}
-.call{background:#e53935;color:#fff;}
-.map{background:#1e88e5;color:#fff;}
-.social{background:#fff;color:#000;}
+.icon-btn img{
+  width:30px;
+  height:30px;
+}
+
+.icon-btn:hover{
+  transform:scale(1.1);
+}
 
 /* SECCIONES */
 .section{
@@ -71,7 +78,6 @@ body{
 
 .section h2{
   margin-bottom:15px;
-  font-size:20px;
 }
 
 /* CARRUSEL */
@@ -100,10 +106,6 @@ body{
   padding:15px;
   border-radius:15px;
   text-align:center;
-}
-
-.card span{
-  font-size:28px;
 }
 
 /* ENCUESTA */
@@ -138,17 +140,31 @@ body{
   <h1>Decorcerámica S.A.S</h1>
   <p>En construcción y acabados somos la solución ideal</p>
 
-  <a class="btn whatsapp" href="https://wa.me/573229653919">WhatsApp</a>
-  <a class="btn call" href="tel:3176903666">Llamar</a>
-  <a class="btn map" href="https://maps.app.goo.gl/hA574zVuZMo9YPAg8" target="_blank">Ubicación</a>
-</section>
+  <!-- ICONOS -->
+  <div class="icons">
 
-<!-- REDES -->
-<section class="section">
-  <h2>Redes Sociales</h2>
+    <a class="icon-btn" href="https://wa.me/573229653919">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+    </a>
 
-  <a class="btn social" href="https://www.facebook.com/DecorceramicaIpiales/photos" target="_blank">Facebook</a>
-  <a class="btn social" href="https://www.instagram.com/decorceramicaipiales/" target="_blank">Instagram</a>
+    <a class="icon-btn" href="tel:3176903666">
+      <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
+    </a>
+
+    <a class="icon-btn" href="https://maps.app.goo.gl/hA574zVuZMo9YPAg8" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+    </a>
+
+    <a class="icon-btn" href="https://www.facebook.com/DecorceramicaIpiales/photos" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+    </a>
+
+    <a class="icon-btn" href="https://www.instagram.com/decorceramicaipiales/" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+    </a>
+
+  </div>
+
 </section>
 
 <!-- CARRUSEL -->
@@ -174,10 +190,10 @@ body{
   <h2>Categorías</h2>
 
   <div class="grid">
-    <div class="card"><span>🏠</span><p>Cerámica</p></div>
-    <div class="card"><span>🚿</span><p>Grifería</p></div>
-    <div class="card"><span>🛁</span><p>Baños</p></div>
-    <div class="card"><span>🧱</span><p>Pegantes</p></div>
+    <div class="card">Cerámica</div>
+    <div class="card">Grifería</div>
+    <div class="card">Baños</div>
+    <div class="card">Pegantes</div>
   </div>
 </section>
 
@@ -186,19 +202,12 @@ body{
   <h2>Tu opinión es importante</h2>
 
   <a class="form-link" href="https://forms.gle/AQUI_TU_FORMULARIO" target="_blank">
-    Responder encuesta y obtener beneficios
-  </a>
-</section>
-
-<!-- CTA FINAL -->
-<section class="section">
-  <a class="btn whatsapp" href="https://wa.me/573229653919">
-    Cotizar ahora por WhatsApp
+    Responder encuesta y ganar beneficios
   </a>
 </section>
 
 <div class="footer">
-  Demo NFC desarrollado por Integral360
+  Demo NFC - Integral360
 </div>
 
 </div>
