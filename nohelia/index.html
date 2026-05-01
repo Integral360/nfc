@@ -7,11 +7,13 @@
 
 <style>
 :root{
-  --primary:#ff7aa2;
-  --secondary:#6c5ce7;
-  --dark:#1a1a2e;
+  --orange:#ff8a00;
+  --orange2:#ffb347;
+  --purple:#7b2ff7;
+  --pink:#ff5fa2;
+  --dark:#1b1230;
   --white:#ffffff;
-  --soft:#f8f9ff;
+  --soft:#fff7ec;
   --green:#25D366;
   --blue:#2f80ed;
 }
@@ -21,53 +23,111 @@
 body{
   margin:0;
   min-height:100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(255,122,162,.4), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(108,92,231,.35), transparent 35%),
-    linear-gradient(145deg,#fff7fb,#f2f3ff);
+    radial-gradient(circle at top left, rgba(255,138,0,.35), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(123,47,247,.35), transparent 35%),
+    linear-gradient(145deg,#fff6e8,#f4edff);
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:18px;
+  padding:16px;
   color:var(--dark);
 }
 
 .phone{
   width:100%;
-  max-width:420px;
-  border-radius:32px;
+  max-width:430px;
+  border-radius:36px;
   overflow:hidden;
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.88);
   backdrop-filter:blur(20px);
-  box-shadow:0 30px 80px rgba(0,0,0,.2);
+  box-shadow:0 30px 80px rgba(60,30,110,.28);
+  border:1px solid rgba(255,255,255,.8);
 }
 
 .hero{
-  padding:30px 20px 20px;
+  position:relative;
+  padding:30px 20px 24px;
   text-align:center;
-  background:linear-gradient(160deg,var(--primary),var(--secondary));
   color:white;
+  background:
+    linear-gradient(145deg,rgba(255,138,0,.98),rgba(123,47,247,.94));
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"🏀";
+  position:absolute;
+  font-size:130px;
+  opacity:.12;
+  top:10px;
+  right:-15px;
+  transform:rotate(-15deg);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:2px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  left:-80px;
+  bottom:-95px;
+}
+
+.badge{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.3px;
 }
 
 .photo{
-  width:120px;
-  height:120px;
+  position:relative;
+  z-index:2;
+  width:126px;
+  height:126px;
   border-radius:50%;
   object-fit:cover;
-  margin:15px auto;
-  border:4px solid white;
-  box-shadow:0 10px 25px rgba(0,0,0,.3);
+  margin:18px auto 10px;
+  border:5px solid white;
+  box-shadow:0 16px 35px rgba(0,0,0,.28);
 }
 
 h1{
-  margin:10px 0 5px;
-  font-size:30px;
+  position:relative;
+  z-index:2;
+  margin:8px 0 2px;
+  font-size:34px;
+  letter-spacing:-1px;
 }
 
 .subtitle{
+  position:relative;
+  z-index:2;
+  margin:0;
+  font-size:15px;
+  opacity:.96;
+}
+
+.club{
+  position:relative;
+  z-index:2;
+  margin:12px auto 0;
+  width:max-content;
+  max-width:100%;
+  padding:9px 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.18);
+  font-weight:900;
   font-size:14px;
-  opacity:.95;
 }
 
 .content{
@@ -75,58 +135,62 @@ h1{
 }
 
 .info-main{
-  background:var(--soft);
-  padding:15px;
-  border-radius:18px;
+  background:linear-gradient(135deg,#fff7ec,#fff);
+  border:1px solid rgba(255,138,0,.18);
+  padding:16px;
+  border-radius:24px;
   text-align:center;
   font-size:14px;
-  color:#555;
-  margin-bottom:15px;
+  color:#5a4a35;
+  box-shadow:0 12px 28px rgba(255,138,0,.08);
 }
 
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:12px;
+  margin-top:16px;
 }
 
 .btn{
-  padding:14px;
-  border-radius:16px;
+  padding:15px 12px;
+  border-radius:22px;
   text-decoration:none;
   color:white;
-  font-weight:bold;
+  font-weight:900;
   text-align:center;
   font-size:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-  transition:.2s;
+  box-shadow:0 12px 24px rgba(0,0,0,.16);
+  transition:.2s ease;
 }
 
 .btn:active{
   transform:scale(.96);
 }
 
-.call{background:linear-gradient(135deg,#28c76f,#11998e);}
+.call{background:linear-gradient(135deg,#ff8a00,#ff5f6d);}
 .whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);}
 .location{background:linear-gradient(135deg,#2f80ed,#56ccf2);}
 
 .card{
-  margin-top:15px;
-  padding:15px;
+  margin-top:16px;
+  padding:16px;
   background:white;
-  border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  border-radius:26px;
+  box-shadow:0 14px 30px rgba(35,20,70,.09);
+  border:1px solid rgba(0,0,0,.04);
 }
 
 .card h2{
-  margin-bottom:10px;
-  font-size:16px;
+  margin:0 0 12px;
+  font-size:17px;
 }
 
 .row{
   display:flex;
   justify-content:space-between;
-  padding:8px 0;
+  gap:14px;
+  padding:10px 0;
   border-bottom:1px solid #eee;
   font-size:14px;
 }
@@ -135,37 +199,67 @@ h1{
   border-bottom:none;
 }
 
-.label{color:#777;}
-.value{font-weight:bold;}
+.label{
+  color:#777;
+}
+
+.value{
+  font-weight:900;
+  text-align:right;
+}
+
+.sport-card{
+  background:linear-gradient(135deg,#1b1230,#42206f);
+  color:white;
+}
+
+.sport-card .row{
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+
+.sport-card .label{
+  color:rgba(255,255,255,.72);
+}
+
+.note{
+  margin-top:16px;
+  padding:15px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#fff,#fff3df);
+  text-align:center;
+  font-size:14px;
+  color:#5b4630;
+  line-height:1.45;
+}
 
 .footer{
   text-align:center;
   font-size:12px;
   color:#777;
-  padding:15px;
+  padding:16px;
 }
 
 .footer a{
   text-decoration:none;
-  color:var(--secondary);
-  font-weight:bold;
+  color:var(--purple);
+  font-weight:900;
 }
 
 .floating{
   position:fixed;
   right:20px;
   bottom:20px;
-  width:60px;
-  height:60px;
+  width:62px;
+  height:62px;
   border-radius:50%;
   background:linear-gradient(135deg,#25D366,#128C7E);
   display:flex;
   justify-content:center;
   align-items:center;
   color:white;
-  font-size:26px;
+  font-size:28px;
   text-decoration:none;
-  box-shadow:0 15px 30px rgba(0,0,0,.3);
+  box-shadow:0 18px 35px rgba(18,140,126,.35);
 }
 </style>
 </head>
@@ -175,22 +269,24 @@ h1{
 <main class="phone">
 
   <section class="hero">
-    <img src="foto.jpg" class="photo">
+    <div class="badge">Identificación NFC</div>
+    <img src="foto.jpg" class="photo" alt="Foto de Nohelia">
     <h1>Nohelia</h1>
-    <p class="subtitle">Identificación personal NFC</p>
+    <p class="subtitle">Información personal y contacto familiar</p>
+    <div class="club">🏀 Club SYC</div>
   </section>
 
   <section class="content">
 
     <div class="info-main">
-      Esta manilla contiene información básica de identificación y contacto familiar.
+      Esta manilla contiene información básica de identificación y permite contactar a sus padres de forma rápida y segura.
     </div>
 
     <div class="grid">
-      <a class="btn call" href="tel:3000000000">📞 Mamá</a>
-      <a class="btn call" href="tel:3010000000">📞 Papá</a>
-      <a class="btn whatsapp" href="https://wa.me/573000000000">💬 WhatsApp</a>
-      <a class="btn location" href="#" onclick="sendLocation()">📍 Compartir ubicación</a>
+      <a class="btn call" href="tel:3162410970">📞 Mamá</a>
+      <a class="btn call" href="tel:3186054653">📞 Papá</a>
+      <a class="btn whatsapp" href="https://wa.me/573186054653?text=Hola,%20me%20estoy%20comunicando%20por%20la%20manilla%20NFC%20de%20Nohelia.">💬 WhatsApp</a>
+      <a class="btn location" href="#" onclick="sendLocation()">📍 Ubicación</a>
     </div>
 
     <div class="card">
@@ -198,12 +294,17 @@ h1{
 
       <div class="row">
         <span class="label">Edad</span>
-        <span class="value">7 años</span>
+        <span class="value">10 años</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Tipo de sangre</span>
+        <span class="value">O+</span>
       </div>
 
       <div class="row">
         <span class="label">Alergias</span>
-        <span class="value">Ninguna</span>
+        <span class="value">Ácaros y polen</span>
       </div>
 
       <div class="row">
@@ -212,18 +313,22 @@ h1{
       </div>
     </div>
 
-    <div class="card">
-      <h2>Contactos familiares</h2>
+    <div class="card sport-card">
+      <h2>Perfil deportivo</h2>
 
       <div class="row">
-        <span class="label">Mamá</span>
-        <span class="value">300 000 0000</span>
+        <span class="label">Deporte</span>
+        <span class="value">Baloncesto</span>
       </div>
 
       <div class="row">
-        <span class="label">Papá</span>
-        <span class="value">301 000 0000</span>
+        <span class="label">Club</span>
+        <span class="value">Club SYC</span>
       </div>
+    </div>
+
+    <div class="note">
+      Gracias por usar esta información únicamente para identificación y contacto familiar.
     </div>
 
   </section>
@@ -234,12 +339,12 @@ h1{
 
 </main>
 
-<a class="floating" href="https://wa.me/573000000000">💬</a>
+<a class="floating" href="https://wa.me/573186054653?text=Hola,%20me%20estoy%20comunicando%20por%20la%20manilla%20NFC%20de%20Nohelia.">💬</a>
 
 <script>
 function sendLocation() {
   if (!navigator.geolocation) {
-    alert("Este dispositivo no permite ubicación.");
+    alert("Este dispositivo no permite compartir ubicación.");
     return;
   }
 
@@ -248,10 +353,11 @@ function sendLocation() {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
       const link = `https://maps.google.com/?q=${lat},${lon}`;
-      window.location.href = `https://wa.me/573000000000?text=Hola, comparto ubicación: ${link}`;
+      const msg = `Hola, comparto ubicación relacionada con la manilla NFC de Nohelia: ${link}`;
+      window.location.href = `https://wa.me/573186054653?text=${encodeURIComponent(msg)}`;
     },
     function() {
-      alert("No se pudo obtener la ubicación.");
+      alert("No se pudo obtener la ubicación. Puedes usar los botones de llamada o WhatsApp.");
     }
   );
 }
