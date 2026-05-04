@@ -1,160 +1,315 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Información Personal</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Perfil Personal</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(212,175,55,0.25), transparent 35%),
+        linear-gradient(145deg, #071f2a, #0d3442, #132f3a);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
+    color: #f7f2e8;
 }
 
-.container {
+.app {
     width: 100%;
-    max-width: 420px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 20px;
-    margin: 20px;
+    max-width: 430px;
+    margin: 18px;
     padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.16);
+    animation: fadeIn .8s ease;
 }
 
-.profile {
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
     text-align: center;
+    padding: 16px 10px 10px;
 }
 
-.profile img {
-    width: 110px;
-    height: 110px;
+.photo-wrap {
+    width: 128px;
+    height: 128px;
+    margin: auto;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #d4af37, #fff3b0, #8fbec6);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.photo-wrap img {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #2c5364;
+    border: 4px solid #0d3442;
 }
 
 .name {
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 10px;
+    margin-top: 14px;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: .3px;
 }
 
 .subtitle {
-    color: #555;
+    margin-top: 6px;
     font-size: 14px;
+    color: #d8e8e9;
+    line-height: 1.4;
 }
 
-.section {
-    margin-top: 20px;
+.badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(212,175,55,0.16);
+    color: #ffe9a3;
+    border: 1px solid rgba(212,175,55,0.35);
+    font-size: 12px;
 }
 
-.section h3 {
-    margin-bottom: 10px;
-    color: #2c5364;
-}
-
-.info-box {
-    background: #f5f5f5;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 8px;
-    font-size: 14px;
-}
-
-.emergency {
-    background: #ff4d4d;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.buttons {
+.quick-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 12px;
+    margin-top: 22px;
 }
 
 .btn {
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
+    padding: 15px 10px;
+    border-radius: 18px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.call {
+    background: linear-gradient(135deg, #1d6fd1, #3ba4ff);
+}
+
+.whatsapp {
+    background: linear-gradient(135deg, #128c7e, #25d366);
+}
+
+.location {
+    background: linear-gradient(135deg, #7d6a35, #d4af37);
+    color: #17242b;
+}
+
+.family {
+    background: linear-gradient(135deg, #7b6fd6, #b18cff);
+}
+
+.section {
+    margin-top: 22px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffe9a3;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 18px;
+    padding: 13px 14px;
+    margin-bottom: 9px;
+    color: #f4fbfb;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.card strong {
+    color: #ffe9a3;
+}
+
+.grid-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.info-mini {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 17px;
+    padding: 13px;
+    font-size: 13px;
+}
+
+.info-mini span {
+    display: block;
+    color: #bfd7dc;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.info-mini b {
+    color: #ffffff;
     font-size: 15px;
 }
 
-.call { background: #007bff; }
-.whatsapp { background: #25D366; }
-.location { background: #ff9800; }
-.medical { background: #6a1b9a; }
+.note {
+    text-align: center;
+    font-size: 13px;
+    color: #d8e8e9;
+    background: rgba(212,175,55,0.10);
+    border: 1px solid rgba(212,175,55,0.22);
+}
 
 .footer {
-    margin-top: 20px;
+    margin-top: 24px;
     text-align: center;
     font-size: 12px;
-    color: #777;
+    color: #b8cdd1;
+}
+
+.footer a {
+    color: #ffe9a3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+@media(max-width: 360px) {
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-info {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="container">
+<main class="app">
 
-    <div class="profile">
-        <img src="foto.png" alt="Foto">
-        <div class="name">Elsa Vallejo</div>
-        <div class="subtitle">Información de contacto y emergencia</div>
-    </div>
-
-    <div class="section">
-        <div class="emergency">
-            ⚠️ En caso de emergencia contactar inmediatamente
+    <section class="header">
+        <div class="photo-wrap">
+            <img src="foto.png" alt="Foto personal">
         </div>
-    </div>
 
-    <div class="buttons">
-        <a href="tel:+573186054653" class="btn call">📞 Llamar hijo</a>
-        <a href="https://wa.me/573186054653" class="btn whatsapp">💬 WhatsApp</a>
-        <a href="https://maps.google.com/?q=Casa" class="btn location">📍 Ubicación</a>
-        <a href="#" class="btn medical">🩺 Info médica</a>
-    </div>
+        <div class="name">Elsa Vallejo</div>
+        <div class="subtitle">
+            Perfil personal de bienestar, identificación y contacto familiar.
+        </div>
 
-    <div class="section">
-        <h3>Datos personales</h3>
-        <div class="info-box">Edad: 69 años</div>
-        <div class="info-box">Tipo de sangre: O-</div>
-        <div class="info-box">EPS: Proinsalud</div>
-    </div>
+        <div class="badge">Información autorizada por la familia</div>
+    </section>
 
-    <div class="section">
-        <h3>Condiciones médicas</h3>
-        <div class="info-box">Colesterol alto</div>
-    </div>
+    <section class="quick-actions">
+        <a class="btn call" href="tel:+573186054653">📞 Llamar familiar</a>
+        <a class="btn whatsapp" href="https://wa.me/573186054653">💬 WhatsApp</a>
+        <a class="btn location" href="https://maps.google.com/?q=Ipiales,Nariño">📍 Ubicación</a>
+        <a class="btn family" href="tel:+573158578818">👨‍👩‍👧 Contacto 2</a>
+    </section>
 
-    <div class="section">
-        <h3>Alergias</h3>
-        <div class="info-box">Dipirona</div>
-    </div>
+    <section class="section">
+        <div class="section-title">✨ Información personal</div>
 
-    <div class="section">
-        <h3>Medicamentos</h3>
-        <div class="info-box">Rosuvastatina</div>
-    </div>
+        <div class="grid-info">
+            <div class="info-mini">
+                <span>Tipo de sangre</span>
+                <b>O-</b>
+            </div>
+
+            <div class="info-mini">
+                <span>EPS</span>
+                <b>Proinsalud</b>
+            </div>
+
+            <div class="info-mini">
+                <span>Ciudad</span>
+                <b>Ipiales</b>
+            </div>
+
+            <div class="info-mini">
+                <span>Contacto principal</span>
+                <b>Hijo</b>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">🩺 Información de salud</div>
+
+        <div class="card">
+            <strong>Condición relevante:</strong><br>
+            Artrosis de Rodillas.
+        </div>
+
+        <div class="card">
+            <strong>Medicamentos actuales:</strong><br>
+            Rosuvastatina 50 mg.
+        </div>
+
+        <div class="card">
+            <strong>Alergias:</strong><br>
+            No registra alergias graves.
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">👨‍👩‍👧 Contactos de confianza</div>
+
+        <div class="card">
+            <strong>Contacto principal:</strong><br>
+            Juan David — Hijo.
+        </div>
+
+        <div class="card">
+            <strong>Contacto alterno:</strong><br>
+            Nury - Casa
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="card note">
+            Si esta información es consultada, por favor comuníquese con un contacto familiar mediante los botones superiores.
+        </div>
+    </section>
 
     <div class="footer">
-        Powered by Integral360
+        Powered by <a href="https://integral360.com.co">Integral360</a>
     </div>
 
-</div>
+</main>
 
 </body>
 </html>
