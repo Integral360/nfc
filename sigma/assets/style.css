@@ -184,34 +184,53 @@ img {
 }
 
 .btn-whatsapp {
-    background: var(--verde);
-    color: white
+background: var(--verde);
+color: white;
 }
 
 .btn-call {
-    background: var(--blue);
-    color: white
+background: var(--blue);
+color: white;
 }
 
 .btn-email {
-    background: var(--naranja);
-    color: white
+background: var(--naranja);
+color: white;
 }
 
 .btn-facebook {
-    background: #1877f2;
-    color: white;
+background: #1877f2 !important;
+color: white !important;
+border: none;
+}
+
+.btn-facebook:hover {
+background: #166fe5 !important;
 }
 
 .btn-instagram {
-    background: linear-gradient(
-        135deg,
-        #f58529,
-        #dd2a7b,
-        #8134af,
-        #515bd4
-    );
-    color: white;
+background: linear-gradient(
+135deg,
+#f58529 0%,
+#dd2a7b 35%,
+#8134af 70%,
+#515bd4 100%
+) !important;
+color: white !important;
+border: none;
+}
+
+.btn-instagram:hover {
+opacity: 0.95;
+}
+
+.btn-gold {
+background: linear-gradient(
+135deg,
+var(--oro2),
+var(--oro)
+);
+color: #061d4d;
 }
 
 .btn-gold {
