@@ -1,189 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#081b33">
-  <meta name="description" content="Estamos preparando algo nuevo. Muy pronto podrás descubrirlo.">
-  <title>Próximamente</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171214">
+  <title>Brillo Lash | Extensiones, lifting y cursos</title>
+  <meta name="description" content="Extensiones de pestañas, lifting y formación profesional con Brigette Bolaños en Pasto, Nariño.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23171214'/%3E%3Cpath d='M12 34c12-13 28-13 40 0-13 8-27 8-40 0Zm5-2-5-8m13 5-2-11m11 10 2-11m9 15 7-8' fill='none' stroke='%23e9b8bd' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <style>
-    :root {
-      --azul-oscuro: #071a31;
-      --azul: #0b315b;
-      --azul-claro: #18a5c8;
-      --dorado: #f2b84b;
-      --blanco: #ffffff;
-      --texto-suave: #c9d8e8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--blanco);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(24, 165, 200, .22), transparent 30%),
-        radial-gradient(circle at 90% 85%, rgba(242, 184, 75, .13), transparent 28%),
-        linear-gradient(145deg, var(--azul-oscuro), var(--azul));
-    }
-
-    .page {
-      position: relative;
-      isolation: isolate;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 28px 20px;
-    }
-
-    .page::before,
-    .page::after {
-      content: "";
-      position: fixed;
-      z-index: -1;
-      border: 1px solid rgba(255, 255, 255, .08);
-      border-radius: 50%;
-    }
-
-    .page::before {
-      width: 360px;
-      height: 360px;
-      top: -180px;
-      right: -120px;
-    }
-
-    .page::after {
-      width: 250px;
-      height: 250px;
-      bottom: -130px;
-      left: -90px;
-    }
-
-    .card {
-      width: min(100%, 680px);
-      padding: clamp(32px, 7vw, 64px);
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, .14);
-      border-radius: 32px;
-      background: rgba(5, 23, 43, .58);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, .32);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 18px;
-      padding: 8px 14px;
-      border: 1px solid rgba(255, 255, 255, .13);
-      border-radius: 999px;
-      color: var(--texto-suave);
-      background: rgba(255, 255, 255, .06);
-      font-size: .78rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--dorado);
-      box-shadow: 0 0 0 5px rgba(242, 184, 75, .13);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    h1 {
-      max-width: 560px;
-      margin-inline: auto;
-      font-size: clamp(2.35rem, 8vw, 4.6rem);
-      line-height: .98;
-      letter-spacing: -.055em;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--dorado);
-    }
-
-    .message {
-      max-width: 490px;
-      margin: 24px auto 0;
-      color: var(--texto-suave);
-      font-size: clamp(1rem, 2.8vw, 1.12rem);
-      line-height: 1.7;
-    }
-
-    .divider {
-      width: 72px;
-      height: 3px;
-      margin: 30px auto;
-      border: 0;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--azul-claro), var(--dorado));
-    }
-
-    .footer {
-      color: rgba(255, 255, 255, .64);
-      font-size: .86rem;
-      line-height: 1.5;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(.72); opacity: .65; }
-    }
-
-    @media (max-width: 520px) {
-      .card {
-        padding: 38px 22px;
-        border-radius: 26px;
-      }
-
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .status-dot { animation: none; }
-    }
+    :root{--ink:#171214;--rose:#e9b8bd;--rose-2:#f7dcdf;--ivory:#fffaf7;--gold:#b88a4f;--muted:#76676b;--line:rgba(23,18,20,.12);--radius:26px;--shadow:0 22px 55px rgba(45,25,31,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ivory);color:var(--ink);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.55}a{color:inherit;text-decoration:none}button,a{-webkit-tap-highlight-color:transparent}.wrap{width:min(1120px,calc(100% - 34px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,250,247,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,18,20,.07)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.wordmark{font-family:Italiana,serif;font-size:1.55rem;letter-spacing:.01em}.wordmark span{color:var(--gold)}.nav-cta{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem}.nav-cta svg{width:18px}
+    .hero{min-height:690px;display:grid;grid-template-columns:1.08fr .92fr;gap:68px;align-items:center;padding:72px 0 64px}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.18em;font-size:.76rem;font-weight:700}.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}h1,h2,h3,p{margin-top:0}.hero h1{font-family:Italiana,serif;font-weight:400;font-size:clamp(4rem,7.2vw,7rem);line-height:.88;letter-spacing:-.045em;margin:22px 0 26px}.hero h1 em{display:block;color:#c67f89;font-weight:400}.lead{max-width:570px;font-size:1.08rem;color:var(--muted)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.btn{min-height:56px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;border:1px solid var(--ink);transition:.22s ease}.btn svg{width:20px;height:20px}.btn-primary{background:var(--ink);color:white}.btn-soft{background:white}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(23,18,20,.12)}
+    .portrait{position:relative;isolation:isolate;min-height:540px;border-radius:220px 220px 34px 34px;background:linear-gradient(145deg,#f8dfe2 0%,#e6aeb6 57%,#b77b84 100%);overflow:hidden;box-shadow:var(--shadow)}.portrait:before{content:"B";position:absolute;inset:auto 0 -105px;text-align:center;font-family:Italiana,serif;font-size:31rem;line-height:1;color:rgba(255,255,255,.28);z-index:-1}.portrait:after{content:"PRÓXIMAMENTE · FOTO PRINCIPAL";position:absolute;inset:auto 24px 24px;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:12px 15px;text-align:center;color:white;font-size:.69rem;font-weight:700;letter-spacing:.14em;backdrop-filter:blur(8px)}.seal{position:absolute;left:-42px;top:65px;width:110px;height:110px;background:var(--ink);color:white;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:Italiana,serif;font-size:1.05rem;line-height:1.1;transform:rotate(-9deg);box-shadow:0 15px 35px rgba(23,18,20,.2)}
+    section{padding:90px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}.section-head h2{font-family:Italiana,serif;font-size:clamp(2.8rem,5vw,4.6rem);font-weight:400;line-height:1;margin-bottom:0}.section-head p{max-width:390px;color:var(--muted);margin-bottom:6px}.services{background:var(--ink);color:white}.services .section-head p{color:#c9bec1}.service-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.service{position:relative;min-height:350px;padding:22px;border:1px solid rgba(255,255,255,.13);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(180deg,rgba(233,184,189,.08),rgba(233,184,189,.2));transition:.25s ease}.service:before{content:"";position:absolute;width:180px;height:180px;left:50%;top:25px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 40% 35%,#ffecef,#d89ba5 70%);opacity:.9}.service:after{content:"⌒";position:absolute;color:var(--ink);font-family:serif;font-size:7rem;left:50%;top:35px;transform:translateX(-50%) rotate(180deg);opacity:.7}.service:hover{transform:translateY(-7px);border-color:var(--rose)}.service small{position:relative;color:var(--rose);text-transform:uppercase;letter-spacing:.12em}.service h3{position:relative;font-family:Italiana,serif;font-size:1.65rem;font-weight:400;margin:4px 0 0}.service:nth-child(even):before{background:radial-gradient(circle at 60% 35%,#fff1f2,#c98692 75%)}
+    .academy-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:18px}.academy-card{border-radius:32px;padding:46px;background:var(--rose-2);min-height:420px}.academy-card.dark{background:var(--ink);color:white;display:flex;flex-direction:column;justify-content:space-between}.academy-card h2{font-family:Italiana,serif;font-size:clamp(3rem,5.3vw,5rem);font-weight:400;line-height:.95}.academy-card ul{padding:0;margin:25px 0 0;list-style:none;display:grid;gap:14px}.academy-card li{display:flex;align-items:center;gap:12px}.academy-card li:before{content:"✦";color:var(--gold)}.course-mark{align-self:flex-end;width:135px;height:135px;border:1px solid rgba(255,255,255,.32);border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--rose);font-family:Italiana,serif;font-size:1.15rem;transform:rotate(8deg)}
+    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-auto-rows:265px;gap:14px}.shot{border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(145deg,#f4ced3,#c58b94);display:grid;place-items:center}.shot:first-child{grid-row:span 2}.shot:nth-child(2){background:linear-gradient(135deg,#20191b,#76515a)}.shot:nth-child(3){background:linear-gradient(135deg,#eed1d4,#fff9f6)}.shot:nth-child(4){grid-column:span 2;background:linear-gradient(135deg,#a96f78,#efd0d4)}.shot span{border:1px solid rgba(255,255,255,.6);color:white;border-radius:999px;padding:10px 16px;font-size:.7rem;letter-spacing:.12em;font-weight:700;text-transform:uppercase;backdrop-filter:blur(6px)}
+    .contact{padding-top:40px}.contact-card{background:var(--rose);border-radius:38px;padding:58px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px}.contact-card h2{font-family:Italiana,serif;font-weight:400;font-size:clamp(3rem,5.5vw,5.6rem);line-height:.92;margin-bottom:12px}.contact-card p{margin:0;color:#593f45}.socials{display:flex;gap:10px;margin-top:26px}.social{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.65);display:grid;place-items:center}.social svg{width:20px;height:20px}.contact .btn{background:var(--ink);color:white;white-space:nowrap}
+    footer{padding:35px 0 95px}.footer{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.86rem}.mobile-cta{display:none}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:4px}@media(max-width:900px){.hero{grid-template-columns:1fr;gap:42px;padding-top:55px}.hero-copy{text-align:center}.eyebrow{justify-content:center}.lead{margin-left:auto;margin-right:auto}.actions{justify-content:center}.portrait{width:min(100%,520px);margin:auto}.seal{left:4px}.service-grid{grid-template-columns:repeat(2,1fr)}.service:last-child{grid-column:span 2}.academy-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr}.shot:first-child{grid-row:span 1}.shot:nth-child(4){grid-column:span 1}.contact-card{grid-template-columns:1fr}.contact-card>.btn{justify-self:start}.section-head{align-items:start;flex-direction:column}}
+    @media(max-width:560px){.wrap{width:min(100% - 26px,1120px)}.nav{height:62px}.nav-cta span{display:none}.hero{min-height:auto;padding:42px 0 52px}.hero h1{font-size:3.9rem}.portrait{min-height:420px}.portrait:before{font-size:25rem}.seal{width:88px;height:88px;font-size:.9rem}.actions{display:grid}.btn{width:100%}section{padding:66px 0}.section-head{margin-bottom:28px}.section-head h2{font-size:3rem}.service-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 13px 14px;margin:0 -13px}.service{min-width:76vw;min-height:330px;scroll-snap-align:center}.service:last-child{min-width:76vw}.academy-card{padding:30px;min-height:380px}.gallery-grid{grid-template-columns:1fr;grid-auto-rows:250px}.shot:first-child{grid-row:span 1}.contact-card{padding:34px 25px;border-radius:30px}.contact-card>.btn{width:100%}.footer{flex-direction:column;padding-bottom:65px}.mobile-cta{display:flex;position:fixed;z-index:30;left:13px;right:13px;bottom:12px;height:58px;border-radius:999px;background:#171214;color:white;align-items:center;justify-content:center;gap:10px;font-weight:700;box-shadow:0 12px 35px rgba(23,18,20,.28)}.mobile-cta svg{width:21px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   </style>
 </head>
-
 <body>
-  <main class="page">
-    <section class="card" aria-labelledby="titulo">
-      <div class="eyebrow">
-        <span class="status-dot" aria-hidden="true"></span>
-        Sitio en construcción
-      </div>
-
-      <h1 id="titulo">Estamos creando algo <span>especial.</span></h1>
-
-      <p class="message">
-        Nuestro nuevo sitio está en camino. Estamos cuidando cada detalle
-        para ofrecerte una gran experiencia.
-      </p>
-
-      <hr class="divider">
-
-      <p class="footer">
-        Muy pronto estaremos en línea<br>
-        <span id="year"></span>
-      </p>
-    </section>
+  <header class="topbar"><nav class="nav wrap" aria-label="Navegación principal"><a class="wordmark" href="#inicio">Brillo<span>.</span>Lash</a><a class="nav-cta" href="https://wa.me/message/LBORUOKL6TITH1" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.4 9.4 0 0 1-4-.9L3 21l1.6-4.7A8.6 8.6 0 1 1 21 11.5Z"/></svg><span>Agenda tu cita</span></a></nav></header>
+  <main>
+    <section class="hero wrap" id="inicio"><div class="hero-copy"><div class="eyebrow">Lash artist & trainer</div><h1>Una mirada<br><em>con brillo</em></h1><p class="lead">Extensiones de pestañas diseñadas para resaltar tu estilo. Técnica, cuidado y resultados que se sienten tan bien como se ven.</p><div class="actions"><a class="btn btn-primary" href="https://wa.me/message/LBORUOKL6TITH1" target="_blank" rel="noopener noreferrer">Reservar por WhatsApp</a><a class="btn btn-soft" href="#servicios">Ver servicios</a></div></div><div class="portrait" role="img" aria-label="Espacio reservado para la fotografía principal de Brigette Bolaños"><div class="seal">Brigette<br>Bolaños</div></div></section>
+    <section class="services" id="servicios"><div class="wrap"><div class="section-head"><h2>Tu estilo,<br>tu mirada.</h2><p>Diseños personalizados según la forma de tus ojos y el resultado que quieres lograr.</p></div><div class="service-grid"><article class="service"><small>Natural</small><h3>Clásicas</h3></article><article class="service"><small>Textura</small><h3>Hawaianas</h3></article><article class="service"><small>Definición</small><h3>Brasileñas</h3></article><article class="service"><small>Efecto</small><h3>Foxy</h3></article><article class="service"><small>Curvatura</small><h3>Lifting</h3></article></div></div></section>
+    <section class="academy" id="academia"><div class="wrap academy-grid"><article class="academy-card"><div class="eyebrow">Brillo Lash Academy</div><h2>Aprende una técnica que abre oportunidades.</h2><ul><li>Formación teórica y práctica</li><li>Kit de inicio completo</li><li>Práctica sobre modelo real</li><li>Certificado y acompañamiento</li></ul></article><article class="academy-card dark"><div><p>CURSO INICIAL</p><h2>Extensiones de pestañas</h2><p>Introducción, fibras tecnológicas y fundamentos para comenzar con seguridad.</p></div><div class="course-mark">Cupos<br>limitados</div></article></div></section>
+    <section class="gallery" id="trabajos"><div class="wrap"><div class="section-head"><h2>Resultados<br>que hablan.</h2><p>Este espacio recibirá las fotografías reales de trabajos, procesos y certificaciones.</p></div><div class="gallery-grid"><div class="shot"><span>Foto destacada</span></div><div class="shot"><span>Resultado real</span></div><div class="shot"><span>Detalle</span></div><div class="shot"><span>Academia</span></div></div></div></section>
+    <section class="contact" id="contacto"><div class="wrap contact-card"><div><h2>Tu próxima mirada comienza aquí.</h2><p>Pasto, Nariño · Atención con cita previa</p><div class="socials"><a class="social" href="https://www.instagram.com/brillo.lash?igsi=aGpnYnN0c2E5Y2Q1&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Brillo Lash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a class="social" href="https://www.facebook.com/share/1JUfzHjYW3/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Brillo Lash"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v2H6v4h3v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1Z"/></svg></a></div></div><a class="btn" href="https://wa.me/message/LBORUOKL6TITH1" target="_blank" rel="noopener noreferrer">Agendar por WhatsApp</a></div></section>
   </main>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <footer><div class="footer wrap"><span>© 2026 Brillo Lash</span><span>Extensiones · Lifting · Formación</span></div></footer>
+  <a class="mobile-cta" href="https://wa.me/message/LBORUOKL6TITH1" target="_blank" rel="noopener noreferrer" aria-label="Agendar cita por WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.4 9.4 0 0 1-4-.9L3 21l1.6-4.7A8.6 8.6 0 1 1 21 11.5Z"/></svg>Agendar mi cita</a>
 </body>
 </html>
